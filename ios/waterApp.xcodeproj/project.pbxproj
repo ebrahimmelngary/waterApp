@@ -14,6 +14,14 @@
 		51F10231F38D9FD8F6E5930F /* libPods-waterApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B18C910ED62C24C121DD27 /* libPods-waterApp.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		9DC0B1D05C3B76F39FEDE6A7 /* libPods-waterApp-waterAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 553DCB8B07175526A08E45F4 /* libPods-waterApp-waterAppTests.a */; };
+		0F852BC784DB4FC2880A36D8 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04D95005B4EC47F1B74A93D2 /* icomoon.ttf */; };
+		2B9AB2A20EA0438980B87E6A /* Tajawal-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F957BF81F864634A3E95C35 /* Tajawal-Black.ttf */; };
+		AD1F5728573A4AE0892C99CA /* Tajawal-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8845005AB26D4350AC53910C /* Tajawal-Bold.ttf */; };
+		05630A0511694882A1EF255D /* Tajawal-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17D6B0A950DF4A9889375F26 /* Tajawal-ExtraBold.ttf */; };
+		6CCFA2F8F9E049CBAF52196F /* Tajawal-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89B385A6C1544512823FFFF4 /* Tajawal-ExtraLight.ttf */; };
+		436233153A6943C09631C322 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2407FB99563A48AE996948DC /* Tajawal-Light.ttf */; };
+		E0648B5CDE9E41888D189466 /* Tajawal-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26E9270196FD47C38A51D53F /* Tajawal-Medium.ttf */; };
+		B8ABAAF41BB34A8D87BF51E8 /* Tajawal-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 811BEF5A8F264A4ABBC281DE /* Tajawal-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,20 +38,44 @@
 		00E356EE1AD99517003FC87E /* waterAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = waterAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* waterAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = waterAppTests.m; sourceTree = "<group>"; };
+		01FDE876AE8C4F809CC4C91D /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* waterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = waterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = waterApp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = waterApp/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = waterApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = waterApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = waterApp/main.m; sourceTree = "<group>"; };
+		344918A4EF7E400993BC606D /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		39678382390B4252AF6BFBFC /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		4917A62C1F424355946B92BD /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		4A93D0650FEB4DC9A774B2EC /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		4F59181A0C3742DB81C72E1A /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		553DCB8B07175526A08E45F4 /* libPods-waterApp-waterAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-waterApp-waterAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6289DA1001743B9D9778036B /* Pods-waterApp-waterAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-waterApp-waterAppTests.debug.xcconfig"; path = "Target Support Files/Pods-waterApp-waterAppTests/Pods-waterApp-waterAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		71B18C910ED62C24C121DD27 /* libPods-waterApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-waterApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		73A67D34E3194F2BA1A1E8FC /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		805FBE0576794E09807A5A01 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = waterApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		81D4B242ADE049248C15BAD7 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		98E47A6BD7D44FA9BFDF6443 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		AA012A9972C5462CA713D942 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		B22A7895E084EA489D6237B8 /* Pods-waterApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-waterApp.debug.xcconfig"; path = "Target Support Files/Pods-waterApp/Pods-waterApp.debug.xcconfig"; sourceTree = "<group>"; };
+		B475A48299D44F4788DA0980 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		B4766473CEA3917F6A324672 /* Pods-waterApp-waterAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-waterApp-waterAppTests.release.xcconfig"; path = "Target Support Files/Pods-waterApp-waterAppTests/Pods-waterApp-waterAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		C873A384E2CE48E2A0761618 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F2C245A2FD6C49CDB278E528 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		F4F4131078754B42B03AC71C /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		F5340CA8E19E48D3AF371478 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		FE3A2767819BD2C19F5D7F60 /* Pods-waterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-waterApp.release.xcconfig"; path = "Target Support Files/Pods-waterApp/Pods-waterApp.release.xcconfig"; sourceTree = "<group>"; };
+		04D95005B4EC47F1B74A93D2 /* icomoon.ttf */ = {isa = PBXFileReference; name = "icomoon.ttf"; path = "../assets/fonts/icomoon/icomoon.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1F957BF81F864634A3E95C35 /* Tajawal-Black.ttf */ = {isa = PBXFileReference; name = "Tajawal-Black.ttf"; path = "../assets/fonts/tajawal/Tajawal-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8845005AB26D4350AC53910C /* Tajawal-Bold.ttf */ = {isa = PBXFileReference; name = "Tajawal-Bold.ttf"; path = "../assets/fonts/tajawal/Tajawal-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		17D6B0A950DF4A9889375F26 /* Tajawal-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Tajawal-ExtraBold.ttf"; path = "../assets/fonts/tajawal/Tajawal-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		89B385A6C1544512823FFFF4 /* Tajawal-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Tajawal-ExtraLight.ttf"; path = "../assets/fonts/tajawal/Tajawal-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2407FB99563A48AE996948DC /* Tajawal-Light.ttf */ = {isa = PBXFileReference; name = "Tajawal-Light.ttf"; path = "../assets/fonts/tajawal/Tajawal-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		26E9270196FD47C38A51D53F /* Tajawal-Medium.ttf */ = {isa = PBXFileReference; name = "Tajawal-Medium.ttf"; path = "../assets/fonts/tajawal/Tajawal-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		811BEF5A8F264A4ABBC281DE /* Tajawal-Regular.ttf */ = {isa = PBXFileReference; name = "Tajawal-Regular.ttf"; path = "../assets/fonts/tajawal/Tajawal-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +154,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				F582DE477F61FDD299F916E4 /* Pods */,
+				D67AFF2D685C460BA1781DAC /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -137,6 +170,37 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D67AFF2D685C460BA1781DAC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F4F4131078754B42B03AC71C /* AntDesign.ttf */,
+				01FDE876AE8C4F809CC4C91D /* Entypo.ttf */,
+				344918A4EF7E400993BC606D /* EvilIcons.ttf */,
+				805FBE0576794E09807A5A01 /* Feather.ttf */,
+				81D4B242ADE049248C15BAD7 /* FontAwesome.ttf */,
+				4917A62C1F424355946B92BD /* FontAwesome5_Brands.ttf */,
+				F5340CA8E19E48D3AF371478 /* FontAwesome5_Regular.ttf */,
+				B475A48299D44F4788DA0980 /* FontAwesome5_Solid.ttf */,
+				4A93D0650FEB4DC9A774B2EC /* Fontisto.ttf */,
+				39678382390B4252AF6BFBFC /* Foundation.ttf */,
+				4F59181A0C3742DB81C72E1A /* Ionicons.ttf */,
+				AA012A9972C5462CA713D942 /* MaterialCommunityIcons.ttf */,
+				98E47A6BD7D44FA9BFDF6443 /* MaterialIcons.ttf */,
+				73A67D34E3194F2BA1A1E8FC /* Octicons.ttf */,
+				C873A384E2CE48E2A0761618 /* SimpleLineIcons.ttf */,
+				F2C245A2FD6C49CDB278E528 /* Zocial.ttf */,
+				04D95005B4EC47F1B74A93D2 /* icomoon.ttf */,
+				1F957BF81F864634A3E95C35 /* Tajawal-Black.ttf */,
+				8845005AB26D4350AC53910C /* Tajawal-Bold.ttf */,
+				17D6B0A950DF4A9889375F26 /* Tajawal-ExtraBold.ttf */,
+				89B385A6C1544512823FFFF4 /* Tajawal-ExtraLight.ttf */,
+				2407FB99563A48AE996948DC /* Tajawal-Light.ttf */,
+				26E9270196FD47C38A51D53F /* Tajawal-Medium.ttf */,
+				811BEF5A8F264A4ABBC281DE /* Tajawal-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		F582DE477F61FDD299F916E4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +209,6 @@
 				6289DA1001743B9D9778036B /* Pods-waterApp-waterAppTests.debug.xcconfig */,
 				B4766473CEA3917F6A324672 /* Pods-waterApp-waterAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -245,6 +308,14 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				0F852BC784DB4FC2880A36D8 /* icomoon.ttf in Resources */,
+				2B9AB2A20EA0438980B87E6A /* Tajawal-Black.ttf in Resources */,
+				AD1F5728573A4AE0892C99CA /* Tajawal-Bold.ttf in Resources */,
+				05630A0511694882A1EF255D /* Tajawal-ExtraBold.ttf in Resources */,
+				6CCFA2F8F9E049CBAF52196F /* Tajawal-ExtraLight.ttf in Resources */,
+				436233153A6943C09631C322 /* Tajawal-Light.ttf in Resources */,
+				E0648B5CDE9E41888D189466 /* Tajawal-Medium.ttf in Resources */,
+				B8ABAAF41BB34A8D87BF51E8 /* Tajawal-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

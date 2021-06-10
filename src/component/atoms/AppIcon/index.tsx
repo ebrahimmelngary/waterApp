@@ -1,10 +1,8 @@
-import React, { FC } from 'react';
-import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
-import {
-  ViewStyle, TouchableOpacity, StyleSheet,
-} from 'react-native';
-import icoMoonConfig from '../../../assets/fonts/icomoon/selection.json';
-import { calcFont } from '../../../common/styles';
+import React, {FC} from 'react';
+import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
+import {ViewStyle, TouchableOpacity, StyleSheet} from 'react-native';
+import icoMoonConfig from '../../../../assets/fonts/icomoon/selection.json';
+import {calcFont} from '../../../common/styles';
 import COLORS from '../../../common/colors';
 
 interface Props {
@@ -20,32 +18,35 @@ interface Props {
 const Icon = createIconSetFromIcoMoon(icoMoonConfig);
 
 const AppIcon: FC<Props> = ({
-  size, name, color, disabled, onPress, style, icommon, ...props
+  size,
+  name,
+  color,
+  disabled,
+  onPress,
+  style,
+  icommon,
+  ...props
 }) => (
   <>
-    {
-      icommon ? (
+    {icommon ? (
+      <Icon
+        {...props}
+        size={size || calcFont(20)}
+        name={name}
+        color={color || COLORS.white}
+        style={styles.icon}
+      />
+    ) : (
+      <TouchableOpacity onPress={onPress} style={style} disabled={disabled}>
         <Icon
-          {...props
-          }
+          {...props}
           size={size || calcFont(20)}
           name={name}
           color={color || COLORS.white}
           style={styles.icon}
         />
-      )
-        : (
-          <TouchableOpacity onPress={onPress} style={style} disabled={disabled}>
-            <Icon
-              {...props}
-              size={size || calcFont(20)}
-              name={name}
-              color={color || COLORS.white}
-              style={styles.icon}
-            />
-          </TouchableOpacity>
-        )
-    }
+      </TouchableOpacity>
+    )}
   </>
 );
 const styles = StyleSheet.create({
