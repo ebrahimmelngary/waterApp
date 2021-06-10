@@ -1,12 +1,11 @@
 import * as React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
+import AppButton from '../../component/atoms/AppButton';
 
-interface HomeProps {}
-
-const Home = (props: HomeProps) => {
+const Home = () => {
   return (
-    <View>
-      <Text>Home</Text>
+    <View style={{flex: 1, padding: 17}}>
+      <AppButton title={'Button'} />
     </View>
   );
 };
