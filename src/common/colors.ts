@@ -4,7 +4,7 @@ const COLORS = {
   blackCat: '#3E3E3E',
   blackRock: '#200E32',
   white: '#fff',
-  background: '#eee',
+  background: '#F2F6FC',
   dodgerBlue: '#3FD0FD',
   blueGrey: '#9DA8C3',
   mediumGrey: '#818181',
@@ -14,7 +14,8 @@ const COLORS = {
   silverSand: '#BEBEBE',
   watermelon: '#FF5656',
   gold: '#FFA41B',
-
+  gray:'#CAD0E5',
+  gray90: '#E5E5E5',
 };
 
 export default COLORS;

@@ -1,12 +1,20 @@
 import {StyleSheet} from 'react-native';
 import COLORS from '../../common/colors';
+import FONTS from '../../common/fonts';
+import { calcFont, calcHeight, calcWidth } from '../../common/styles';
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      padding: 17,
+      backgroundColor: COLORS.background
     },
-    headerIconWrappar: {
+    headerWrappar: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      paddingHorizontal: calcWidth(17)
+    },
+    iconWrappar: {
       flexDirection: 'row',
     },
    testButton: {
@@ -17,9 +25,26 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: COLORS.Silver,
-      margin: 20
+      margin: calcWidth(20)
       
     },
+    list: {
+      padding: calcWidth(17),
+    },
+    headrText: {
+      ...FONTS.TajawalBold,
+      fontSize: calcFont(18),
+      color: COLORS.blackRock
+    },
+    iconCard: {
+      width: calcWidth(34),
+      height: calcHeight(34),
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: calcWidth(11),
+      backgroundColor: COLORS.white
+    },
+
     
   });
 

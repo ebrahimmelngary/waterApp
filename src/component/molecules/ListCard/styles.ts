@@ -11,9 +11,10 @@ const styles = StyleSheet.create({
       shadowOffset: {width: 1,height: 1,},
       shadowColor: COLORS.blackCat,
       shadowOpacity: .2,
-      shadowRadius: 12,
-      paddingVertical: calcHeight(18),
-      borderRadius: 15
+      shadowRadius: 5,
+      paddingVertical: calcHeight(15),
+      borderRadius: calcWidth(15),
+      marginBottom: calcHeight(10), 
       
     },
     imageWrappar: {
@@ -39,17 +40,17 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       flex: 1,
       alignItems: 'center',
-      justifyContent: 'flex-start',
+      // justifyContent: 'flex-start',
     },
     image: {
       width: calcWidth(50),
       height: calcHeight(50),
-      borderRadius: calcWidth(16)
+      borderRadius: calcWidth(16),
+      
     },
     titleStyle: {
-      ...FONTS.TajawalMedium,
-      fontSize: calcFont(14),
-      
+      ...FONTS.TajawalBold,
+      fontSize: calcFont(13),
     },
     loctationStyle: {
       ...FONTS.TajawalRegular,
@@ -64,10 +65,10 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'space-between',
       marginBottom: calcHeight(5),
+      
     },
     virtcalView: {
       flex:1,
-      alignItems: 'flex-end',
       
     },
     textIconWrapparVirtcalStyle: {

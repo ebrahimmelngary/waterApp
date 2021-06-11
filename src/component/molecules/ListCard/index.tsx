@@ -7,7 +7,29 @@ import styles from './styles';
 import COLORS from '../../../common/colors';
 import AppText from '../../atoms/AppText';
 import {calcFont, calcHeight, calcWidth} from '../../../common/styles';
-const ListCard = ({componentStyle, onPress, title, location, shipping}) => {
+
+type item = {
+  id: any;
+  name: string;
+  location: string;
+  shipping: string;
+  review?: any;
+};
+interface ListCardProps {
+  componentStyle: string;
+  onPress: (item: item) => void;
+  item: item;
+  remove?: boolean;
+  onPressIcon: (item: item) => void;
+}
+
+const ListCard: React.FC<ListCardProps> = ({
+  componentStyle,
+  onPress,
+  item,
+  remove,
+  onPressIcon,
+}) => {
   return (
     <TouchableOpacity
       style={[
@@ -20,45 +42,58 @@ const ListCard = ({componentStyle, onPress, title, location, shipping}) => {
         },
       ]}
       activeOpacity={0.8}
-      onPress={onPress}>
+      onPress={() => onPress(item)}>
       {componentStyle === 'virtcal' ? (
         <View style={styles.virtcalView}>
           <View style={styles.virtcalImageWrappar}>
+            <Image source={IMAGES.avatr} style={styles.image} />
             <AppIcon
-              name={ICONS.heart}
+              name={remove ? ICONS.location : ICONS.heart}
               color={COLORS.silverSand}
               size={calcFont(17)}
+              onPress={() => onPressIcon(item)}
             />
-            <Image source={IMAGES.avatr} style={styles.image} />
           </View>
-          <AppText style={styles.titleStyle}>{title || 'ابراهيم محمد'}</AppText>
-          <View style={styles.textIconWrapparVirtcalStyle}>
+          <View style={{flex: 1}}>
+            <AppText
+              style={{...styles.titleStyle, marginVertical: calcHeight(5)}}
+              numberOfLines={2}>
+              {item.name || 'Ibrahim Mohamed '}
+            </AppText>
+            <View style={styles.textIconWrapparVirtcalStyle}>
+              <AppIcon
+                name={ICONS.location}
+                color={COLORS.blackRock}
+                size={calcFont(12)}
+              />
+              <AppText
+                style={{
+                  ...styles.loctationStyle,
+                  marginVertical: 0,
+                  marginTop: calcHeight(5),
+                }}>
+                {item.location || 'Tanta Elghrbia'}
+              </AppText>
+            </View>
+            <View style={styles.textIconWrapparVirtcalStyle}>
+              <AppIcon name={ICONS.shipped} color={COLORS.blackCat} />
+              <AppText
+                style={{
+                  ...styles.loctationStyle,
+                  marginVertical: 0,
+                  marginTop: calcHeight(5),
+                }}>
+                {item.shipping || 'two days'}
+              </AppText>
+            </View>
+
             <AppIcon
-              name={ICONS.location}
-              color={COLORS.blackRock}
-              size={calcFont(12)}
+              style={{position: 'absolute', bottom: -1}}
+              name={ICONS.star}
+              color={COLORS.gold}
+              size={calcFont(14)}
             />
-            <AppText
-              style={{
-                ...styles.loctationStyle,
-                marginVertical: 0,
-                marginTop: calcHeight(5),
-              }}>
-              {location || 'Tanta Elghrbia'}
-            </AppText>
           </View>
-          <View style={styles.textIconWrapparVirtcalStyle}>
-            <AppIcon name={ICONS.shipped} color={COLORS.blackCat} />
-            <AppText
-              style={{
-                ...styles.loctationStyle,
-                marginVertical: 0,
-                marginTop: calcHeight(5),
-              }}>
-              {shipping || 'two days'}
-            </AppText>
-          </View>
-          <AppIcon name={ICONS.star} color={COLORS.gold} size={calcFont(14)} />
         </View>
       ) : (
         <>
@@ -66,8 +101,8 @@ const ListCard = ({componentStyle, onPress, title, location, shipping}) => {
             <Image source={IMAGES.avatr} style={styles.image} />
           </View>
           <View style={styles.textWrappar}>
-            <AppText style={styles.titleStyle}>
-              {title || 'Ibrahim Mohamed'}
+            <AppText style={styles.titleStyle} numberOfLines={1}>
+              {item.name || 'Ibrahim Mohamed'}
             </AppText>
             <View style={styles.textIconWrappar}>
               <AppIcon
@@ -76,7 +111,7 @@ const ListCard = ({componentStyle, onPress, title, location, shipping}) => {
                 size={calcFont(12)}
               />
               <AppText style={styles.loctationStyle}>
-                {location || 'Tanta Elghrbia'}
+                {item.location || 'Tanta Elghrbia'}
               </AppText>
             </View>
             <AppIcon
@@ -95,11 +130,10 @@ const ListCard = ({componentStyle, onPress, title, location, shipping}) => {
               style={{
                 ...styles.textIconWrappar,
                 alignItems: 'flex-end',
-                marginTop: calcHeight(5),
               }}>
               <AppIcon name={ICONS.shipped} color={COLORS.blackCat} />
               <AppText style={styles.loctationStyle}>
-                {shipping || 'two days'}
+                {item.shipping || 'two days'}
               </AppText>
             </View>
           </View>
