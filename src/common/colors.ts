@@ -13,8 +13,7 @@ const COLORS = {
   Silver: '#C0C5CD',
   silverSand: '#BEBEBE',
   watermelon: '#FF5656',
-  cantaloupe: '#FFA41B',
-  midnightPurple: '#200E32',
+  gold: '#FFA41B',
 
 };
 

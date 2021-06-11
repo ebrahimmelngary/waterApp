@@ -2,16 +2,12 @@ const ICONS = {
 home: 'home',
 shipped: 'shipped',
 notification: 'notification',
-order: 'order',
-telephone: 'telephone',
-twodash: 'twodash',
+order: 'orders',
+account: 'user-o',
+heart: 'heart',
+search: 'search',
 star: 'star',
-solidNotification: 'solidNotification',
-account: 'account',
-bin: 'bin',
-add: 'add',
-locked: 'locked',
-massage: 'massage',
+location: 'location',
 
 };
 export default ICONS;

@@ -23,7 +23,7 @@ const TabsOptions: any = () => ({
     size: calcFont(25),
   },
   Favorite: {
-    icon: ICONS.add,
+    icon: ICONS.star,
     label: Trans('favorite'),
     size: calcFont(25),
   },
@@ -50,7 +50,7 @@ export default function Tabs() {
         ),
       })}
       tabBarOptions={{
-        tabStyle: {backgroundColor: COLORS.greyGoose},
+        tabStyle: {backgroundColor: COLORS.white},
         activeTintColor: COLORS.dodgerBlue,
         inactiveTintColor: COLORS.blueGrey,
         labelPosition: 'below-icon',
