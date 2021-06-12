@@ -6,7 +6,8 @@ import { calcFont, calcHeight, calcWidth } from '../../common/styles';
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: COLORS.background
+      backgroundColor: COLORS.background,
+      paddingVertical: calcHeight(10) ,
     },
     headerWrappar: {
       flexDirection: 'row',

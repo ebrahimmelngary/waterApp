@@ -1,22 +1,18 @@
 import * as React from 'react';
 import {TouchableOpacity, View, Image} from 'react-native';
 import IMAGES from '../../../common/images';
-import AppIcon from '../../atoms/AppIcon';
-import ICONS from '../../../common/icons';
 import styles from './styles';
-import COLORS from '../../../common/colors';
 import AppText from '../../atoms/AppText';
-import {calcFont, calcHeight, calcWidth} from '../../../common/styles';
 
-type item = {
+export type OrderCardItem = {
   id: any;
   name: string;
   time?: string;
   amount: number;
 };
 interface OrderCardProps {
-  onPress: (item: item) => void;
-  item: item;
+  onPress: (item: OrderCardItem) => void;
+  item: OrderCardItem;
 }
 
 const OrderCard: React.FC<OrderCardProps> = ({onPress, item}) => {
@@ -30,14 +26,14 @@ const OrderCard: React.FC<OrderCardProps> = ({onPress, item}) => {
       </View>
       <View style={styles.textWrappar}>
         <AppText style={styles.titleStyle} numberOfLines={1}>
-          {item.name || 'Ibrahim Mohamed'}
+          {item.name}
         </AppText>
         <AppText style={styles.timeStyle}>
           {item.time || new Date().toDateString()}
         </AppText>
       </View>
       <View style={styles.amountWrappar}>
-        <AppText style={styles.amountText}>{item.amount || '- 200'}</AppText>
+        <AppText style={styles.amountText}>{item.amount}</AppText>
       </View>
     </TouchableOpacity>
   );
