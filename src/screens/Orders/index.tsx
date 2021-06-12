@@ -1,11 +1,18 @@
 import * as React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, FlatList} from 'react-native';
+import OrderCard from '../../component/molecules/OrderCard';
+import {dummyOrdersData} from './dummyData';
 import styles from './styles';
 
 const Orders = () => {
   return (
     <View style={styles.container}>
-      <Text>Orders</Text>
+      <FlatList
+        data={dummyOrdersData}
+        renderItem={({item}) => (
+          <OrderCard item={item} onPress={i => console.log(i.id)} />
+        )}
+      />
     </View>
   );
 };

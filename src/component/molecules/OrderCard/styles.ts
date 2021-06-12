@@ -29,18 +29,14 @@ const styles = StyleSheet.create({
     },
     textWrappar: {
       flex: 2,
+      justifyContent: 'center',
     
     },
-    iconWrappar: {
-      flex: 1.5,
-      alignItems:'flex-end',
-      marginHorizontal: calcWidth(10),
-    },
-    textIconWrappar: {
-      flexDirection: 'row',
+    amountWrappar: {
       flex: 1,
-      alignItems: 'center',
-      // justifyContent: 'flex-start',
+      alignItems:'center',
+      justifyContent: 'center',
+      marginHorizontal: calcWidth(10),
     },
     image: {
       width: calcWidth(50),
@@ -50,30 +46,20 @@ const styles = StyleSheet.create({
     },
     titleStyle: {
       ...FONTS.TajawalBold,
-      fontSize: calcFont(13),
+      fontSize: calcFont(15),
     },
-    loctationStyle: {
+    timeStyle: {
       ...FONTS.TajawalRegular,
       fontSize: calcFont(10),
       marginHorizontal: calcWidth(5),
       marginVertical: calcHeight(5),
       color: COLORS.osloGrey,
     },
-    //virtcalStyle
-    virtcalImageWrappar: {
-      width: '100%',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginBottom: calcHeight(5),
-      
-    },
-    virtcalView: {
-      flex:1,
-      
-    },
-    textIconWrapparVirtcalStyle: {
-      flexDirection: 'row',
-    },
+    amountText:{
+      ...FONTS.TajawalBold,
+      fontSize: calcFont(14),
+      color: COLORS.blackRock,
+    }
   });
 
   export default styles;

@@ -31,9 +31,9 @@ const Home = () => {
             ]}>
             <AppIcon
               name={ICONS.row}
-              color={COLORS.gray}
+              color={view === 'row' ? COLORS.white : COLORS.gray}
               onPress={() => setViewStyle(viewStyle.row)}
-              size={calcWidth(14)}
+              size={view === 'row' ? calcWidth(16) : calcWidth(12)}
             />
           </View>
           <View
@@ -45,9 +45,9 @@ const Home = () => {
             ]}>
             <AppIcon
               name={ICONS.virtcal}
-              color={COLORS.gray}
+              color={view === 'row' ? COLORS.gray : COLORS.white}
               onPress={() => setViewStyle(viewStyle.virtcal)}
-              size={calcWidth(14)}
+              size={view === 'row' ? calcWidth(14) : calcWidth(19)}
             />
           </View>
         </View>

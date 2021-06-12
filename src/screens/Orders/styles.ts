@@ -4,7 +4,9 @@ import COLORS from '../../common/colors';
 const styles = StyleSheet.create({
   container: { 
     flex: 1,
-    backgroundColor: COLORS.background},
+    backgroundColor: COLORS.background,
+    padding: 17,
+  },
 });
   export default styles;
   
