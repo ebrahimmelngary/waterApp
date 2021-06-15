@@ -3,13 +3,9 @@ import COLORS from '../../common/colors';
 import { calcWidth } from '../../common/styles';
 
 const styles = StyleSheet.create({
-    container: { 
-      flex: 1,
-      backgroundColor: COLORS.background
-    },
     listStyle: {
-      padding: calcWidth(20),
-      
+      padding: calcWidth(10),
+      backgroundColor: COLORS.background
     },
   });
 

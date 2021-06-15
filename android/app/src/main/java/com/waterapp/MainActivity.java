@@ -1,7 +1,7 @@
 package com.waterapp;
 
 import com.facebook.react.ReactActivity;
-
+import com.zoontek.rnbootsplash.RNBootSplash;
 public class MainActivity extends ReactActivity {
 
   /**
@@ -10,6 +10,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
+    RNBootSplash.init(R.drawable.bootsplash, MainActivity.this);
     return "waterApp";
   }
 }

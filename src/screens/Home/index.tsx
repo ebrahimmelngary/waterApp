@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {TouchableOpacity, View, Text, FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 import AppText from '../../component/atoms/AppText';
 import ListCard from '../../component/molecules/ListCard';
 import {dummyHomeData} from './dummyData';
@@ -14,9 +14,8 @@ const Home = () => {
     virtcal: 'virtcal',
   };
   const [view, setViewStyle] = React.useState(viewStyle.row);
-
-  return (
-    <View style={styles.container}>
+  const HeaderSection = () => {
+    return (
       <View style={styles.headerWrappar}>
         <View>
           <AppText style={styles.headrText}>Water Company</AppText>
@@ -33,7 +32,7 @@ const Home = () => {
               name={ICONS.row}
               color={view === 'row' ? COLORS.white : COLORS.gray}
               onPress={() => setViewStyle(viewStyle.row)}
-              size={view === 'row' ? calcWidth(16) : calcWidth(12)}
+              size={view === 'row' ? calcWidth(15) : calcWidth(15)}
             />
           </View>
           <View
@@ -52,6 +51,11 @@ const Home = () => {
           </View>
         </View>
       </View>
+    );
+  };
+  return (
+    <>
+      <HeaderSection />
       <FlatList
         data={dummyHomeData}
         key={'pearntList+' + Math.random()}
@@ -69,7 +73,7 @@ const Home = () => {
         )}
         keyExtractor={(item, index) => item.id.toString()}
       />
-    </View>
+    </>
   );
 };
 

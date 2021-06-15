@@ -4,46 +4,37 @@ import FONTS from '../../common/fonts';
 import { calcFont, calcHeight, calcWidth } from '../../common/styles';
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: COLORS.background,
-      paddingVertical: calcHeight(10) ,
-    },
+    
     headerWrappar: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      paddingHorizontal: calcWidth(17)
+      paddingHorizontal: calcWidth(17),
+      backgroundColor: COLORS.white,
+      paddingVertical: calcHeight(10) ,
+      borderRadius: calcWidth(16)
     },
     iconWrappar: {
       flexDirection: 'row',
-    },
-   testButton: {
-      width: 50,
-      height: 20,
-      borderColor: COLORS.Silver,
-      borderWidth: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: COLORS.Silver,
-      margin: calcWidth(20)
-      
+      alignItems: 'center'
     },
     list: {
-      padding: calcWidth(17),
+      backgroundColor: COLORS.background,
+      
+      paddingVertical: calcHeight(15)
     },
     headrText: {
-      ...FONTS.TajawalBold,
-      fontSize: calcFont(18),
+      ...FONTS.TajawalExtraBold,
+      fontSize: calcFont(25),
       color: COLORS.blackRock
     },
     iconCard: {
-      width: calcWidth(34),
-      height: calcHeight(34),
+      width: calcWidth(45),
+      height: calcHeight(45),
       justifyContent: 'center',
       alignItems: 'center',
-      borderRadius: calcWidth(11),
-      backgroundColor: COLORS.white
+      borderRadius: calcWidth(12),
+      backgroundColor: COLORS.blueGrey,
     },
 
     

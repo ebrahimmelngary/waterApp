@@ -7,23 +7,21 @@ interface FavoriteProps {}
 
 const Favorite = (props: FavoriteProps) => {
   return (
-    <View style={styles.container}>
-      <FlatList
-        numColumns={2}
-        style={styles.listStyle}
-        columnWrapperStyle={{justifyContent: 'space-around'}}
-        data={dummyFavoriteData}
-        renderItem={({item}) => (
-          <ListCard
-            item={item}
-            componentStyle={'virtcal'}
-            remove
-            onPress={() => Alert.alert('ready')}
-            onPressIcon={i => console.log(i.id)}
-          />
-        )}
-      />
-    </View>
+    <FlatList
+      numColumns={2}
+      style={styles.listStyle}
+      columnWrapperStyle={{justifyContent: 'space-around'}}
+      data={dummyFavoriteData}
+      renderItem={({item}) => (
+        <ListCard
+          item={item}
+          componentStyle={'virtcal'}
+          remove
+          onPress={() => Alert.alert('ready')}
+          onPressIcon={i => console.log(i.id)}
+        />
+      )}
+    />
   );
 };
 

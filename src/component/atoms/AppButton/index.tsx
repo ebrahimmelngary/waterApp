@@ -1,15 +1,10 @@
 import React, {FC} from 'react';
-import {
-  TouchableOpacity,
-  ViewStyle,
-  TextStyle,
-  ActivityIndicator,
-} from 'react-native';
+import {ViewStyle, TextStyle, ActivityIndicator} from 'react-native';
 import styles from './styles';
 import COLORS from '../../../common/colors';
 import AppText from '../AppText';
 import AppIcon from '../AppIcon';
-
+import Touchable from '../Touchable';
 interface Props {
   title: string;
   onPress?: any;
@@ -28,7 +23,7 @@ const AppButton: FC<Props> = ({
   titleStyle,
   loading,
 }) => (
-  <TouchableOpacity
+  <Touchable
     onPress={onPress}
     disabled={loading ? true : disabled}
     activeOpacity={0.6}
@@ -37,11 +32,11 @@ const AppButton: FC<Props> = ({
       <ActivityIndicator color={COLORS.white} />
     ) : (
       <>
-        {/* <AppIcon name={iconName} /> */}
+        <AppIcon name={iconName} />
         <AppText style={[styles.textStyle, titleStyle]}>{title}</AppText>
       </>
     )}
-  </TouchableOpacity>
+  </Touchable>
 );
 
 export default React.memo(AppButton);

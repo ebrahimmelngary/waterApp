@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {TouchableOpacity, View, Image} from 'react-native';
+import {View, Image} from 'react-native';
 import IMAGES from '../../../common/images';
 import AppIcon from '../../atoms/AppIcon';
 import ICONS from '../../../common/icons';
@@ -7,7 +7,7 @@ import styles from './styles';
 import COLORS from '../../../common/colors';
 import AppText from '../../atoms/AppText';
 import {calcFont, calcHeight, calcWidth} from '../../../common/styles';
-
+import Touchable from '../../atoms/Touchable';
 type item = {
   id: any;
   name: string;
@@ -30,60 +30,53 @@ const ListCard: React.FC<ListCardProps> = ({
   remove,
   onPressIcon,
 }) => {
-  return (
-    <TouchableOpacity
-      style={[
-        styles.container,
-        componentStyle === 'virtcal' && {
-          width: calcWidth(150),
-          height: calcHeight(175),
-          flexDirection: 'column',
-          padding: 10,
-        },
-      ]}
-      activeOpacity={0.8}
-      onPress={() => onPress(item)}>
-      {componentStyle === 'virtcal' ? (
+  const VirtcalComponant = () => {
+    return (
+      <Touchable
+        style={componentStyle === 'virtcal' && styles.virtcalStyleWrappar}
+        onPress={() => onPress(item)}>
         <View style={styles.virtcalView}>
           <View style={styles.virtcalImageWrappar}>
-            <Image source={IMAGES.avatr} style={styles.image} />
+            <Image
+              source={IMAGES.test}
+              style={styles.image}
+              resizeMode={'contain'}
+            />
             <AppIcon
               name={remove ? ICONS.location : ICONS.heart}
               color={COLORS.silverSand}
-              size={calcFont(17)}
               onPress={() => onPressIcon(item)}
             />
           </View>
-          <View style={{flex: 1}}>
-            <AppText
-              style={{...styles.titleStyle, marginVertical: calcHeight(5)}}
-              numberOfLines={2}>
-              {item.name || 'Ibrahim Mohamed '}
+          <View style={styles.textVirtcalWrappar}>
+            <AppText style={styles.titleStyle} numberOfLines={2}>
+              {item.name}
             </AppText>
             <View style={styles.textIconWrapparVirtcalStyle}>
               <AppIcon
                 name={ICONS.location}
                 color={COLORS.blackRock}
-                size={calcFont(12)}
+                disabled
+                size={calcFont(18)}
               />
               <AppText
                 style={{
                   ...styles.loctationStyle,
                   marginVertical: 0,
-                  marginTop: calcHeight(5),
+                  // marginTop: calcHeight(5),
                 }}>
-                {item.location || 'Tanta Elghrbia'}
+                {item.location}
               </AppText>
             </View>
             <View style={styles.textIconWrapparVirtcalStyle}>
-              <AppIcon name={ICONS.shipped} color={COLORS.blackCat} />
+              <AppIcon name={ICONS.shipped} color={COLORS.blackCat} disabled />
               <AppText
                 style={{
                   ...styles.loctationStyle,
                   marginVertical: 0,
-                  marginTop: calcHeight(5),
+                  // marginTop: calcHeight(5),
                 }}>
-                {item.shipping || 'two days'}
+                {item.shipping}
               </AppText>
             </View>
 
@@ -91,56 +84,48 @@ const ListCard: React.FC<ListCardProps> = ({
               style={{position: 'absolute', bottom: -1}}
               name={ICONS.star}
               color={COLORS.gold}
-              size={calcFont(14)}
             />
           </View>
         </View>
-      ) : (
-        <>
-          <View style={styles.imageWrappar}>
-            <Image source={IMAGES.avatr} style={styles.image} />
-          </View>
-          <View style={styles.textWrappar}>
-            <AppText style={styles.titleStyle} numberOfLines={1}>
-              {item.name || 'Ibrahim Mohamed'}
-            </AppText>
-            <View style={styles.textIconWrappar}>
-              <AppIcon
-                name={ICONS.location}
-                color={COLORS.blackRock}
-                size={calcFont(12)}
-              />
-              <AppText style={styles.loctationStyle}>
-                {item.location || 'Tanta Elghrbia'}
-              </AppText>
-            </View>
+      </Touchable>
+    );
+  };
+  const RowComponent = () => {
+    return (
+      <Touchable style={styles.container} onPress={() => onPress(item)}>
+        <View style={styles.imageWrappar}>
+          <Image
+            source={IMAGES.test}
+            style={styles.image}
+            resizeMode={'contain'}
+          />
+        </View>
+        <View style={styles.textWrappar}>
+          <AppText style={styles.titleStyle} numberOfLines={1}>
+            {item.name}
+          </AppText>
+          <View style={styles.textIconWrappar}>
             <AppIcon
-              name={ICONS.star}
-              color={COLORS.gold}
-              size={calcFont(14)}
+              disabled
+              name={ICONS.location}
+              color={COLORS.blackRock}
+              size={calcFont(18)}
             />
+            <AppText style={styles.loctationStyle}>{item.location}</AppText>
           </View>
-          <View style={styles.iconWrappar}>
-            <AppIcon
-              name={ICONS.heart}
-              color={COLORS.silverSand}
-              size={calcFont(17)}
-            />
-            <View
-              style={{
-                ...styles.textIconWrappar,
-                alignItems: 'flex-end',
-              }}>
-              <AppIcon name={ICONS.shipped} color={COLORS.blackCat} />
-              <AppText style={styles.loctationStyle}>
-                {item.shipping || 'two days'}
-              </AppText>
-            </View>
+          <AppIcon name={ICONS.star} color={COLORS.gold} size={calcFont(18)} />
+        </View>
+        <View style={styles.iconWrappar}>
+          <AppIcon name={ICONS.heart} color={COLORS.silverSand} />
+          <View style={styles.textIconWrappar}>
+            <AppIcon name={ICONS.shipped} color={COLORS.blackCat} disabled />
+            <AppText style={styles.loctationStyle}>{item.shipping}</AppText>
           </View>
-        </>
-      )}
-    </TouchableOpacity>
-  );
+        </View>
+      </Touchable>
+    );
+  };
+  return componentStyle === 'virtcal' ? <VirtcalComponant /> : <RowComponent />;
 };
 
 export default ListCard;

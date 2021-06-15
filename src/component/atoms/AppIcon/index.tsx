@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
 import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
-import {ViewStyle, TouchableOpacity, StyleSheet} from 'react-native';
+import {ViewStyle, StyleSheet} from 'react-native';
 import icoMoonConfig from '../../../../assets/fonts/icomoon/selection.json';
-import {calcFont} from '../../../common/styles';
 import COLORS from '../../../common/colors';
-
+import Touchable from '../Touchable';
+import {calcFont} from '../../../common/styles';
 interface Props {
   size?: number;
   name: string;
@@ -37,21 +37,21 @@ const AppIcon: FC<Props> = ({
         style={styles.icon}
       />
     ) : (
-      <TouchableOpacity onPress={onPress} style={style} disabled={disabled}>
+      <Touchable onPress={onPress} disabled={disabled}>
         <Icon
           {...props}
-          size={size || calcFont(20)}
+          size={size || calcFont(25)}
           name={name}
           color={color || COLORS.white}
           style={styles.icon}
         />
-      </TouchableOpacity>
+      </Touchable>
     )}
   </>
 );
 const styles = StyleSheet.create({
   icon: {
-    // transform: [{ rotateY: I18nManager.isRTL ? '180deg' : '0deg' }],
+    padding: calcFont(5),
   },
 });
 export default React.memo(AppIcon);

@@ -7,12 +7,13 @@
  */
 
 import * as React from 'react';
-import {View} from 'react-native';
-
-import Home from './src/screens/Home';
+import RNBootSplash from 'react-native-bootsplash';
 import RootNavigtion from './src/navigation/RootNavigaton';
 
 const App = () => {
+  React.useEffect(() => {
+    RNBootSplash.hide({fade: true}); // fade
+  }, []);
   return <RootNavigtion />;
 };
 

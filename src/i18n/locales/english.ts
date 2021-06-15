@@ -4,5 +4,7 @@ export default {
  home: 'Home',
  orders: 'Orders',
  favorite: 'Favorite',
- account: 'Account'
+ account: 'Account',
+ currentOrders: 'Current Orders',
+ previousOrders: 'Previous Orders',
 };

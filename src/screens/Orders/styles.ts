@@ -9,17 +9,18 @@ const styles = StyleSheet.create({
     padding: calcWidth(17),
   },
   headerWrappar: {
-    height: calcHeight(70),
+    height: calcHeight(100),
     justifyContent: 'space-around',
     flexDirection: 'row',
     backgroundColor: COLORS.background
   },
   headerText: {
     ...FONTS.TajawalBold,
-    fontSize: calcFont(16),
+    fontSize: calcFont(18),
     color: COLORS.blackRock,
-    height: calcHeight(25),
-    padding: calcWidth(10),
+    
+    height: calcHeight(40),
+    padding: calcWidth(5),
     
   },
   dotStyle: {

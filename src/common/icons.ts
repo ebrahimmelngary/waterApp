@@ -1,7 +1,8 @@
 const ICONS = {
 home: 'home',
 shipped: 'shipped',
-notification: 'notifications-outline',
+notification: 'Notification',
+notificationOutline: 'notifications-outline',
 order: 'orders',
 account: 'user-o',
 heart: 'heart',
@@ -18,6 +19,11 @@ cheveronDown: 'cheveron-down',
 cheveronLeft: 'cheveron-left',
 cheveronRight: 'cheveron-right',
 cheveronUp: 'cheveron-up',
+lockpassword: 'Lockpassword',
+mail: 'mail',
+profile: 'profile',
+help: 'help',
+edit: 'edit',
 
 };
 export default ICONS;

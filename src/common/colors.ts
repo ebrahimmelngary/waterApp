@@ -17,6 +17,7 @@ const COLORS = {
   gray:'#CAD0E5',
   gray90: '#E5E5E5',
   blue: '#518CFF',
+  veryLightGrey: '#CACACA',
 };
 
 export default COLORS;
