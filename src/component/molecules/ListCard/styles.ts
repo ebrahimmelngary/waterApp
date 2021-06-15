@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
       shadowRadius: 5,
       paddingVertical: calcHeight(15),
       borderRadius: calcWidth(15),
-      marginBottom: calcHeight(10), 
+      marginBottom: calcHeight(15), 
       
     },
     imageWrappar: {
@@ -50,8 +50,6 @@ const styles = StyleSheet.create({
       width: calcWidth(70),
       height: calcHeight(70),
       borderRadius: calcWidth(16),
-      // backgroundColor: 'red'
-
     },
     titleStyle: {
       ...FONTS.TajawalBold,
@@ -77,7 +75,7 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       padding: calcWidth(10),
       borderRadius: calcWidth(15),
-      marginBottom: calcHeight(10), 
+      marginBottom: calcHeight(15), 
     },
     textVirtcalWrappar: {
       flex: 1,
