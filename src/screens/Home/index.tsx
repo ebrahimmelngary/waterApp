@@ -8,6 +8,7 @@ import styles from './styles';
 import ICONS from '../../common/icons';
 import COLORS from '../../common/colors';
 import {calcWidth} from '../../common/styles';
+import {useNavigation} from '@react-navigation/native';
 const Home = () => {
   const viewStyle = {
     row: 'row',
@@ -15,6 +16,7 @@ const Home = () => {
   };
   const [view, setViewStyle] = React.useState(viewStyle.row);
   const HeaderSection = () => {
+    const navigation = useNavigation();
     return (
       <View style={styles.headerWrappar}>
         <View>
@@ -47,6 +49,12 @@ const Home = () => {
               color={view === 'row' ? COLORS.gray : COLORS.white}
               onPress={() => setViewStyle(viewStyle.virtcal)}
               size={view === 'row' ? calcWidth(14) : calcWidth(19)}
+            />
+            <AppIcon
+              name={ICONS.location}
+              onPress={() => navigation.navigate('Maps')}
+              size={calcWidth(19)}
+              color={COLORS.gray}
             />
           </View>
         </View>
