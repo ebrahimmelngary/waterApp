@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     list: {
       backgroundColor: COLORS.background,
       
-      paddingVertical: calcHeight(15)
+      padding: calcHeight(15)
     },
     headrText: {
       ...FONTS.TajawalExtraBold,

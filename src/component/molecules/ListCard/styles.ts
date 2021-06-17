@@ -5,7 +5,7 @@ import { calcFont, calcHeight, calcWidth} from '../../../common/styles'
 const styles = StyleSheet.create({
     container: {
       width: '100%',
-      height: calcHeight(120),
+      height: calcHeight(110),
       flexDirection: 'row',
       backgroundColor: COLORS.white,
       shadowOffset: {width: 1,height: 1,},

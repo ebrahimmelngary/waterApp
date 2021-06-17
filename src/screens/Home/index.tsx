@@ -71,7 +71,7 @@ const Home = () => {
             componentStyle={view}
           />
         )}
-        keyExtractor={(item, index) => item.id.toString()}
+        keyExtractor={item => item.id.toString()}
       />
     </>
   );

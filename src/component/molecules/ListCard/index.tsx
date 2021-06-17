@@ -6,7 +6,7 @@ import ICONS from '../../../common/icons';
 import styles from './styles';
 import COLORS from '../../../common/colors';
 import AppText from '../../atoms/AppText';
-import {calcFont, calcHeight, calcWidth} from '../../../common/styles';
+import {calcFont} from '../../../common/styles';
 import Touchable from '../../atoms/Touchable';
 type item = {
   id: any;
@@ -30,6 +30,19 @@ const ListCard: React.FC<ListCardProps> = ({
   remove,
   onPressIcon,
 }) => {
+  const IconText = ({iconName, title}) => {
+    return (
+      <View style={styles.textIconWrappar}>
+        <AppIcon
+          disabled
+          name={iconName}
+          color={COLORS.blackRock}
+          size={calcFont(21)}
+        />
+        <AppText style={styles.loctationStyle}>{title}</AppText>
+      </View>
+    );
+  };
   const VirtcalComponant = () => {
     return (
       <Touchable
@@ -52,32 +65,9 @@ const ListCard: React.FC<ListCardProps> = ({
             <AppText style={styles.titleStyle} numberOfLines={2}>
               {item.name}
             </AppText>
+            <IconText title={item.location} iconName={ICONS.location} />
             <View style={styles.textIconWrapparVirtcalStyle}>
-              <AppIcon
-                name={ICONS.location}
-                color={COLORS.blackRock}
-                disabled
-                size={calcFont(18)}
-              />
-              <AppText
-                style={{
-                  ...styles.loctationStyle,
-                  marginVertical: 0,
-                  // marginTop: calcHeight(5),
-                }}>
-                {item.location}
-              </AppText>
-            </View>
-            <View style={styles.textIconWrapparVirtcalStyle}>
-              <AppIcon name={ICONS.shipped} color={COLORS.blackCat} disabled />
-              <AppText
-                style={{
-                  ...styles.loctationStyle,
-                  marginVertical: 0,
-                  // marginTop: calcHeight(5),
-                }}>
-                {item.shipping}
-              </AppText>
+              <IconText title={item.shipping} iconName={ICONS.shipped} />
             </View>
 
             <AppIcon
@@ -104,23 +94,12 @@ const ListCard: React.FC<ListCardProps> = ({
           <AppText style={styles.titleStyle} numberOfLines={1}>
             {item.name}
           </AppText>
-          <View style={styles.textIconWrappar}>
-            <AppIcon
-              disabled
-              name={ICONS.location}
-              color={COLORS.blackRock}
-              size={calcFont(18)}
-            />
-            <AppText style={styles.loctationStyle}>{item.location}</AppText>
-          </View>
+          <IconText title={item.location} iconName={ICONS.location} />
           <AppIcon name={ICONS.star} color={COLORS.gold} size={calcFont(18)} />
         </View>
         <View style={styles.iconWrappar}>
           <AppIcon name={ICONS.heart} color={COLORS.silverSand} />
-          <View style={styles.textIconWrappar}>
-            <AppIcon name={ICONS.shipped} color={COLORS.blackCat} disabled />
-            <AppText style={styles.loctationStyle}>{item.shipping}</AppText>
-          </View>
+          <IconText title={item.shipping} iconName={ICONS.shipped} />
         </View>
       </Touchable>
     );
