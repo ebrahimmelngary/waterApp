@@ -22,10 +22,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: calcWidth(16),
-      // shadowOffset: {width: 1,height: 1,},
-      // shadowColor: COLORS.blackCat,
-      // shadowOpacity: 0.8,
-      // shadowRadius: 4,
+     
     },
     textWrappar: {
       flex: 2,
@@ -65,7 +62,6 @@ const styles = StyleSheet.create({
     textIconWrappar: {
       flexDirection: 'row',
       alignItems: 'center',
-      // justifyContent: 'flex-start',
     },
     loctationStyle: {
       ...FONTS.TajawalRegular,

@@ -7,6 +7,9 @@ const styles = StyleSheet.create({
       padding: calcWidth(10),
       backgroundColor: COLORS.background
     },
+    listColumnStyle: {
+      justifyContent: 'space-around'
+    },
   });
 
   export default styles;

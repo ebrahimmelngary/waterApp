@@ -5,8 +5,6 @@ import AuthStack from '../Stacks/AuthStack';
 export default function RootNavigtion() {
   let user = true;
   return (
-    <NavigationContainer>
-      {user === true ? <Tabs /> : <AuthStack />}
-    </NavigationContainer>
+    <NavigationContainer>{user ? <Tabs /> : <AuthStack />}</NavigationContainer>
   );
 }

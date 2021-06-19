@@ -18,7 +18,7 @@ const TabsOptions: any = () => ({
     size: calcFont(25),
   },
   Orders: {
-    icon: ICONS.order,
+    icon: ICONS.mail,
     label: Trans('orders'),
     size: calcFont(25),
   },

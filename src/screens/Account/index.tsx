@@ -9,6 +9,7 @@ import styles from './styles';
 import AppText from '../../component/atoms/AppText';
 import {calcFont} from '../../common/styles';
 import {data} from './data';
+import {keyExtractor} from '../../utilities/key';
 interface AccountProps {}
 
 const Account = (props: AccountProps) => {
@@ -35,6 +36,7 @@ const Account = (props: AccountProps) => {
       <FlatList
         scrollEnabled={false}
         style={styles.listStyle}
+        keyExtractor={keyExtractor}
         data={data}
         renderItem={({item}) => (
           <IconWithText item={item} onPress={() => Alert.alert('ready')} />

@@ -20,8 +20,9 @@ const styles = StyleSheet.create({
     },
     list: {
       backgroundColor: COLORS.background,
+      padding: calcHeight(15),
       
-      padding: calcHeight(15)
+      
     },
     headrText: {
       ...FONTS.TajawalExtraBold,
@@ -37,7 +38,11 @@ const styles = StyleSheet.create({
       backgroundColor: COLORS.blueGrey,
     },
 
-    
+    contentWrapper: {
+      flex: 1,
+      backgroundColor: COLORS.background,
+      paddingBottom: calcHeight(10)
+    },
   });
 
   export default styles;

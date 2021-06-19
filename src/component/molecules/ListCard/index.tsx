@@ -52,11 +52,11 @@ const ListCard: React.FC<ListCardProps> = ({
           <View style={styles.virtcalImageWrappar}>
             <Image
               source={IMAGES.test}
-              style={styles.image}
+              style={styles.imageStyle}
               resizeMode={'contain'}
             />
             <AppIcon
-              name={remove ? ICONS.location : ICONS.heart}
+              name={remove ? ICONS.bin : ICONS.heart}
               color={COLORS.silverSand}
               onPress={() => onPressIcon(item)}
             />
@@ -70,11 +70,7 @@ const ListCard: React.FC<ListCardProps> = ({
               <IconText title={item.shipping} iconName={ICONS.shipped} />
             </View>
 
-            <AppIcon
-              style={{position: 'absolute', bottom: -1}}
-              name={ICONS.star}
-              color={COLORS.gold}
-            />
+            <AppIcon name={ICONS.star} color={COLORS.gold} />
           </View>
         </View>
       </Touchable>
@@ -86,7 +82,7 @@ const ListCard: React.FC<ListCardProps> = ({
         <View style={styles.imageWrappar}>
           <Image
             source={IMAGES.test}
-            style={styles.image}
+            style={styles.imageStyle}
             resizeMode={'contain'}
           />
         </View>

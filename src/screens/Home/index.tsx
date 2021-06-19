@@ -9,6 +9,7 @@ import ICONS from '../../common/icons';
 import COLORS from '../../common/colors';
 import {calcWidth} from '../../common/styles';
 import {useNavigation} from '@react-navigation/native';
+import {keyExtractor} from '../../utilities/key';
 const Home = () => {
   const viewStyle = {
     row: 'row',
@@ -21,6 +22,12 @@ const Home = () => {
       <View style={styles.headerWrappar}>
         <View>
           <AppText style={styles.headrText}>Water Company</AppText>
+          <AppIcon
+            name={ICONS.location}
+            onPress={() => navigation.navigate('Maps')}
+            size={calcWidth(25)}
+            color={COLORS.blackRock}
+          />
         </View>
         <View style={styles.iconWrappar}>
           <View
@@ -50,22 +57,17 @@ const Home = () => {
               onPress={() => setViewStyle(viewStyle.virtcal)}
               size={view === 'row' ? calcWidth(14) : calcWidth(19)}
             />
-            <AppIcon
-              name={ICONS.location}
-              onPress={() => navigation.navigate('Maps')}
-              size={calcWidth(19)}
-              color={COLORS.gray}
-            />
           </View>
         </View>
       </View>
     );
   };
   return (
-    <>
+    <View style={styles.contentWrapper}>
       <HeaderSection />
       <FlatList
         data={dummyHomeData}
+        showsVerticalScrollIndicator={false}
         key={'pearntList+' + Math.random()}
         style={styles.list}
         numColumns={view === 'row' ? 0 : 2}
@@ -79,9 +81,9 @@ const Home = () => {
             componentStyle={view}
           />
         )}
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={keyExtractor}
       />
-    </>
+    </View>
   );
 };
 

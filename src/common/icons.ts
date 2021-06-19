@@ -22,8 +22,10 @@ cheveronUp: 'cheveron-up',
 lockpassword: 'Lockpassword',
 mail: 'mail',
 profile: 'profile',
-help: 'help',
 edit: 'edit',
-
+bin: 'bin',
+chat: 'chat',
+help: 'question',
+time: 'time',
 };
 export default ICONS;

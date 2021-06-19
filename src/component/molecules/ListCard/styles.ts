@@ -22,10 +22,6 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: calcWidth(100),
-      // shadowOffset: {width: 1,height: 1,},
-      // shadowColor: COLORS.blackCat,
-      // shadowOpacity: 0.8,
-      // shadowRadius: 4,
       
     },
     textWrappar: {
@@ -46,7 +42,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       
     },
-    image: {
+    imageStyle: {
       width: calcWidth(70),
       height: calcHeight(70),
       borderRadius: calcWidth(16),
