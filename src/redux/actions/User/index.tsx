@@ -1,12 +1,5 @@
 // import {makePostRequest} from '../../../services';
-// import {
-//   START_LOADING,
-//   STOP_LOADING,
-//   USER_LOGIN,
-//   STOP_LOADING_SOCIAL,
-//   START_LOADING_SOCIAL,
-//   LOG_OUT,
-// } from '../types';
+import {START_LOADING, STOP_LOADING, USER_LOGIN, LOG_OUT} from '../actionTypes';
 
 // export const UserLogin = (values, navigate) => {
 //   return async (dispatch) => {

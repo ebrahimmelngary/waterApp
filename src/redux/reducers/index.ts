@@ -5,7 +5,7 @@ import IntroReducer from './Intro';
 
 
 const rootReducer = combineReducers({
-  // lang: LangReducer,
+  lang: LangReducer,
   // user: UserReducer,
   intro: IntroReducer
  

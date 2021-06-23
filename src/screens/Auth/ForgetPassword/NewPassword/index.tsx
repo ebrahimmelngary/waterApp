@@ -1,37 +1,41 @@
 import * as React from 'react';
 import {Alert, Text, TextInput, View} from 'react-native';
 import styles from './styles';
-import AppButton from '../../../component/atoms/AppButton';
+import AppButton from '../../../../component/atoms/AppButton';
 import {useNavigation} from '@react-navigation/native';
-import AppText from '../../../component/atoms/AppText';
-import {Trans} from '../../../i18n';
-import AppInput from '../../../component/atoms/AppInput';
+import AppText from '../../../../component/atoms/AppText';
+import {Trans} from '../../../../i18n';
+import AppInput from '../../../../component/atoms/AppInput';
 import * as Yup from 'yup';
 import {Formik} from 'formik';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 const defaultValues = {
-  email: 'seeToni@gmail.com',
-  password: '369852',
+  oldPassword: '',
+  password: '',
+  confirmPassword: '',
 };
-const Login = () => {
+const NewPassword = () => {
   const navigation = useNavigation();
 
   const validationSchema = Yup.object({
-    email: Yup.string()
-      .email(Trans('invalidemail'))
+    oldPassword: Yup.string()
+      .min(6, Trans('minSixCharacter'))
       .required(Trans('required')),
     password: Yup.string()
       .required(Trans('required'))
       .min(6, Trans('minSixCharacter')),
+    confirmPassword: Yup.string().oneOf(
+      [Yup.ref('password'), null],
+      Trans('passwordNotMatched'),
+    ),
   });
-
   const passwordRef = React.useRef<TextInput | null>(null);
-
+  const confirmPasswordRef = React.useRef<TextInput | null>(null);
   const onSubmit = value => {
     if (
-      defaultValues.email === value.email &&
-      defaultValues.password === value.password
+      defaultValues.oldPassword === value.oldPassword &&
+      defaultValues.password === value.confirmPassword
     ) {
       Alert.alert('it is Valid');
     } else {
@@ -46,7 +50,7 @@ const Login = () => {
       keyboardShouldPersistTaps={'handled'}
       enableAutomaticScroll
       style={styles.container}>
-      <AppText style={styles.headerText}>{Trans('login')}</AppText>
+      <AppText style={styles.headerText}>{Trans('newPassword')}</AppText>
       <Formik
         initialValues={defaultValues}
         validationSchema={validationSchema}
@@ -56,34 +60,35 @@ const Login = () => {
           return (
             <>
               <AppInput
-                label={Trans('email')}
-                onChangeText={handleChange('email')}
-                error={errors.email}
+                label={Trans('oldPassword')}
+                onChangeText={handleChange('oldPassword')}
+                error={errors.oldPassword}
                 onSubmitEditing={() => {
                   passwordRef.current && passwordRef.current.focus();
                 }}
-                onBlur={handleBlur('email')}
+                onBlur={handleBlur('oldPassword')}
                 returnKeyType="next"
-                touched={touched.email}
+                touched={touched.oldPassword}
               />
               <AppInput
                 label={Trans('password')}
                 password
                 onChangeText={handleChange('password')}
+                onSubmitEditing={() => {
+                  confirmPasswordRef.current &&
+                    confirmPasswordRef.current.focus();
+                }}
                 error={errors.password}
+              />
+              <AppInput
+                label={Trans('confirmPassword')}
+                password
+                onChangeText={handleChange('confirmPassword')}
+                error={errors.confirmPassword}
                 onSubmitEditing={handleSubmit}
               />
-              <AppText
-                style={styles.forgetText}
-                onPress={() => navigation.navigate('ForgetPassword')}>
-                {Trans('forgetPass')}
-              </AppText>
-              <AppButton title={'Login'} onPress={handleSubmit} />
-              <AppText
-                style={styles.signupTextStyle}
-                onPress={() => navigation.navigate('Signup')}>
-                {Trans('signup')}
-              </AppText>
+
+              <AppButton title={Trans('next')} onPress={handleSubmit} />
             </>
           );
         }}
@@ -92,4 +97,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default NewPassword;

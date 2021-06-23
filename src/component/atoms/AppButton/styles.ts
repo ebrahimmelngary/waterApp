@@ -14,13 +14,13 @@ export default StyleSheet.create({
     height: calcHeight(50),
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: calcFont(5),
+    borderRadius: calcFont(16),
     backgroundColor: COLORS.dodgerBlue,
   },
   textStyle: {
-    // ...FONTS.SFProDisplayBold,
+    ...FONTS.TajawalExtraBold,
     color: COLORS.white,
     marginHorizontal: calcFont(10),
-    fontSize: calcFont(15),
+    fontSize: calcFont(18),
   },
 });

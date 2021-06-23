@@ -18,6 +18,7 @@ const COLORS = {
   gray90: '#E5E5E5',
   blue: '#518CFF',
   veryLightGrey: '#CACACA',
+  steel: '#7A85A1',
 };
 
 export default COLORS;

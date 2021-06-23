@@ -9,36 +9,18 @@ import AppInput from '../../../component/atoms/AppInput';
 import * as Yup from 'yup';
 import {Formik} from 'formik';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-
+interface ForgetPasswordProps {}
 const defaultValues = {
-  email: 'seeToni@gmail.com',
-  password: '369852',
+  email: '',
 };
-const Login = () => {
+const ForgetPassword = (props: ForgetPasswordProps) => {
   const navigation = useNavigation();
-
   const validationSchema = Yup.object({
     email: Yup.string()
       .email(Trans('invalidemail'))
       .required(Trans('required')),
-    password: Yup.string()
-      .required(Trans('required'))
-      .min(6, Trans('minSixCharacter')),
   });
-
-  const passwordRef = React.useRef<TextInput | null>(null);
-
-  const onSubmit = value => {
-    if (
-      defaultValues.email === value.email &&
-      defaultValues.password === value.password
-    ) {
-      Alert.alert('it is Valid');
-    } else {
-      console.log(value);
-      Alert.alert('it is inValid');
-    }
-  };
+  const onSubmit = () => navigation.navigate('NewPassword');
   return (
     <KeyboardAwareScrollView
       showsVerticalScrollIndicator={false}
@@ -46,7 +28,7 @@ const Login = () => {
       keyboardShouldPersistTaps={'handled'}
       enableAutomaticScroll
       style={styles.container}>
-      <AppText style={styles.headerText}>{Trans('login')}</AppText>
+      <AppText style={styles.headerText}>{Trans('forgetPassword')}</AppText>
       <Formik
         initialValues={defaultValues}
         validationSchema={validationSchema}
@@ -59,31 +41,13 @@ const Login = () => {
                 label={Trans('email')}
                 onChangeText={handleChange('email')}
                 error={errors.email}
-                onSubmitEditing={() => {
-                  passwordRef.current && passwordRef.current.focus();
-                }}
                 onBlur={handleBlur('email')}
                 returnKeyType="next"
                 touched={touched.email}
-              />
-              <AppInput
-                label={Trans('password')}
-                password
-                onChangeText={handleChange('password')}
-                error={errors.password}
                 onSubmitEditing={handleSubmit}
               />
-              <AppText
-                style={styles.forgetText}
-                onPress={() => navigation.navigate('ForgetPassword')}>
-                {Trans('forgetPass')}
-              </AppText>
-              <AppButton title={'Login'} onPress={handleSubmit} />
-              <AppText
-                style={styles.signupTextStyle}
-                onPress={() => navigation.navigate('Signup')}>
-                {Trans('signup')}
-              </AppText>
+
+              <AppButton title={Trans('newPassword')} onPress={handleSubmit} />
             </>
           );
         }}
@@ -92,4 +56,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgetPassword;

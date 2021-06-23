@@ -1,4 +1,4 @@
-import {APPLY_LANGUAGE} from '../../actions/types';
+import {APPLY_LANGUAGE} from '../../actions/actionTypes';
 
 export type LangType = 'en' | 'ar';
 
