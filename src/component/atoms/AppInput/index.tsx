@@ -67,7 +67,7 @@ let AppInput: React.FC<AppInputProps> = ({
           {password && (
             <AppIcon
               onPress={() => setShowPassword(!showPassword)}
-              name={showPassword ? ICONS.help : ICONS.arrowright}
+              name={showPassword ? ICONS.eyeOff : ICONS.eyeOn}
               color={COLORS.steel}
               size={20}
             />

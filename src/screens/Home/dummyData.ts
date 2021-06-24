@@ -1,6 +1,9 @@
+import IMAGES from "../../common/images";
+
 export const dummyHomeData =[
     {
         id: 0,
+        image: IMAGES.test,
         name: 'Mohamed Eisa',
         location: 'Tanta,Elghrbya,Egypt',
         revew: null,
@@ -8,6 +11,7 @@ export const dummyHomeData =[
     },
     {
         id: 1,
+        image: IMAGES.avatr,
         name: 'Ebrahim Elngary',
         location: '22 st Ali Moubarak,Tanta,Elgharbia,',
         revew: null,
@@ -15,6 +19,7 @@ export const dummyHomeData =[
     },
     {
         id: 2,
+        image: IMAGES.test,
         name: 'Mohamed Gamal Eisa',
         location: '22 st Ali Moubarak,Tanta,Elgharbia,',
         revew: null,
@@ -22,6 +27,7 @@ export const dummyHomeData =[
     },
     {
         id: 3,
+        image: IMAGES.avatr,
         name: 'Ebrahim Mohamed Ebrahim Elnagry',
         location: '22 st Ali Moubarak,Tanta,Elgharbia,',
         revew: null,
@@ -29,6 +35,7 @@ export const dummyHomeData =[
     },
     {
         id: 4,
+        image: IMAGES.test,
         name: 'Mohamed Eisa',
         location: 'Tanta,Elghrbya,Egypt',
         revew: null,
@@ -36,6 +43,7 @@ export const dummyHomeData =[
     },
     {
         id: 5,
+        image: IMAGES.avatr,
         name: 'Ebrahim Elngary',
         location: '22 st Ali Moubarak,Tanta,Elgharbia,',
         revew: null,
@@ -43,6 +51,7 @@ export const dummyHomeData =[
     },
     {
         id: 6,
+        image: IMAGES.test,
         name: 'Mohamed Gamal Eisa',
         location: '22 st Ali Moubarak,Tanta,Elgharbia,',
         revew: null,
@@ -50,6 +59,7 @@ export const dummyHomeData =[
     },
     {
         id: 7,
+        image: IMAGES.avatr,
         name: 'Ebrahim Mohamed Ebrahim Elnagry',
         location: '22 st Ali Moubarak,Tanta,Elgharbia,',
         revew: null,

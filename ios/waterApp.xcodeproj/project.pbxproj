@@ -21,7 +21,7 @@
 		9DC0B1D05C3B76F39FEDE6A7 /* libPods-waterApp-waterAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 553DCB8B07175526A08E45F4 /* libPods-waterApp-waterAppTests.a */; };
 		AD1F5728573A4AE0892C99CA /* Tajawal-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8845005AB26D4350AC53910C /* Tajawal-Bold.ttf */; };
 		B8ABAAF41BB34A8D87BF51E8 /* Tajawal-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 811BEF5A8F264A4ABBC281DE /* Tajawal-Regular.ttf */; };
-		CC82599D267E39BB001C7962 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC82599C267E39BB001C7962 /* GoogleService-Info.plist */; };
+		CC9EABED2685129B000BB217 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC9EABEC2685129B000BB217 /* GoogleService-Info.plist */; };
 		CCC42A50267916020059962C /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCC42A4F267916020059962C /* BootSplash.storyboard */; };
 		E0648B5CDE9E41888D189466 /* Tajawal-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26E9270196FD47C38A51D53F /* Tajawal-Medium.ttf */; };
 /* End PBXBuildFile section */
@@ -73,7 +73,7 @@
 		B475A48299D44F4788DA0980 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		B4766473CEA3917F6A324672 /* Pods-waterApp-waterAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-waterApp-waterAppTests.release.xcconfig"; path = "Target Support Files/Pods-waterApp-waterAppTests/Pods-waterApp-waterAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		C873A384E2CE48E2A0761618 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
-		CC82599C267E39BB001C7962 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../water icons/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CC9EABEC2685129B000BB217 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CCC42A4F267916020059962C /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = waterApp/BootSplash.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F2C245A2FD6C49CDB278E528 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		13B07FAE1A68108700A75B9A /* waterApp */ = {
 			isa = PBXGroup;
 			children = (
-				CC82599C267E39BB001C7962 /* GoogleService-Info.plist */,
+				CC9EABEC2685129B000BB217 /* GoogleService-Info.plist */,
 				CCC42A4F267916020059962C /* BootSplash.storyboard */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -313,12 +313,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC9EABED2685129B000BB217 /* GoogleService-Info.plist in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				CCC42A50267916020059962C /* BootSplash.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				0F852BC784DB4FC2880A36D8 /* icomoon.ttf in Resources */,
 				2B9AB2A20EA0438980B87E6A /* Tajawal-Black.ttf in Resources */,
-				CC82599D267E39BB001C7962 /* GoogleService-Info.plist in Resources */,
 				AD1F5728573A4AE0892C99CA /* Tajawal-Bold.ttf in Resources */,
 				05630A0511694882A1EF255D /* Tajawal-ExtraBold.ttf in Resources */,
 				6CCFA2F8F9E049CBAF52196F /* Tajawal-ExtraLight.ttf in Resources */,

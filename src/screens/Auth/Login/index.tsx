@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Alert, Text, TextInput, View} from 'react-native';
+import {Alert, Text, TextInput, Keyboard} from 'react-native';
 import styles from './styles';
 import AppButton from '../../../component/atoms/AppButton';
 import {useNavigation} from '@react-navigation/native';
@@ -9,14 +9,15 @@ import AppInput from '../../../component/atoms/AppInput';
 import * as Yup from 'yup';
 import {Formik} from 'formik';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-
+import {useDispatch, useSelector} from 'react-redux';
+import {UserLogin} from '../../../redux/actions/User';
 const defaultValues = {
-  email: 'seeToni@gmail.com',
-  password: '369852',
+  email: '',
+  password: '',
 };
 const Login = () => {
-  const navigation = useNavigation();
-
+  const {navigate} = useNavigation();
+  const dispatch = useDispatch();
   const validationSchema = Yup.object({
     email: Yup.string()
       .email(Trans('invalidemail'))
@@ -28,16 +29,9 @@ const Login = () => {
 
   const passwordRef = React.useRef<TextInput | null>(null);
 
-  const onSubmit = value => {
-    if (
-      defaultValues.email === value.email &&
-      defaultValues.password === value.password
-    ) {
-      Alert.alert('it is Valid');
-    } else {
-      console.log(value);
-      Alert.alert('it is inValid');
-    }
+  const onSubmit = values => {
+    Keyboard.dismiss();
+    dispatch(UserLogin(values, navigate));
   };
   return (
     <KeyboardAwareScrollView
@@ -75,13 +69,13 @@ const Login = () => {
               />
               <AppText
                 style={styles.forgetText}
-                onPress={() => navigation.navigate('ForgetPassword')}>
+                onPress={() => navigate('ForgetPassword')}>
                 {Trans('forgetPass')}
               </AppText>
               <AppButton title={'Login'} onPress={handleSubmit} />
               <AppText
                 style={styles.signupTextStyle}
-                onPress={() => navigation.navigate('Signup')}>
+                onPress={() => navigate('Signup')}>
                 {Trans('signup')}
               </AppText>
             </>

@@ -27,5 +27,8 @@ bin: 'bin',
 chat: 'chat',
 help: 'question',
 time: 'time',
+eyeOn: 'eye',
+eyeOff: 'eye-blocked',
+telephone: 'telephone',
 };
 export default ICONS;

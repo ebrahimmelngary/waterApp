@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
-import {Text, View, StyleSheet, TextInput} from 'react-native';
+import {Text, View, Keyboard, TextInput} from 'react-native';
 import AppButton from '../../../component/atoms/AppButton';
 import AppInput from '../../../component/atoms/AppInput';
 import AppText from '../../../component/atoms/AppText';
@@ -8,6 +8,7 @@ import {Trans} from '../../../i18n';
 import * as Yup from 'yup';
 import {Formik} from 'formik';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+
 import styles from './styles';
 
 const defaultValues = {
@@ -28,7 +29,13 @@ const Signup = () => {
       .required(Trans('required'))
       .min(6, Trans('minSixCharacter')),
   });
-  const onSignup = (value: any) => console.log(value);
+  const onSubmit = async (values: any) => {
+    Keyboard.dismiss();
+    navigation.navigate({
+      name: 'CodeVerification',
+      params: {values, fromRegister: true},
+    });
+  };
   return (
     <KeyboardAwareScrollView
       showsVerticalScrollIndicator={false}
@@ -40,7 +47,7 @@ const Signup = () => {
       <Formik
         initialValues={defaultValues}
         validationSchema={validationSchema}
-        onSubmit={onSignup}
+        onSubmit={onSubmit}
         enableReinitialize>
         {({handleBlur, handleChange, handleSubmit, errors, touched}) => {
           return (

@@ -15,6 +15,7 @@ const Home = () => {
     row: 'row',
     virtcal: 'virtcal',
   };
+  const navigation = useNavigation();
   const [view, setViewStyle] = React.useState(viewStyle.row);
   const HeaderSection = () => {
     const navigation = useNavigation();
@@ -77,7 +78,7 @@ const Home = () => {
         renderItem={({item}) => (
           <ListCard
             item={item}
-            onPress={i => console.log(i.id)}
+            onPress={i => navigation.navigate('DetailsScreen', {item: i})}
             componentStyle={view}
           />
         )}

@@ -14,6 +14,7 @@ type item = {
   location: string;
   shipping: string;
   review?: any;
+  image?: string;
 };
 interface ListCardProps {
   componentStyle: string;
@@ -51,7 +52,7 @@ const ListCard: React.FC<ListCardProps> = ({
         <View style={styles.virtcalView}>
           <View style={styles.virtcalImageWrappar}>
             <Image
-              source={IMAGES.test}
+              source={item.image || IMAGES.test}
               style={styles.imageStyle}
               resizeMode={'contain'}
             />
@@ -81,7 +82,7 @@ const ListCard: React.FC<ListCardProps> = ({
       <Touchable style={styles.container} onPress={() => onPress(item)}>
         <View style={styles.imageWrappar}>
           <Image
-            source={IMAGES.test}
+            source={item.image || IMAGES.test}
             style={styles.imageStyle}
             resizeMode={'contain'}
           />
