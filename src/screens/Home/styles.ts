@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     list: {
       backgroundColor: COLORS.background,
       padding: calcHeight(15),
-      
+      marginBottom: calcHeight(10)
       
     },
     headrText: {
@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
     contentWrapper: {
       flex: 1,
       backgroundColor: COLORS.background,
-      paddingBottom: calcHeight(10)
+      
+      
     },
   });
 

@@ -22,5 +22,9 @@ newPassword: 'New Password',
 oldPassword: 'Old Password',
 confirmPassword: 'Confirm Password',
 next: 'Next',
-passwordNotMatched: 'Password Not Matched'
+passwordNotMatched: 'Password Not Matched',
+done: 'Done',
+quantity: 'Quantity:',
+comments: 'Comments',
+seeAll: 'Show all',
 };

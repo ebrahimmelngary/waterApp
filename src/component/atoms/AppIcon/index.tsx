@@ -37,7 +37,7 @@ const AppIcon: FC<Props> = ({
         style={styles.icon}
       />
     ) : (
-      <Touchable onPress={onPress} disabled={disabled}>
+      <Touchable onPress={onPress} disabled={disabled} style={style}>
         <Icon
           {...props}
           size={size || calcFont(25)}

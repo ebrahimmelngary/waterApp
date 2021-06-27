@@ -23,12 +23,6 @@ const Home = () => {
       <View style={styles.headerWrappar}>
         <View>
           <AppText style={styles.headrText}>Water Company</AppText>
-          <AppIcon
-            name={ICONS.location}
-            onPress={() => navigation.navigate('Maps')}
-            size={calcWidth(25)}
-            color={COLORS.blackRock}
-          />
         </View>
         <View style={styles.iconWrappar}>
           <View
@@ -70,7 +64,7 @@ const Home = () => {
         data={dummyHomeData}
         showsVerticalScrollIndicator={false}
         key={'pearntList+' + Math.random()}
-        style={styles.list}
+        contentContainerStyle={styles.list}
         numColumns={view === 'row' ? 0 : 2}
         columnWrapperStyle={
           view === 'row' ? null : {justifyContent: 'space-around'}
