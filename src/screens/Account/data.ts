@@ -4,26 +4,31 @@ export const data = [
     {
         id: 0,
         title: 'Notification',
-        iconName: ICONS.notification
+        iconName: ICONS.notification,
+        screen: 'Notification' 
     },
     {
         id: 1,
         title: 'Email',
-        iconName: ICONS.mail
+        iconName: ICONS.mail,
+
     },
     {
         id: 2,
         title: 'Password',
-        iconName: ICONS.lockpassword
+        iconName: ICONS.lockpassword,
+
     },
     {
         id: 3,
         title: 'Wallet',
-        iconName: ICONS.profile
+        iconName: ICONS.profile,
+
     },
     {
         id: 4,
         title: 'Help',
-        iconName: ICONS.help
+        iconName: ICONS.help,
+        
     },
 ]

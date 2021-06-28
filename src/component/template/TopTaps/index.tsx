@@ -29,6 +29,7 @@ const TopTabs = ({screenRoutes, renderScenes}) => {
       lazy
       navigationState={{index, routes}}
       renderScene={renderScene}
+      style={{backgroundColor: COLORS.background}}
       onIndexChange={setIndex}
       renderTabBar={props => renderTabBar(props)}
       initialLayout={Dimensions.get('window').width}
@@ -44,12 +45,12 @@ const styles = StyleSheet.create({
   },
   labelStyle: {
     ...FONTS.TajawalBold,
-    fontSize: calcFont(15),
+    fontSize: calcFont(17),
   },
   tabBarStyle: {
     backgroundColor: COLORS.white,
   },
   indicatorStyle: {
-    backgroundColor: COLORS.Silver,
+    backgroundColor: COLORS.dodgerBlue,
   },
 });

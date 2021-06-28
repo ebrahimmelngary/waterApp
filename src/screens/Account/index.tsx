@@ -10,9 +10,11 @@ import AppText from '../../component/atoms/AppText';
 import {calcFont} from '../../common/styles';
 import {data} from './data';
 import {keyExtractor} from '../../utilities/key';
+import {useNavigation} from '@react-navigation/native';
 interface AccountProps {}
 
 const Account = (props: AccountProps) => {
+  const {navigate} = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.TopSectionStyle}>
@@ -39,7 +41,10 @@ const Account = (props: AccountProps) => {
         keyExtractor={keyExtractor}
         data={data}
         renderItem={({item}) => (
-          <IconWithText item={item} onPress={() => Alert.alert('ready')} />
+          <IconWithText
+            item={item}
+            onPress={() => item.screen && navigate(item.screen)}
+          />
         )}
       />
     </View>

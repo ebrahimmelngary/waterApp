@@ -4,9 +4,8 @@ import HomeStack from '../Stacks/HomeStack';
 import AccountStack from '../Stacks/AccountStack';
 import OrderStack from '../Stacks/OrderStack';
 import FavoriteStack from '../Stacks/FavoriteStack';
-import {calcFont} from '../../common/styles';
+import {calcFont, calcWidth} from '../../common/styles';
 import COLORS from '../../common/colors';
-import FONTS from '../../common/fonts';
 import AppIcon from '../../component/atoms/AppIcon';
 import {Trans} from '../../i18n';
 import ICONS from '../../common/icons';
@@ -50,12 +49,12 @@ export default function Tabs() {
         ),
       })}
       tabBarOptions={{
-        tabStyle: {backgroundColor: COLORS.white},
         activeTintColor: COLORS.dodgerBlue,
         inactiveTintColor: COLORS.blueGrey,
         labelPosition: 'below-icon',
-        labelStyle: {fontSize: calcFont(10)},
+        labelStyle: {fontSize: calcFont(14)},
         allowFontScaling: true,
+        style: {borderRadius: calcWidth(40)},
       }}
       initialRouteName="HomeTab">
       <Tab.Screen name="Home" component={HomeStack} />

@@ -31,9 +31,11 @@ export default StyleSheet.create({
     paddingVertical: calcHeight(9),
   },
   textInputWarppar: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
+    
   },
   errorText: {
     color: COLORS.watermelon,

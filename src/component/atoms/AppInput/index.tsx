@@ -21,6 +21,10 @@ interface InputProps {
   password?: boolean;
   maxLength?: number;
   title?: string;
+  inputWrapparStyle?: ViewStyle;
+  withIcon?: string;
+  iconSize?: number;
+  onPressIcon?: () => void;
 }
 
 export type AppInputProps = TextInputProps & InputProps;
@@ -34,6 +38,10 @@ let AppInput: React.FC<AppInputProps> = ({
   password,
   maxLength,
   title,
+  inputWrapparStyle,
+  withIcon,
+  iconSize,
+  onPressIcon,
   ...props
 }: AppInputProps) => {
   const style = [
@@ -46,7 +54,7 @@ let AppInput: React.FC<AppInputProps> = ({
   return (
     <View style={[styles.container, containerStyle]}>
       <AppText style={styles.inputHeader}>{title}</AppText>
-      <View style={styles.wrapparStyle}>
+      <View style={[styles.wrapparStyle, inputWrapparStyle]}>
         {label && (
           <AppText style={styles.lableText} numberOfLines={1}>
             {label}
@@ -70,6 +78,14 @@ let AppInput: React.FC<AppInputProps> = ({
               name={showPassword ? ICONS.eyeOff : ICONS.eyeOn}
               color={COLORS.steel}
               size={20}
+            />
+          )}
+          {withIcon && (
+            <AppIcon
+              name={withIcon}
+              color={COLORS.blackCat}
+              size={iconSize || 20}
+              onPress={onPressIcon}
             />
           )}
         </View>
