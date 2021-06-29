@@ -45,7 +45,17 @@ const styles = StyleSheet.create({
     marginHorizontal: calcWidth(15),
     
   },
-});
+  iconWithText: {
+        width: '100%',
+        height: calcHeight(70),
+        backgroundColor: COLORS.white,
+        borderRadius: calcWidth(10),
+        alignItems: 'center',
+        padding: calcWidth(14),
+        marginTop: calcHeight(10),}
+}
+
+);
 
   export default styles;
   

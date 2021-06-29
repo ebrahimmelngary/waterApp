@@ -1,4 +1,4 @@
-import {useRoute} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import * as React from 'react';
 import {View, Image, ScrollView} from 'react-native';
 import AppIcon from '../../component/atoms/AppIcon';
@@ -12,15 +12,17 @@ import ReviewList, {Reviewitem} from '../../component/template/ReviewList';
 import {Trans} from '../../i18n';
 import Counter from '../../component/molecules/Counter';
 import {KeyboardAwareFlatList} from 'react-native-keyboard-aware-scroll-view';
+
+interface DetaolsItem {
+  item: {
+    name: string;
+    id: number;
+    image: string;
+    review: Reviewitem;
+  };
+}
 const DetailsScreen = () => {
-  interface DetaolsItem {
-    item: {
-      name: string;
-      id: number;
-      image: string;
-      review: Reviewitem;
-    };
-  }
+  const {navigate} = useNavigation();
   const [amount, setAmount] = React.useState(1);
   console.log(amount);
   const {item} = useRoute<DetaolsItem>().params;
@@ -36,6 +38,7 @@ const DetailsScreen = () => {
   };
 
   console.log(item.reviews);
+  const TotalPrice = amount * 10;
   return (
     <KeyboardAwareFlatList
       keyExtractor={() => Math.random().toString()}
@@ -126,7 +129,7 @@ const DetailsScreen = () => {
               <AppText style={styles.quantityTitleStyle}> Price :</AppText>
               <View style={styles.priceViewStyle}>
                 <AppText style={styles.totalNumberStyle}>
-                  {amount * 10} $
+                  {TotalPrice} $
                 </AppText>
               </View>
             </View>
@@ -134,6 +137,7 @@ const DetailsScreen = () => {
           <AppButton
             title={Trans('done')}
             buttonStyle={styles.doneButtonStyle}
+            onPress={() => navigate('CheackOut', {item, amount, TotalPrice})}
           />
         </View>
       }

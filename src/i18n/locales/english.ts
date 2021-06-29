@@ -27,5 +27,7 @@ done: 'Done',
 quantity: 'Quantity:',
 comments: 'Comments',
 seeAll: 'Show all',
-cancel: 'Cancel'
+cancel: 'Cancel',
+checkOut: 'Check Out',
+
 };

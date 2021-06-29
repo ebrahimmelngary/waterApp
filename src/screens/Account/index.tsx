@@ -42,6 +42,7 @@ const Account = (props: AccountProps) => {
         data={data}
         renderItem={({item}) => (
           <IconWithText
+            style={styles.iconWithText}
             item={item}
             onPress={() => item.screen && navigate(item.screen)}
           />

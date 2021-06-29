@@ -7,6 +7,7 @@ import Search from '../../../screens/Search';
 import {calcHeight, calcWidth} from '../../../common/styles';
 import COLORS from '../../../common/colors';
 import Notification from '../../../screens/Notification';
+import CheackOut from '../../../screens/CheckOut';
 const Stack = createStackNavigator();
 function MainStack() {
   return (
@@ -30,6 +31,7 @@ function MainStack() {
       <Stack.Screen name={'DetailsScreen'} component={DetailsScreen} />
       <Stack.Screen name={'Search'} component={Search} />
       <Stack.Screen name={'Notification'} component={Notification} />
+      <Stack.Screen name={'CheackOut'} component={CheackOut} />
     </Stack.Navigator>
   );
 }

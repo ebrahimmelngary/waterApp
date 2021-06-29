@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     cloudStyle: {
       width: calcWidth(300),
       marginTop: calcHeight(10),
+      justifyContent: 'center',
     },
     cloudNameStyle: {
       ...FONTS.TajawalBold,
