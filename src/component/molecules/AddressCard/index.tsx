@@ -24,7 +24,7 @@ const AddressCard = ({onPress, item, selected}: AddressCardProps) => {
       onPress={() => onPress(item)}
       otherIcon={
         <AppIcon
-          name={ICONS.bin}
+          name={selected ? ICONS.radioChecked : ICONS.radioUnchecked}
           color={selected ? COLORS.dodgerBlue : COLORS.silverSand}
           disabled
         />

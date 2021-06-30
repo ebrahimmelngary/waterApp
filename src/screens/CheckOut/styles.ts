@@ -67,11 +67,7 @@ const styles = StyleSheet.create({
 
     },
     iconTextStyle: {
-        width: '75%',
         fontSize: calcFont(13),
-        marginHorizontal: calcWidth(5),
-        
-
     },
     changeText: {
         ...FONTS.TajawalBold,
@@ -123,7 +119,7 @@ const styles = StyleSheet.create({
         color: COLORS.gray8D,
     },
     checkOutWrappar: {
-        height:calcHeight(140),
+        height:calcHeight(190),
         width: '95%',
         backgroundColor: COLORS.zircon,
         alignSelf: 'center',

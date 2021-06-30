@@ -6,20 +6,12 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: COLORS.background,
         padding: calcWidth(15),
-        flex: 1,
-
-
     },
     footerStyle: {
-        alignSelf: 'flex-end',
-        position: 'absolute',
-        bottom: calcHeight(30),
-        right: calcWidth(20)
-        
+        alignSelf: 'flex-start',
+        marginVertical: calcHeight(30),
     },
     addIcon: {
-        width: calcWidth(40),
-        height: calcWidth(40),
         borderRadius: calcWidth(50),
         backgroundColor: COLORS.white,
         justifyContent: 'center',
@@ -33,12 +25,7 @@ const styles = StyleSheet.create({
         }
     },
     
-    addTextStyle: {
-        ...FONTS.TajawalExtraBold,
-        color: COLORS.silverSand,
-        fontSize: calcFont(35),
-        
-    },
+    
   });
 export default styles;
   

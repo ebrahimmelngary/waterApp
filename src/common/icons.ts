@@ -30,5 +30,8 @@ time: 'time',
 eyeOn: 'eye',
 eyeOff: 'eye-blocked',
 telephone: 'telephone',
+plus: 'plus',
+radioChecked:'radio-checked',
+radioUnchecked: 'radio-unchecked',
 };
 export default ICONS;

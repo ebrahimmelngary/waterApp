@@ -1,6 +1,6 @@
 import {useNavigation, useRoute} from '@react-navigation/native';
 import * as React from 'react';
-import {Image, View, StyleSheet, ScrollView} from 'react-native';
+import {Image, View, StyleSheet, ScrollView, Alert} from 'react-native';
 import ICONS from '../../common/icons';
 import AppText from '../../component/atoms/AppText';
 import CloudText from '../../component/atoms/CloudText';
@@ -110,7 +110,11 @@ const CheackOut = (props: CheackOutProps) => {
         <View style={styles.hirozintalLine} />
         <TextCard title={'Total'} value={TotalPrice + 10 + ' $'} />
       </View>
-      <AppButton title={Trans('checkOut')} buttonStyle={styles.button} />
+      <AppButton
+        title={Trans('checkOut')}
+        buttonStyle={styles.button}
+        onPress={() => Alert.alert('check')}
+      />
     </ScrollView>
   );
 };

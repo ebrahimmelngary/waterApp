@@ -1,12 +1,15 @@
 import * as React from 'react';
 import {Text, View, StyleSheet, FlatList, Alert} from 'react-native';
-import {KEY_EXTRACTOR} from '../../common/styles';
+import {calcFont, KEY_EXTRACTOR} from '../../common/styles';
 import {useNavigation} from '@react-navigation/native';
 import AppText from '../../component/atoms/AppText';
 import Touchable from '../../component/atoms/Touchable';
 import AddressCard from '../../component/molecules/AddressCard';
 import styles from './styles';
 import {dummyAddress} from './dummyAddress';
+import AppIcon from '../../component/atoms/AppIcon';
+import ICONS from '../../common/icons';
+import COLORS from '../../common/colors';
 interface AddressProps {}
 
 const Address = (props: AddressProps) => {
@@ -15,7 +18,7 @@ const Address = (props: AddressProps) => {
   console.log(currentAddress);
   return (
     <FlatList
-      contentContainerStyle={styles.container}
+      style={styles.container}
       showsVerticalScrollIndicator={false}
       keyExtractor={KEY_EXTRACTOR}
       data={dummyAddress}
@@ -28,9 +31,13 @@ const Address = (props: AddressProps) => {
       )}
       ListFooterComponentStyle={styles.footerStyle}
       ListFooterComponent={
-        <Touchable style={styles.addIcon} onPress={() => navigate('Maps')}>
-          <AppText style={styles.addTextStyle}>+</AppText>
-        </Touchable>
+        <AppIcon
+          name={ICONS.plus}
+          style={styles.addIcon}
+          color={COLORS.silverSand}
+          size={calcFont(30)}
+          onPress={() => navigate('Maps')}
+        />
       }
     />
   );
