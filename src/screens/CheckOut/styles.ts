@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     rowTitleStyle: {
         ...FONTS.TajawalBold,
         fontSize: calcFont(16),
-        color: COLORS.gray8D
+        color: COLORS.gray8D,
     },
     checkOutWrappar: {
         height:calcHeight(140),

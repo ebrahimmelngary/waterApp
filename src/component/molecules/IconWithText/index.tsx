@@ -18,6 +18,7 @@ interface IconWithTextProps {
   textStyle?: TextStyle;
   disabled?: boolean;
   onPress?: (id: any) => void;
+  iconColor?: string;
 }
 
 const IconWithText = ({
@@ -26,6 +27,7 @@ const IconWithText = ({
   onPress,
   style,
   iconSize,
+  iconColor,
   textStyle,
   disabled,
 }: IconWithTextProps) => {
@@ -36,7 +38,7 @@ const IconWithText = ({
       disabled={disabled}>
       <AppIcon
         name={item.iconName}
-        color={COLORS.veryLightGrey}
+        color={iconColor || COLORS.veryLightGrey}
         size={iconSize}
         disabled
       />

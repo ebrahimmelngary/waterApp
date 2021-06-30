@@ -56,7 +56,7 @@ export default function Tabs() {
         allowFontScaling: true,
         style: {borderRadius: calcWidth(40)},
       }}
-      initialRouteName="HomeTab">
+      initialRouteName="HomeStack">
       <Tab.Screen name="Home" component={HomeStack} />
       <Tab.Screen name="Orders" component={OrderStack} />
       <Tab.Screen name="Favorite" component={FavoriteStack} />

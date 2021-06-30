@@ -5,11 +5,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: COLORS.background,
+        
     },
     inputWrappar: {
+        height: calcHeight(150),
         backgroundColor: COLORS.white,
         alignItems: 'center',
         paddingHorizontal: calcWidth(15),
+        paddingVertical: calcHeight(20),
         flexDirection: 'row',
         borderBottomEndRadius: calcWidth(50),
         borderBottomStartRadius: calcWidth(50),
@@ -23,6 +26,8 @@ const styles = StyleSheet.create({
         fontSize: calcFont(16),
         marginHorizontal: calcWidth(20),
         color: COLORS.dodgerBlue,
+        
+        
     },
 });
 

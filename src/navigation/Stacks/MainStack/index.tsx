@@ -8,16 +8,13 @@ import {calcHeight, calcWidth} from '../../../common/styles';
 import COLORS from '../../../common/colors';
 import Notification from '../../../screens/Notification';
 import CheackOut from '../../../screens/CheckOut';
+import Address from '../../../screens/Address';
+import Maps from '../../../screens/Maps';
 const Stack = createStackNavigator();
 function MainStack() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: {
-          borderWidth: 0,
-          borderBottomColor: COLORS.white,
-          shadowColor: COLORS.white,
-        },
         headerBackTitleVisible: false,
       }}>
       <Stack.Screen
@@ -29,9 +26,17 @@ function MainStack() {
       />
 
       <Stack.Screen name={'DetailsScreen'} component={DetailsScreen} />
-      <Stack.Screen name={'Search'} component={Search} />
+      <Stack.Screen
+        name={'Search'}
+        component={Search}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen name={'Maps'} component={Maps} />
       <Stack.Screen name={'Notification'} component={Notification} />
       <Stack.Screen name={'CheackOut'} component={CheackOut} />
+      <Stack.Screen name={'Address'} component={Address} />
     </Stack.Navigator>
   );
 }

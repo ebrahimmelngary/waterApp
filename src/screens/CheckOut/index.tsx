@@ -1,4 +1,4 @@
-import {useRoute} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import * as React from 'react';
 import {Image, View, StyleSheet, ScrollView} from 'react-native';
 import ICONS from '../../common/icons';
@@ -8,10 +8,13 @@ import IconWithText from '../../component/molecules/IconWithText';
 import AppButton from '../../component/atoms/AppButton';
 import {Trans} from '../../i18n';
 import styles from './styles';
+import COLORS from '../../common/colors';
 interface CheackOutProps {}
 
 const CheackOut = (props: CheackOutProps) => {
   const {item, amount, TotalPrice} = useRoute().params;
+  const [paymentStatus, setPaymentStatus] = React.useState('cash');
+  const {navigate} = useNavigation();
   const TextCard = ({title, value}) => {
     return (
       <View style={styles.rowCardWrappar}>
@@ -58,7 +61,11 @@ const CheackOut = (props: CheackOutProps) => {
               item={{iconName: ICONS.telephone, title: '01153166402'}}
             />
           </View>
-          <AppText style={styles.changeText}>Change</AppText>
+          <AppText
+            style={styles.changeText}
+            onPress={() => navigate('Address')}>
+            {Trans('change')}
+          </AppText>
         </CloudText>
       </View>
       <View style={styles.selectPaymentWrappar}>
@@ -70,17 +77,21 @@ const CheackOut = (props: CheackOutProps) => {
         <IconWithText
           textStyle={styles.paymentMethodTitleStyle}
           item={{
-            iconName: ICONS.location,
+            iconName: ICONS.arrowleft,
             title: 'Visa',
           }}
+          iconColor={paymentStatus === 'visa' ? COLORS.dodgerBlue : null}
           style={styles.paymentMethodStyle}
+          onPress={() => setPaymentStatus('visa')}
         />
         <IconWithText
           textStyle={styles.paymentMethodTitleStyle}
           item={{
-            iconName: ICONS.location,
+            iconName: ICONS.arrowleft,
             title: 'Cash',
           }}
+          iconColor={paymentStatus === 'visa' ? null : COLORS.dodgerBlue}
+          onPress={() => setPaymentStatus('cash')}
           style={styles.paymentMethodStyle}
         />
       </View>

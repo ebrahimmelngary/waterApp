@@ -13,7 +13,11 @@ const HeaderLeft = (props: HeaderLeftProps) => {
   const {navigate} = useNavigation();
   return (
     <View style={styles.container}>
-      <AppIcon name={ICONS.notificationOutline} color={COLORS.blackCat} />
+      <AppIcon
+        name={ICONS.notificationOutline}
+        color={COLORS.blackCat}
+        onPress={() => navigate('Notification')}
+      />
       <AppIcon
         name={ICONS.search}
         color={COLORS.blackCat}

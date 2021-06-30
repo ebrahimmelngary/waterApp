@@ -29,5 +29,5 @@ comments: 'Comments',
 seeAll: 'Show all',
 cancel: 'Cancel',
 checkOut: 'Check Out',
-
+change: 'Change',
 };
