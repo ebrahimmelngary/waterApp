@@ -16,15 +16,17 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderBottomEndRadius: calcWidth(50),
         borderBottomStartRadius: calcWidth(50),
+        
     },
     inputStyles:{
         height: calcHeight(50),
         width: calcWidth(260),
-        backgroundColor: COLORS.background
+        marginHorizontal: calcWidth(25),
+        backgroundColor: COLORS.background,
     },
     cancelText: {
         fontSize: calcFont(16),
-        marginHorizontal: calcWidth(20),
+        
         color: COLORS.dodgerBlue,
         
         

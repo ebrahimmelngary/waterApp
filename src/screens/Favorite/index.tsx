@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
 import {Text, View, FlatList, Alert} from 'react-native';
 import ListCard from '../../component/molecules/ListCard';
@@ -7,6 +8,7 @@ import styles from './styles';
 interface FavoriteProps {}
 
 const Favorite = (props: FavoriteProps) => {
+  const {navigate} = useNavigation();
   return (
     <FlatList
       numColumns={2}
@@ -20,7 +22,7 @@ const Favorite = (props: FavoriteProps) => {
           item={item}
           componentStyle={'virtcal'}
           remove
-          onPress={() => Alert.alert('ready')}
+          onPress={() => navigate('DetailsScreen', {item: item})}
           onPressIcon={i => console.log(i.id)}
         />
       )}

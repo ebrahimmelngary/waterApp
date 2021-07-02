@@ -54,7 +54,6 @@ export default function Tabs() {
         labelPosition: 'below-icon',
         labelStyle: {fontSize: calcFont(14)},
         allowFontScaling: true,
-        style: {borderRadius: calcWidth(40)},
       }}
       initialRouteName="HomeStack">
       <Tab.Screen name="Home" component={HomeStack} />

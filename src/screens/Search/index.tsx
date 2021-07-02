@@ -1,8 +1,10 @@
 import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
 import {Text, View, StyleSheet, Alert} from 'react-native';
+import COLORS from '../../common/colors';
 import ICONS from '../../common/icons';
 import {calcFont} from '../../common/styles';
+import AppIcon from '../../component/atoms/AppIcon';
 import AppInput from '../../component/atoms/AppInput';
 import AppText from '../../component/atoms/AppText';
 import Touchable from '../../component/atoms/Touchable';
@@ -15,9 +17,12 @@ const Search = (props: SearchProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.inputWrappar}>
-        <Touchable onPress={() => navigate('Home')}>
-          <AppText style={styles.cancelText}>{Trans('cancel')}</AppText>
-        </Touchable>
+        <AppIcon
+          name={ICONS.arrowleft}
+          color={COLORS.blackCat}
+          size={calcFont(25)}
+          onPress={() => navigate('Home')}
+        />
         <AppInput
           inputWrapparStyle={styles.inputStyles}
           withIcon={ICONS.search}

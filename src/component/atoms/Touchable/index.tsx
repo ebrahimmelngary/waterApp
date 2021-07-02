@@ -18,7 +18,11 @@ const Touchable = props => {
   return (
     <PlatFormTouchable
       activeOpacity={ACTIVE_OPACITY}
-      android_ripple={{color: COLORS.dodgerBlue, borderless: false, radius: 0}}
+      android_ripple={{
+        color: COLORS.dodgerBlue,
+        borderless: true,
+        radius: 20,
+      }}
       {...props}
     />
   );

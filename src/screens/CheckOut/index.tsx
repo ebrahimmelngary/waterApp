@@ -77,7 +77,10 @@ const CheackOut = (props: CheackOutProps) => {
         <IconWithText
           textStyle={styles.paymentMethodTitleStyle}
           item={{
-            iconName: ICONS.arrowleft,
+            iconName:
+              paymentStatus === 'visa'
+                ? ICONS.radioChecked
+                : ICONS.radioUnchecked,
             title: 'Visa',
           }}
           iconColor={paymentStatus === 'visa' ? COLORS.dodgerBlue : null}
@@ -87,7 +90,10 @@ const CheackOut = (props: CheackOutProps) => {
         <IconWithText
           textStyle={styles.paymentMethodTitleStyle}
           item={{
-            iconName: ICONS.arrowleft,
+            iconName:
+              paymentStatus !== 'visa'
+                ? ICONS.radioChecked
+                : ICONS.radioUnchecked,
             title: 'Cash',
           }}
           iconColor={paymentStatus === 'visa' ? null : COLORS.dodgerBlue}
@@ -113,7 +119,7 @@ const CheackOut = (props: CheackOutProps) => {
       <AppButton
         title={Trans('checkOut')}
         buttonStyle={styles.button}
-        onPress={() => Alert.alert('check')}
+        onPress={() => navigate('OrderStatus', {item: item})}
       />
     </ScrollView>
   );

@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     },
     headerIconsCard: {
       width: calcWidth(40),
-      height: calcHeight(40),
+      height: calcWidth(40),
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: calcWidth(16),

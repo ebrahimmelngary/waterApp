@@ -10,6 +10,7 @@ import Notification from '../../../screens/Notification';
 import CheackOut from '../../../screens/CheckOut';
 import Address from '../../../screens/Address';
 import Maps from '../../../screens/Maps';
+import OrderStatus from '../../../screens/OrderStatus';
 const Stack = createStackNavigator();
 function MainStack() {
   return (
@@ -37,6 +38,7 @@ function MainStack() {
       <Stack.Screen name={'Notification'} component={Notification} />
       <Stack.Screen name={'CheackOut'} component={CheackOut} />
       <Stack.Screen name={'Address'} component={Address} />
+      <Stack.Screen name={'OrderStatus'} component={OrderStatus} />
     </Stack.Navigator>
   );
 }
@@ -44,7 +46,10 @@ export const headerStyle = StyleSheet.create({
   headerStyles: {
     backgroundColor: COLORS.white,
     height: calcHeight(110),
-    borderRadius: calcWidth(40),
+  },
+  headerTitleStyle: {
+    alignSelf: 'center',
+    color: COLORS.dodgerBlue,
   },
 });
 

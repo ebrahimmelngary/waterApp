@@ -12,6 +12,7 @@ function HomeStack() {
       screenOptions={{
         headerLeft: () => <HeaderLeft />,
         headerStyle: headerStyle.headerStyles,
+        headerTitleStyle: headerStyle.headerTitleStyle,
       }}>
       <Stack.Screen name="Home" component={Home} />
     </Stack.Navigator>
