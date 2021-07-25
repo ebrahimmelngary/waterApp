@@ -14,14 +14,14 @@ const COLORS = {
   silverSand: '#BEBEBE',
   watermelon: '#FF5656',
   gold: '#FFA41B',
-  gray:'#CAD0E5',
+  gray: '#CAD0E5',
   gray90: '#E5E5E5',
   blue: '#518CFF',
   veryLightGrey: '#CACACA',
   steel: '#7A85A1',
-  whiteGray:'#F2F5FC',
-  gray8D  :'#8D8D8D'
-
+  whiteGray: '#F2F5FC',
+  gray8D: '#8D8D8D',
+  zircon: '#F8FAFF',
 };
 
 export default COLORS;

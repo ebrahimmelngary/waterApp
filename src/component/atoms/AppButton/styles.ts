@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { calcWidth, calcHeight, calcFont } from '../../../common/styles';
+import {StyleSheet} from 'react-native';
+import {calcWidth, calcHeight, calcFont} from '../../../common/styles';
 import COLORS from '../../../common/colors';
 import FONTS from '../../../common/fonts';
 

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {Alert, Text, TextInput, View} from 'react-native';
 import styles from './styles';
 import AppButton from '../../../component/atoms/AppButton';
 import {useNavigation} from '@react-navigation/native';
@@ -9,11 +8,11 @@ import AppInput from '../../../component/atoms/AppInput';
 import * as Yup from 'yup';
 import {Formik} from 'formik';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-interface ForgetPasswordProps {}
+
 const defaultValues = {
   email: '',
 };
-const ForgetPassword = (props: ForgetPasswordProps) => {
+const ForgetPassword = () => {
   const navigation = useNavigation();
   const validationSchema = Yup.object({
     email: Yup.string()

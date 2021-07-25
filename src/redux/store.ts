@@ -15,17 +15,16 @@ const middleware = applyMiddleware(thunk, Logger);
 /* Config for Redux Presist */
 
 const config = {
-    key: 'root',
-    storage: AsyncStorage,
-    blacklist: [],
-    whitelist: ['lang','intro'],
-  };
-  
-  const persistedReducer = persistReducer(config, reducers);
-  
-  const store = createStore(persistedReducer, {}, composeEnhancers(middleware));
-  
-  const persistor = persistStore(store);
-  
-  export default {store, persistor};
+  key: 'root',
+  storage: AsyncStorage,
+  blacklist: [],
+  whitelist: ['lang', 'intro'],
+};
 
+const persistedReducer = persistReducer(config, reducers);
+
+const store = createStore(persistedReducer, {}, composeEnhancers(middleware));
+
+const persistor = persistStore(store);
+
+export default {store, persistor};

@@ -1,6 +1,5 @@
-import { STOP_INTRO } from "../actionTypes";
+import {STOP_INTRO} from '../actionTypes';
 
-export const endIntro ={
-    type: STOP_INTRO,
-    
-}
+export const endIntro = {
+  type: STOP_INTRO,
+};

@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  TouchableOpacity,
-  Pressable,
-  Platform,
-  PressableProps,
-  TouchableOpacityProps,
-} from 'react-native';
+import {TouchableOpacity, Pressable, Platform} from 'react-native';
 import COLORS from '../../../common/colors';
 import {ACTIVE_OPACITY} from '../../../common/styles';
 
@@ -18,7 +12,11 @@ const Touchable = props => {
   return (
     <PlatFormTouchable
       activeOpacity={ACTIVE_OPACITY}
-      android_ripple={{color: COLORS.dodgerBlue, borderless: false, radius: 0}}
+      android_ripple={{
+        color: COLORS.dodgerBlue,
+        borderless: true,
+        radius: 20,
+      }}
       {...props}
     />
   );

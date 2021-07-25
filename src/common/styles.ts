@@ -1,7 +1,5 @@
-import { Dimensions, PixelRatio, StyleSheet } from 'react-native';
-import COLORS from './colors';
-
-export const { width, height } = Dimensions.get('window');
+import {Dimensions, PixelRatio} from 'react-native';
+export const {width, height} = Dimensions.get('window');
 
 //Guideline sizes are based on standard ~5" screen mobile device
 const guidelineBaseWidth = 375;
@@ -14,7 +12,7 @@ export const calcFont = size => {
   return PixelRatio.roundToNearestPixel(
     (size - 1) * (height / guidelineBaseHeight),
   );
-}
+};
 export const KEY_EXTRACTOR = (item, index) => item + index.toString();
 
 export const ACTIVE_OPACITY = 0.6;
@@ -45,7 +43,7 @@ export const ACTIVE_OPACITY = 0.6;
 
 /*
  * platform/application wide metrics for proper styling
-*/
+ */
 // import { Dimensions, Platform } from 'react-native';
 // const { width, height } = Dimensions.get('window');
 

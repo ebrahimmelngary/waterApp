@@ -4,7 +4,7 @@ import HomeStack from '../Stacks/HomeStack';
 import AccountStack from '../Stacks/AccountStack';
 import OrderStack from '../Stacks/OrderStack';
 import FavoriteStack from '../Stacks/FavoriteStack';
-import {calcFont, calcWidth} from '../../common/styles';
+import {calcFont} from '../../common/styles';
 import COLORS from '../../common/colors';
 import AppIcon from '../../component/atoms/AppIcon';
 import {Trans} from '../../i18n';
@@ -54,9 +54,8 @@ export default function Tabs() {
         labelPosition: 'below-icon',
         labelStyle: {fontSize: calcFont(14)},
         allowFontScaling: true,
-        style: {borderRadius: calcWidth(40)},
       }}
-      initialRouteName="HomeTab">
+      initialRouteName="HomeStack">
       <Tab.Screen name="Home" component={HomeStack} />
       <Tab.Screen name="Orders" component={OrderStack} />
       <Tab.Screen name="Favorite" component={FavoriteStack} />

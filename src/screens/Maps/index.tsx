@@ -1,27 +1,71 @@
 import * as React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {ActivityIndicator, View} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
-interface MapsProps {}
+import AppInput from '../../component/atoms/AppInput';
+import AppButton from '../../component/atoms/AppButton';
+import styles from './styles';
+import {useCurrentLocation} from '../../utilities/CustomHooks/useCurrentLocation';
+import AppText from '../../component/atoms/AppText';
 
-const Maps = (props: MapsProps) => {
+const Maps = () => {
+  // const [initialRegion, setinitialRegion] = React.useState({
+  //   latitude: '',
+  //   longitude: '',
+  //   latitudeDelta: 0.0922,
+  //   longitudeDelta: 0.0421,
+  // });
+  const {loading, error, location} = useCurrentLocation();
+  // const onRegionChange = region => setinitialRegion({...region});
+  // console.log(initialRegion);
   return (
-    <MapView
-      style={styles.container}
-      provider={PROVIDER_GOOGLE}
-      initialRegion={{
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      }}
-    />
+    <View style={styles.container}>
+      {error && <AppText>Error</AppText>}
+      {loading ? (
+        <ActivityIndicator />
+      ) : (
+        <>
+          {location && (
+            <MapView
+              style={styles.mapStyle}
+              provider={PROVIDER_GOOGLE}
+              region={{
+                ...location,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }}
+              // onRegionChange={() => onRegionChange}
+              showsMyLocationButton
+              showsUserLocation
+              showsScale
+            />
+          )}
+          <AppInput
+            inputWrapparStyle={styles.inputStyle}
+            placeholder={'Address'}
+          />
+          <View style={styles.inputWrappar}>
+            <AppInput
+              inputWrapparStyle={styles.smallRowInput}
+              placeholder={'a'}
+            />
+            <AppInput
+              inputWrapparStyle={styles.smallRowInput}
+              placeholder={'d'}
+            />
+            <AppInput
+              inputWrapparStyle={styles.smallRowInput}
+              placeholder={'c'}
+            />
+          </View>
+          <AppInput
+            inputWrapparStyle={styles.inputStyle}
+            placeholder={'Phone Number'}
+          />
+          <AppButton title={'Save'} buttonStyle={styles.buttonStyle} />
+        </>
+      )}
+    </View>
   );
 };
 
 export default Maps;
-
-const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-  },
-});

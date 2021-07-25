@@ -12,6 +12,7 @@ interface CloudTextProps {
   titleStyle?: TextStyle;
   withIcon?: boolean;
   iconName?: string;
+  children?: any;
 }
 
 const CloudText: React.FC<CloudTextProps> = ({
@@ -20,14 +21,18 @@ const CloudText: React.FC<CloudTextProps> = ({
   titleStyle,
   props,
   withIcon,
+  children,
   iconName,
 }) => {
   return (
-    <View style={[styles.continar, style]}>
-      <View {...props} style={styles.cloudTextWrappar}>
-        <AppText style={[styles.cloudText, titleStyle]}>
-          {tiltle || 'hany'}
-        </AppText>
+    <View style={styles.continar}>
+      <View {...props} style={[styles.cloudTextWrappar, style]}>
+        {tiltle && (
+          <AppText style={[styles.cloudText, titleStyle]}>
+            {tiltle || 'hany'}
+          </AppText>
+        )}
+        {children}
       </View>
       {withIcon && (
         <AppIcon
