@@ -10,8 +10,7 @@ export default function RootNavigtion() {
   const endIntro = useSelector(state => state.intro.fristTime);
   return (
     <NavigationContainer>
-      {/* {endIntro ? user ? <MainStack /> : <AuthStack /> : <IntroStack />} */}
-      <AuthStack /> 
+      {endIntro ? user ? <MainStack /> : <AuthStack /> : <IntroStack />}
     </NavigationContainer>
   );
 }
