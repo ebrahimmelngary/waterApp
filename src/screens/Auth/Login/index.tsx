@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Alert, Text, TextInput, Keyboard} from 'react-native';
+import { TextInput, Keyboard} from 'react-native';
 import styles from './styles';
 import AppButton from '../../../component/atoms/AppButton';
 import {useNavigation} from '@react-navigation/native';
