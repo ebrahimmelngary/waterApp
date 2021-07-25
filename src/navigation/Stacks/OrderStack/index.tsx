@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import Orders from '../../../screens/Orders';
-import {headerStyle} from '../MainStack';
 const Stack = createStackNavigator();
 function OrderStack() {
   return (

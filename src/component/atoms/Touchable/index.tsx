@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  TouchableOpacity,
-  Pressable,
-  Platform,
-  PressableProps,
-  TouchableOpacityProps,
-} from 'react-native';
+import {TouchableOpacity, Pressable, Platform} from 'react-native';
 import COLORS from '../../../common/colors';
 import {ACTIVE_OPACITY} from '../../../common/styles';
 

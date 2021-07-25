@@ -1,8 +1,7 @@
 import * as React from 'react';
-import {Alert, Text, TextInput, View} from 'react-native';
+import {Alert, TextInput} from 'react-native';
 import styles from './styles';
 import AppButton from '../../../../component/atoms/AppButton';
-import {useNavigation} from '@react-navigation/native';
 import AppText from '../../../../component/atoms/AppText';
 import {Trans} from '../../../../i18n';
 import AppInput from '../../../../component/atoms/AppInput';
@@ -16,8 +15,6 @@ const defaultValues = {
   confirmPassword: '',
 };
 const NewPassword = () => {
-  const navigation = useNavigation();
-
   const validationSchema = Yup.object({
     oldPassword: Yup.string()
       .min(6, Trans('minSixCharacter'))

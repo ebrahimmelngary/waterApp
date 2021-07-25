@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {TextStyle, View, ViewStyle} from 'react-native';
 import COLORS from '../../../common/colors';
-import ICONS from '../../../common/icons';
 import AppIcon from '../../atoms/AppIcon';
 import AppText from '../../atoms/AppText';
 import Touchable from '../../atoms/Touchable';

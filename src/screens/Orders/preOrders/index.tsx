@@ -1,14 +1,14 @@
 import * as React from 'react';
-import {Text, FlatList, StyleSheet, Alert} from 'react-native';
+import {FlatList, StyleSheet, Alert} from 'react-native';
 import COLORS from '../../../common/colors';
 import {calcHeight, calcWidth} from '../../../common/styles';
 import OrderCard from '../../../component/molecules/OrderCard';
 import {keyExtractor} from '../../../utilities/key';
 import {dummyOrdersData} from '../dummyData';
 
-interface PrevOrdersProps {}
+// interface PrevOrdersProps {}
 
-const PrevOrders = (props: PrevOrdersProps) => {
+const PrevOrders = () => {
   return (
     <FlatList
       data={dummyOrdersData.previousOrders}

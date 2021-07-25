@@ -1,21 +1,17 @@
 import * as React from 'react';
-import {Text, View, StyleSheet, FlatList, Alert} from 'react-native';
+import {FlatList} from 'react-native';
 import {calcFont, KEY_EXTRACTOR} from '../../common/styles';
 import {useNavigation} from '@react-navigation/native';
-import AppText from '../../component/atoms/AppText';
-import Touchable from '../../component/atoms/Touchable';
 import AddressCard from '../../component/molecules/AddressCard';
 import styles from './styles';
 import {dummyAddress} from './dummyAddress';
 import AppIcon from '../../component/atoms/AppIcon';
 import ICONS from '../../common/icons';
 import COLORS from '../../common/colors';
-interface AddressProps {}
 
-const Address = (props: AddressProps) => {
+const Address = () => {
   const {navigate} = useNavigation();
   const [currentAddress, setCurrentAddress] = React.useState(dummyAddress[0]);
-  console.log(currentAddress);
   return (
     <FlatList
       style={styles.container}
@@ -26,7 +22,7 @@ const Address = (props: AddressProps) => {
         <AddressCard
           item={item}
           onPress={i => setCurrentAddress(i)}
-          selected={currentAddress == item}
+          selected={currentAddress === item}
         />
       )}
       ListFooterComponentStyle={styles.footerStyle}

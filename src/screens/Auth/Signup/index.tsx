@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
-import {Text, View, Keyboard, TextInput} from 'react-native';
+import {View, Keyboard, TextInput} from 'react-native';
 import AppButton from '../../../component/atoms/AppButton';
 import AppInput from '../../../component/atoms/AppInput';
 import AppText from '../../../component/atoms/AppText';

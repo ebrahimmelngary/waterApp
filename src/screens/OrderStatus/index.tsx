@@ -1,17 +1,14 @@
 import * as React from 'react';
-import {Text, View, Image, FlatList} from 'react-native';
+import {View, Image, FlatList} from 'react-native';
 import {useRoute} from '@react-navigation/native';
 import CloudText from '../../component/atoms/CloudText';
 import AppText from '../../component/atoms/AppText';
-import IMAGES from '../../common/images';
 import styles from './styles';
 import AppButton from '../../component/atoms/AppButton';
 import {boxData} from './boxData';
-interface OrderStatusProps {}
 
-const OrderStatus = (props: OrderStatusProps) => {
+const OrderStatus = () => {
   const {item} = useRoute().params;
-  console.log(item);
   const RowCard = ({item}) => {
     return (
       <View style={styles.rowCardWrappar}>

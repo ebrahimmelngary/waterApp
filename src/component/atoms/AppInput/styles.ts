@@ -1,9 +1,7 @@
 import {StyleSheet, I18nManager} from 'react-native';
 import COLORS from '../../../common/colors';
 import FONTS from '../../../common/fonts';
-import { calcFont, calcHeight, calcWidth } from '../../../common/styles';
-
-
+import {calcFont, calcHeight, calcWidth} from '../../../common/styles';
 
 export default StyleSheet.create({
   container: {
@@ -35,7 +33,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
-    
   },
   errorText: {
     color: COLORS.watermelon,
@@ -49,9 +46,10 @@ export default StyleSheet.create({
     fontSize: calcFont(18),
     height: calcHeight(50),
     width: '90%',
-    marginHorizontal: 10 ,
+    marginHorizontal: 10,
     paddingTop: calcHeight(5),
   },
+  // eslint-disable-next-line react-native/no-color-literals
   lableText: {
     ...FONTS.TajawalRegular,
     fontSize: calcFont(14),

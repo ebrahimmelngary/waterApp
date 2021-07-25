@@ -1,15 +1,13 @@
 import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {View} from 'react-native';
 import COLORS from '../../../common/colors';
 import ICONS from '../../../common/icons';
 import {calcFont} from '../../../common/styles';
 import AppIcon from '../../atoms/AppIcon';
 import styles from './styles';
-interface HeaderLeftProps {}
 
-const HeaderLeft = (props: HeaderLeftProps) => {
+const HeaderLeft = () => {
   const {navigate} = useNavigation();
   return (
     <View style={styles.container}>

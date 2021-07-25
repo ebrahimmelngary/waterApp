@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import * as React from 'react';
 import {FlatList, View, Image} from 'react-native';
 import AppText from '../../atoms/AppText';

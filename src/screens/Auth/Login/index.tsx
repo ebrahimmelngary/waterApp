@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TextInput, Keyboard} from 'react-native';
+import {TextInput, Keyboard} from 'react-native';
 import styles from './styles';
 import AppButton from '../../../component/atoms/AppButton';
 import {useNavigation} from '@react-navigation/native';
@@ -9,7 +9,7 @@ import AppInput from '../../../component/atoms/AppInput';
 import * as Yup from 'yup';
 import {Formik} from 'formik';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {UserLogin} from '../../../redux/actions/User';
 const defaultValues = {
   email: '',

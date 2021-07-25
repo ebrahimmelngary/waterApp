@@ -1,6 +1,6 @@
 import {useNavigation, useRoute} from '@react-navigation/native';
 import * as React from 'react';
-import {Image, View, StyleSheet, ScrollView, Alert} from 'react-native';
+import {Image, View, ScrollView} from 'react-native';
 import ICONS from '../../common/icons';
 import AppText from '../../component/atoms/AppText';
 import CloudText from '../../component/atoms/CloudText';
@@ -9,9 +9,8 @@ import AppButton from '../../component/atoms/AppButton';
 import {Trans} from '../../i18n';
 import styles from './styles';
 import COLORS from '../../common/colors';
-interface CheackOutProps {}
 
-const CheackOut = (props: CheackOutProps) => {
+const CheackOut = () => {
   const {item, amount, TotalPrice} = useRoute().params;
   const [paymentStatus, setPaymentStatus] = React.useState('cash');
   const {navigate} = useNavigation();
