@@ -19,4 +19,4 @@ export const SAVE_FACM_TOKEN = 'SAVE_FACM_TOKEN';
 // export const STOP_LOADING_SOCIAL = 'STOP_LOADING_SOCIAL';
 // Order
 export const ORDERD = 'ORDERD';
-export const  REMOVEORDER = 'REMOVEORDER';
+export const REMOVEORDER = 'REMOVEORDER';
