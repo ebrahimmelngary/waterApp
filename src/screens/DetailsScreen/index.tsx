@@ -14,12 +14,10 @@ import Counter from '../../component/molecules/Counter';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 interface DetaolsItem {
-  item: {
-    name: string;
-    id: number;
-    image: string;
-    review: Reviewitem;
-  };
+  name: string;
+  id: number;
+  image: string;
+  review: Reviewitem;
 }
 
 const DetailsScreen = () => {
@@ -31,7 +29,7 @@ const DetailsScreen = () => {
   }, []);
   const [amount, setAmount] = React.useState(1);
   const [fav, setFav] = React.useState(false);
-  const {item} = useRoute<DetaolsItem>().params;
+  const {item} = useRoute<Array<DetaolsItem>>().params;
 
   const increase = React.useCallback(
     () => setAmount(prev => prev + 1),

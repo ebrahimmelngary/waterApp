@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
   },
   loctationStyle: {
     ...FONTS.TajawalRegular,
+    width: '80%',
     fontSize: calcFont(12),
     marginHorizontal: calcWidth(5),
     marginVertical: calcHeight(5),
@@ -90,5 +91,4 @@ const styles = StyleSheet.create({
     width: '90%',
   },
 });
-
 export default styles;

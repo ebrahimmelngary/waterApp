@@ -9,7 +9,7 @@ import AppIcon from '../../component/atoms/AppIcon';
 import styles from './styles';
 import ICONS from '../../common/icons';
 import COLORS from '../../common/colors';
-import {calcWidth} from '../../common/styles';
+import {calcFont, calcWidth} from '../../common/styles';
 import {useNavigation} from '@react-navigation/native';
 import {keyExtractor} from '../../utilities/key';
 
@@ -45,14 +45,14 @@ const Home = () => {
             style={[
               styles.iconCard,
               {
-                backgroundColor: view === 'virtcal' ? COLORS.dodgerBlue : null,
+                backgroundColor: view === 'row' ? null : COLORS.dodgerBlue,
               },
             ]}>
             <AppIcon
               name={ICONS.virtcal}
               color={view === 'row' ? COLORS.gray : COLORS.white}
               onPress={() => setViewStyle(viewStyle.virtcal)}
-              size={view === 'row' ? calcWidth(14) : calcWidth(19)}
+              size={view === 'row' ? calcFont(14) : calcFont(19)}
             />
           </View>
         </View>
@@ -75,6 +75,7 @@ const Home = () => {
           <ListCard
             item={item}
             onPress={i => navigation.navigate('DetailsScreen', {item: i})}
+            onPressIcon={i => console.log('i', i)}
             componentStyle={view}
           />
         )}

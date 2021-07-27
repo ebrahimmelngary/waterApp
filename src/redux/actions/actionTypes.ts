@@ -17,3 +17,6 @@ export const SAVE_FACM_TOKEN = 'SAVE_FACM_TOKEN';
 // export const SOCIAL_LOGIN = 'SOCIAL_LOGIN';
 // export const START_LOADING_SOCIAL = 'START_LOADING_SOCIAL';
 // export const STOP_LOADING_SOCIAL = 'STOP_LOADING_SOCIAL';
+// Order
+export const ORDERD = 'ORDERD';
+export const REMOVEORDER = 'REMOVEORDER';
