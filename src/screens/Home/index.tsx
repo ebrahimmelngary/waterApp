@@ -12,6 +12,7 @@ import COLORS from '../../common/colors';
 import {calcFont, calcWidth} from '../../common/styles';
 import {useNavigation} from '@react-navigation/native';
 import {keyExtractor} from '../../utilities/key';
+import {gql, useQuery} from '@apollo/client';
 
 const Home = () => {
   const viewStyle = {
@@ -19,6 +20,19 @@ const Home = () => {
     virtcal: 'virtcal',
   };
   const navigation = useNavigation();
+
+  const getMe = gql`
+    {
+      me {
+        email
+        name
+      }
+    }
+  `;
+  const data = useQuery(getMe);
+  React.useEffect(() => {
+    console.log('data', data);
+  });
   const [view, setViewStyle] = React.useState(viewStyle.row);
   const HeaderSection = () => {
     return (

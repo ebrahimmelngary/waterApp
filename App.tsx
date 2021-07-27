@@ -1,4 +1,3 @@
-/* eslint-disable quotes */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -15,8 +14,6 @@ import GraphProvider from './src/service';
 const App = () => {
   React.useEffect(() => {
     RNBootSplash.hide({fade: true}); // fade
-
-    // eslint-disable-next-line prettier/prettier
   }, []);
   return (
     <GraphProvider>
