@@ -1,1 +1,1 @@
-export const keyExtractor= item => item.id.toString()
+export const keyExtractor = item => item.id.toString();

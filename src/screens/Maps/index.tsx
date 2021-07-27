@@ -1,14 +1,13 @@
 import * as React from 'react';
-import {ActivityIndicator, ActivityIndicatorBase, View} from 'react-native';
-import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+import {ActivityIndicator, View} from 'react-native';
+import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import AppInput from '../../component/atoms/AppInput';
 import AppButton from '../../component/atoms/AppButton';
 import styles from './styles';
 import {useCurrentLocation} from '../../utilities/CustomHooks/useCurrentLocation';
 import AppText from '../../component/atoms/AppText';
-interface MapsProps {}
 
-const Maps = (props: MapsProps) => {
+const Maps = () => {
   // const [initialRegion, setinitialRegion] = React.useState({
   //   latitude: '',
   //   longitude: '',
@@ -16,7 +15,6 @@ const Maps = (props: MapsProps) => {
   //   longitudeDelta: 0.0421,
   // });
   const {loading, error, location} = useCurrentLocation();
-  console.log(loading, error, location);
   // const onRegionChange = region => setinitialRegion({...region});
   // console.log(initialRegion);
   return (

@@ -4,7 +4,7 @@ import HomeStack from '../Stacks/HomeStack';
 import AccountStack from '../Stacks/AccountStack';
 import OrderStack from '../Stacks/OrderStack';
 import FavoriteStack from '../Stacks/FavoriteStack';
-import {calcFont, calcWidth} from '../../common/styles';
+import {calcFont} from '../../common/styles';
 import COLORS from '../../common/colors';
 import AppIcon from '../../component/atoms/AppIcon';
 import {Trans} from '../../i18n';

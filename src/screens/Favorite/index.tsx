@@ -1,13 +1,12 @@
 import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
-import {Text, View, FlatList, Alert} from 'react-native';
+import {FlatList} from 'react-native';
 import ListCard from '../../component/molecules/ListCard';
 import {keyExtractor} from '../../utilities/key';
 import {dummyFavoriteData} from './dummyData';
 import styles from './styles';
-interface FavoriteProps {}
 
-const Favorite = (props: FavoriteProps) => {
+const Favorite = () => {
   const {navigate} = useNavigation();
   return (
     <FlatList

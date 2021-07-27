@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import Tabs from '../Tabs';
 import AuthStack from '../Stacks/AuthStack';
 import IntroStack from '../Stacks/IntroStack';
 import MainStack from '../Stacks/MainStack';

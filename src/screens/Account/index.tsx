@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Alert, Image, View, FlatList} from 'react-native';
+import {Image, View, FlatList} from 'react-native';
 import COLORS from '../../common/colors';
 import ICONS from '../../common/icons';
 import AppIcon from '../../component/atoms/AppIcon';
@@ -11,9 +11,8 @@ import {calcFont} from '../../common/styles';
 import {data} from './data';
 import {keyExtractor} from '../../utilities/key';
 import {useNavigation} from '@react-navigation/native';
-interface AccountProps {}
 
-const Account = (props: AccountProps) => {
+const Account = () => {
   const {navigate} = useNavigation();
   return (
     <View style={styles.container}>

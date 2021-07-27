@@ -1,22 +1,19 @@
 import * as React from 'react';
-import {Text, View, Image, FlatList} from 'react-native';
+import {View, Image, FlatList} from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import CloudText from '../../component/atoms/CloudText';
 import AppText from '../../component/atoms/AppText';
-import IMAGES from '../../common/images';
 import styles from './styles';
 import AppButton from '../../component/atoms/AppButton';
 import {boxData} from './boxData';
 import {useDispatch} from 'react-redux';
 import {order} from '../../redux/actions/Order';
 import {REMOVEORDER} from '../../redux/actions/actionTypes';
-interface OrderStatusProps {}
 
-const OrderStatus = (props: OrderStatusProps) => {
+const OrderStatus = () => {
   const disptch = useDispatch();
   const {navigate} = useNavigation();
   const {item} = useRoute().params;
-  console.log(item);
   const RowCard = ({item}) => {
     return (
       <View style={styles.rowCardWrappar}>

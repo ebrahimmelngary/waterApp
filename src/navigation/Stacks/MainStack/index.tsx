@@ -1,10 +1,10 @@
+/* eslint-disable react-native/no-unused-styles */
 import * as React from 'react';
 import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Tabs from '../../Tabs';
 import DetailsScreen from '../../../screens/DetailsScreen';
 import Search from '../../../screens/Search';
-import {calcHeight, calcWidth} from '../../../common/styles';
 import COLORS from '../../../common/colors';
 import Notification from '../../../screens/Notification';
 import CheackOut from '../../../screens/CheckOut';

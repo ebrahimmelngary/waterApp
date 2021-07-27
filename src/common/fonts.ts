@@ -1,5 +1,4 @@
 const FONTS = {
-
   TajawalLight: {
     fontFamily: 'Tajawal-Light',
   },

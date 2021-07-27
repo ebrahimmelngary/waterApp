@@ -1,21 +1,19 @@
+/* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
-import {Text, View, StyleSheet, ImageBackground} from 'react-native';
+import {Text, StyleSheet, ImageBackground} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import {useDispatch} from 'react-redux';
 import {slides} from './data';
-import {STOP_INTRO} from '../../redux/actions/actionTypes';
 import {endIntro} from '../../redux/actions/Intro';
 import AppIcon from '../../component/atoms/AppIcon';
 import ICONS from '../../common/icons';
 import COLORS from '../../common/colors';
 import Touchable from '../../component/atoms/Touchable';
 import AppText from '../../component/atoms/AppText';
-import {keyExtractor} from '../../utilities/key';
 import {calcFont, KEY_EXTRACTOR} from '../../common/styles';
 import FONTS from '../../common/fonts';
-interface IntroProps {}
 
-const Intro = (props: IntroProps) => {
+const Intro = () => {
   const dispatch = useDispatch();
   const renderItem = ({item}) => {
     return (

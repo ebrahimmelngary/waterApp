@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-color-literals */
+/* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
 import {View, FlatList} from 'react-native';
 import AppText from '../../component/atoms/AppText';
@@ -10,6 +12,7 @@ import COLORS from '../../common/colors';
 import {calcFont, calcWidth} from '../../common/styles';
 import {useNavigation} from '@react-navigation/native';
 import {keyExtractor} from '../../utilities/key';
+
 const Home = () => {
   const viewStyle = {
     row: 'row',

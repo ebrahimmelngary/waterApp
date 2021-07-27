@@ -1,4 +1,3 @@
-import {ORDERD} from '../actionTypes';
 interface orderParams {
   type: string;
   data: {

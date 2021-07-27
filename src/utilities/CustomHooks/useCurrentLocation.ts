@@ -33,7 +33,7 @@ const useCurrentLocation = () => {
         throw new Error(result);
       }
     } catch (error) {
-      setState((prev) => ({
+      setState(prev => ({
         ...prev,
         location: null,
         loading: false,
@@ -44,20 +44,20 @@ const useCurrentLocation = () => {
 
   const getPosition = async () => {
     await Geolocation.getCurrentPosition(
-      (position) => {
+      position => {
         const {latitude, longitude} = position.coords;
-        setState((prev) => ({
+        setState(prev => ({
           ...prev,
           location: {latitude, longitude},
           loading: false,
           error: false,
         }));
       },
-      (error) => {
+      error => {
         if (error.code === 2) {
           openSettings().catch(() => Alert.alert('cannot open settings'));
         }
-        setState((prev) => ({
+        setState(prev => ({
           ...prev,
           location: null,
           loading: false,

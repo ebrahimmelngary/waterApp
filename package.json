@@ -3,11 +3,23 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\"",
+    "lint-fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json}\"",
+    "pretty": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json}\"",
+    "format-code": "yarn run pretty && yarn run lint-fix",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "yarn run format-code",
+      "git add"
+    ],
+    "*.js": "eslint --cache --fix"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
@@ -49,15 +61,43 @@
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@types/debounce": "^1.2.0",
+    "@types/i18n-js": "^3.0.3",
+    "@types/jest": "^25.2.3",
     "@types/react": "^17.0.11",
     "@types/react-native": "^0.64.10",
+    "@types/react-native-fbsdk": "^3.0.0",
+    "@types/react-native-loading-spinner-overlay": "^0.5.2",
+    "@types/react-native-star-rating": "^1.1.1",
+    "@types/react-native-vector-icons": "^6.4.6",
+    "@types/react-redux": "^7.1.9",
+    "@types/react-test-renderer": "^16.9.2",
+    "@types/validator": "^13.1.0",
+    "@types/yup": "^0.29.8",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
     "babel-jest": "^26.6.3",
     "eslint": "^7.28.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.4",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "eslint-plugin-react-native": "^3.9.1",
+    "husky": ">=6",
     "jest": "^26.6.3",
+    "lint-staged": "^10.5.2",
     "metro-react-native-babel-preset": "^0.64.0",
-    "react-test-renderer": "17.0.1"
+    "react-test-renderer": "17.0.1",
+    "typescript": "^3.8.3"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }

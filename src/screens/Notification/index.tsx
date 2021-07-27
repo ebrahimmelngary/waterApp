@@ -1,12 +1,10 @@
 import * as React from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList} from 'react-native';
 import MsgCard from '../../component/molecules/MsgCard';
 import {dummyNotify} from './dummyNotify';
 import styles from './styles';
 
-interface NotificationProps {}
-
-const Notification = (props: NotificationProps) => {
+const Notification = () => {
   return (
     <FlatList
       style={styles.listStyle}

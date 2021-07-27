@@ -1,10 +1,8 @@
 import * as React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
-import {calcHeight, calcWidth} from '../../../common/styles';
+import {} from '../../../common/styles';
 
-interface HeaderProps {}
-
-const Header = (props: HeaderProps) => {
+const Header = () => {
   return (
     <View style={styles.container}>
       <Text>Header</Text>

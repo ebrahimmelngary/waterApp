@@ -5,9 +5,10 @@ import {calcFont, calcHeight, calcWidth} from '../../../common/styles';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: COLORS.white,
     paddingHorizontal: calcWidth(30),
+    // justifyContent: 'center',
   },
   headerText: {
     color: COLORS.blackCat,
@@ -15,12 +16,8 @@ const styles = StyleSheet.create({
     fontSize: calcFont(20),
     marginVertical: calcHeight(40),
   },
-  forgetText: {
-    color: COLORS.steel,
-    ...FONTS.TajawalMedium,
-    fontSize: calcFont(16),
+  buttonWrapper: {
     marginVertical: calcHeight(20),
-    marginHorizontal: calcWidth(6),
   },
   signupTextStyle: {
     color: COLORS.steel,
