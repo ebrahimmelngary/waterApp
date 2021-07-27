@@ -22,6 +22,7 @@
     "*.js": "eslint --cache --fix"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.21",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/geolocation": "^2.0.2",
     "@react-native-community/masked-view": "^0.1.11",
@@ -33,6 +34,7 @@
     "@react-navigation/stack": "^5.14.5",
     "@reduxjs/toolkit": "^1.6.0",
     "formik": "^2.2.9",
+    "graphql": "^15.5.1",
     "react": "17.0.1",
     "react-native": "0.64.2",
     "react-native-app-intro-slider": "^4.0.4",
