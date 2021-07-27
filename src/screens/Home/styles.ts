@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     },
     iconCard: {
       width: calcWidth(45),
-      height: calcHeight(45),
+      height: calcWidth(45),
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: calcWidth(12),

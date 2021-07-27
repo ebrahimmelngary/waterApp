@@ -9,12 +9,16 @@ import AppButton from '../../component/atoms/AppButton';
 import {Trans} from '../../i18n';
 import styles from './styles';
 import COLORS from '../../common/colors';
+import {useDispatch} from 'react-redux';
+import {order} from '../../redux/actions/Order';
+import {ORDERD} from '../../redux/actions/actionTypes';
 interface CheackOutProps {}
 
 const CheackOut = (props: CheackOutProps) => {
   const {item, amount, TotalPrice} = useRoute().params;
   const [paymentStatus, setPaymentStatus] = React.useState('cash');
   const {navigate} = useNavigation();
+  const disptch = useDispatch();
   const TextCard = ({title, value}) => {
     return (
       <View style={styles.rowCardWrappar}>
@@ -22,6 +26,23 @@ const CheackOut = (props: CheackOutProps) => {
         <AppText style={styles.rowTitleStyle}>{value}</AppText>
       </View>
     );
+  };
+  const shippingFee = 10;
+  const total = shippingFee + TotalPrice;
+  const onOrderHandeler = () => {
+    disptch(
+      order({
+        type: ORDERD,
+        data: {
+          quntity: amount,
+          totalPrice: TotalPrice,
+          price: TotalPrice / amount,
+          shipping: shippingFee,
+          total: total,
+        },
+      }),
+    );
+    navigate('OrderStatus', {item: item});
   };
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
@@ -112,14 +133,14 @@ const CheackOut = (props: CheackOutProps) => {
       </View>
       <View style={styles.checkOutWrappar}>
         <TextCard title={'Total Price'} value={TotalPrice + ' $'} />
-        <TextCard title={'Shipping Fee'} value={10 + ' $'} />
+        <TextCard title={'Shipping Fee'} value={shippingFee + ' $'} />
         <View style={styles.hirozintalLine} />
-        <TextCard title={'Total'} value={TotalPrice + 10 + ' $'} />
+        <TextCard title={'Total'} value={total + ' $'} />
       </View>
       <AppButton
         title={Trans('checkOut')}
         buttonStyle={styles.button}
-        onPress={() => navigate('OrderStatus', {item: item})}
+        onPress={() => onOrderHandeler()}
       />
     </ScrollView>
   );

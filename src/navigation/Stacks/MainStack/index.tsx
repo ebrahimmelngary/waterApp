@@ -11,6 +11,7 @@ import CheackOut from '../../../screens/CheckOut';
 import Address from '../../../screens/Address';
 import Maps from '../../../screens/Maps';
 import OrderStatus from '../../../screens/OrderStatus';
+import Home from '../../../screens/Home';
 const Stack = createStackNavigator();
 function MainStack() {
   return (
@@ -39,18 +40,15 @@ function MainStack() {
       <Stack.Screen name={'CheackOut'} component={CheackOut} />
       <Stack.Screen name={'Address'} component={Address} />
       <Stack.Screen name={'OrderStatus'} component={OrderStatus} />
+      <Stack.Screen name={'Home'} component={Home} />
     </Stack.Navigator>
   );
 }
 export const headerStyle = StyleSheet.create({
   headerStyles: {
     backgroundColor: COLORS.white,
-    height: calcHeight(110),
   },
-  headerTitleStyle: {
-    alignSelf: 'center',
-    color: COLORS.dodgerBlue,
-  },
+  headerTitleStyle: {},
 });
 
 export default MainStack;

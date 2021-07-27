@@ -9,19 +9,19 @@ import AppText from '../../atoms/AppText';
 import {calcFont} from '../../../common/styles';
 import Touchable from '../../atoms/Touchable';
 type item = {
-  id: any;
-  name: string;
-  location: string;
-  shipping: string;
+  id?: any;
+  name?: string;
+  location?: string;
+  shipping?: string;
   review?: any;
   image?: string;
 };
 interface ListCardProps {
-  componentStyle: string;
-  onPress: (item: item) => void;
+  componentStyle?: string;
+  onPress?: (item: item) => void;
   item: item;
   remove?: boolean;
-  onPressIcon: (item: item) => void;
+  onPressIcon?: (item: item) => void;
 }
 
 const ListCard: React.FC<ListCardProps> = ({
@@ -95,7 +95,11 @@ const ListCard: React.FC<ListCardProps> = ({
           <AppIcon name={ICONS.star} color={COLORS.gold} size={calcFont(18)} />
         </View>
         <View style={styles.iconWrappar}>
-          <AppIcon name={ICONS.heart} color={COLORS.silverSand} />
+          <AppIcon
+            name={ICONS.heart}
+            color={COLORS.silverSand}
+            onPress={() => onPressIcon(item)}
+          />
           <IconText title={item.shipping} iconName={ICONS.shipped} />
         </View>
       </Touchable>

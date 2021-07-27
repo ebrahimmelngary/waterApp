@@ -1,15 +1,20 @@
 import * as React from 'react';
 import {Text, View, Image, FlatList} from 'react-native';
-import {useRoute} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import CloudText from '../../component/atoms/CloudText';
 import AppText from '../../component/atoms/AppText';
 import IMAGES from '../../common/images';
 import styles from './styles';
 import AppButton from '../../component/atoms/AppButton';
 import {boxData} from './boxData';
+import {useDispatch} from 'react-redux';
+import {order} from '../../redux/actions/Order';
+import {REMOVEORDER} from '../../redux/actions/actionTypes';
 interface OrderStatusProps {}
 
 const OrderStatus = (props: OrderStatusProps) => {
+  const disptch = useDispatch();
+  const {navigate} = useNavigation();
   const {item} = useRoute().params;
   console.log(item);
   const RowCard = ({item}) => {
@@ -22,6 +27,10 @@ const OrderStatus = (props: OrderStatusProps) => {
         </View>
       </View>
     );
+  };
+  const onCancelOrder = () => {
+    disptch(order({type: REMOVEORDER, data: null}));
+    navigate('Home');
   };
   const DotView = () => {
     return <View style={styles.dotedViewStyle} />;
@@ -38,7 +47,11 @@ const OrderStatus = (props: OrderStatusProps) => {
         </View>
         <View style={styles.buttonWrappar}>
           <AppButton title={'Call Us'} buttonStyle={styles.button} />
-          <AppButton title={'Cancel Order'} buttonStyle={styles.button} />
+          <AppButton
+            title={'Cancel Order'}
+            buttonStyle={styles.button}
+            onPress={() => onCancelOrder()}
+          />
         </View>
       </CloudText>
       <CloudText style={styles.bottomCardWrappar}>
