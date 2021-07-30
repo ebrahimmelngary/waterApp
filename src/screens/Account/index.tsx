@@ -11,9 +11,13 @@ import {calcFont} from '../../common/styles';
 import {data} from './data';
 import {keyExtractor} from '../../utilities/key';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import {Log_Out} from '../../redux/actions/User';
+import AppButton from '../../component/atoms/AppButton';
 
 const Account = () => {
   const {navigate} = useNavigation();
+  const dispatch = useDispatch();
   return (
     <View style={styles.container}>
       <View style={styles.TopSectionStyle}>
@@ -38,12 +42,22 @@ const Account = () => {
         scrollEnabled={false}
         style={styles.listStyle}
         keyExtractor={keyExtractor}
+        ListFooterComponent={
+          <AppButton
+            title={'Logout'}
+            iconName={ICONS.cheveronLeft}
+            onPress={() => dispatch(Log_Out())}
+            buttonStyle={styles.logoutButton}
+          />
+        }
         data={data}
         renderItem={({item}) => (
           <IconWithText
             style={styles.iconWithText}
             item={item}
-            onPress={() => item.screen && navigate(item.screen)}
+            onPress={() => {
+              item.screen && navigate(item.screen);
+            }}
           />
         )}
       />

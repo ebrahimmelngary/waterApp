@@ -15,7 +15,7 @@ export default {
   signUpHere: 'Create New Account',
   login: 'Login',
   required: 'required',
-  minSixCharacter: 'your password must be more than 6 digits',
+  minSevenCharacter: 'your password must be more than 7 digits',
   invalidemail: 'invalid email',
   forgetPassword: 'Forget Password',
   newPassword: 'New Password',

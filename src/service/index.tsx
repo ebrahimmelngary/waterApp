@@ -1,19 +1,74 @@
 import React from 'react';
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
+import {gql} from '@apollo/client';
 
 // Initialize Apollo Client
 export const client = new ApolloClient({
   uri: 'https://water-app543.herokuapp.com/graphql',
   cache: new InMemoryCache(),
-  headers: {
-    Authorization: `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZmVmZTk1ZmFhMjk5MDAxNTMyNzg5MyIsImVtYWlsIjoibWdAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjI3NDI2MjY3fQ._WtxbTnaW1rVDRXG5aSLZY7n_nRw_W11efM6q6NwEZo'}`,
-  },
 });
 
 const GraphProvider = ({children}: any) => (
   <ApolloProvider client={client}>{children}</ApolloProvider>
 );
 export default GraphProvider;
+//getProfile
+export const getProfile = gql`
+  {
+    me {
+      email
+      name
+    }
+  }
+`;
 //Register
+interface registerParam {
+  email: string;
+  name?: string;
+  password: string;
+  role?: string;
+}
 
-//Login
+export const registerRequest = ({
+  email,
+  password,
+  name,
+  role,
+}: registerParam) => gql`
+
+
+  mutation{
+    register(registerInput: {
+    email: ${email}
+    password: ${password}
+    name: ${name}
+    role: ${role}
+    }){
+      email
+      name
+      }
+    }
+
+`;
+//Define Login mutation
+// interface loginParam {
+//   email: string;
+//   password: string;
+// }
+export const loginRequest = gql`
+  mutation login($email: String!, $password: String!) {
+    login(loginInput: {email: $email, password: $password})
+  }
+`;
+// Home Get Companies
+
+export const getCompanies = gql`
+  {
+    companies {
+      id
+      name
+      role
+      image: profilePicture
+    }
+  }
+`;

@@ -1,4 +1,4 @@
-import {useNavigation} from '@react-navigation/native';
+// import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
 import {View, Keyboard, TextInput} from 'react-native';
 import AppButton from '../../../component/atoms/AppButton';
@@ -10,14 +10,19 @@ import {Formik} from 'formik';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import styles from './styles';
-
+import {registerRequest} from '../../../service';
+type defaultValues = {
+  name: string;
+  email: string;
+  password: string;
+};
 const defaultValues = {
   name: '',
   email: '',
   password: '',
 };
 const Signup = () => {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
   const emailRef = React.useRef<TextInput | null>(null);
   const passwordRef = React.useRef<TextInput | null>(null);
   const validationSchema = Yup.object({
@@ -29,13 +34,22 @@ const Signup = () => {
       .required(Trans('required'))
       .min(6, Trans('minSixCharacter')),
   });
-  const onSubmit = async (values: any) => {
+  const onSubmit = async (values: defaultValues) => {
     Keyboard.dismiss();
-    navigation.navigate({
-      name: 'CodeVerification',
-      params: {values, fromRegister: true},
-    });
+    console.log(
+      'register>>>',
+      registerRequest({
+        email: values.email,
+        name: values.name,
+        password: values.password,
+      }),
+    );
+    // navigation.navigate({
+    //   name: 'CodeVerification',
+    //   params: {values, fromRegister: true},
+    // });
   };
+
   return (
     <KeyboardAwareScrollView
       showsVerticalScrollIndicator={false}

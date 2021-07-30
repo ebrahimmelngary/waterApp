@@ -34,7 +34,16 @@ const styles = StyleSheet.create({
     borderRadius: calcWidth(12),
     backgroundColor: COLORS.blueGrey,
   },
-
+  error: {
+    ...FONTS.TajawalExtraBold,
+    fontSize: calcFont(17),
+    width: '100%',
+    backgroundColor: COLORS.watermelon,
+    color: COLORS.blackRock,
+    textAlign: 'center',
+    marginVertical: calcWidth(20),
+    padding: calcFont(5),
+  },
   contentWrapper: {
     flex: 1,
     backgroundColor: COLORS.background,

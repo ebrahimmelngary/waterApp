@@ -11,11 +11,14 @@ import {Formik} from 'formik';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useDispatch} from 'react-redux';
 import {UserLogin} from '../../../redux/actions/User';
-const defaultValues = {
-  email: '',
-  password: '',
-};
+import {useMutation} from '@apollo/client';
+import {loginRequest} from '../../../service';
+
 const Login = () => {
+  const defaultValues = {
+    email: 'mg@gmail.com',
+    password: '369852147',
+  };
   const {navigate} = useNavigation();
   const dispatch = useDispatch();
   const validationSchema = Yup.object({
@@ -24,15 +27,27 @@ const Login = () => {
       .required(Trans('required')),
     password: Yup.string()
       .required(Trans('required'))
-      .min(6, Trans('minSixCharacter')),
+      .min(7, Trans('minSevenCharacter')),
   });
-
+  //login request
+  const [requestFunc, {data, loading, error}] = useMutation(loginRequest);
   const passwordRef = React.useRef<TextInput | null>(null);
 
-  const onSubmit = values => {
+  React.useEffect(() => dispatch(UserLogin(data?.login)), [data]);
+
+  const onSubmit = (values: {email: string; password: string}) => {
+    requestFunc({
+      variables: {
+        email: values.email,
+        password: values.password,
+      },
+    });
     Keyboard.dismiss();
-    dispatch(UserLogin(values, navigate));
   };
+  console.log('data', data);
+  console.log('loading', loading);
+  console.log('error', error?.message);
+
   return (
     <KeyboardAwareScrollView
       showsVerticalScrollIndicator={false}
@@ -72,7 +87,11 @@ const Login = () => {
                 onPress={() => navigate('ForgetPassword')}>
                 {Trans('forgetPass')}
               </AppText>
-              <AppButton title={'Login'} onPress={handleSubmit} />
+              <AppButton
+                title={'Login'}
+                onPress={handleSubmit}
+                loading={loading}
+              />
               <AppText
                 style={styles.signupTextStyle}
                 onPress={() => navigate('Signup')}>
