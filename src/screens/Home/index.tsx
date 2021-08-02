@@ -1,5 +1,3 @@
-/* eslint-disable react-native/no-color-literals */
-/* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
 import {View, FlatList, ActivityIndicator} from 'react-native';
 import AppText from '../../component/atoms/AppText';
@@ -17,6 +15,7 @@ import {getCompanies} from '../../service';
 const Home = () => {
   //make getRequest in GraphQl
   const {data, loading, error} = useQuery(getCompanies);
+
   const viewStyle = {
     row: 'row',
     virtcal: 'virtcal',
@@ -34,21 +33,21 @@ const Home = () => {
             style={[
               styles.iconCard,
               {
-                backgroundColor: view === 'row' ? COLORS.dodgerBlue : null,
+                backgroundColor: view === 'row' ? COLORS.dodgerBlue : undefined,
               },
             ]}>
             <AppIcon
               name={ICONS.row}
               color={view === 'row' ? COLORS.white : COLORS.gray}
               onPress={() => setViewStyle(viewStyle.row)}
-              size={view === 'row' ? calcWidth(15) : calcWidth(15)}
+              size={calcWidth(15)}
             />
           </View>
           <View
             style={[
               styles.iconCard,
               {
-                backgroundColor: view === 'row' ? null : COLORS.dodgerBlue,
+                backgroundColor: view === 'row' ? undefined : COLORS.dodgerBlue,
               },
             ]}>
             <AppIcon
@@ -78,7 +77,7 @@ const Home = () => {
               contentContainerStyle={styles.list}
               numColumns={view === 'row' ? 0 : 2}
               columnWrapperStyle={
-                view === 'row' ? null : {justifyContent: 'space-around'}
+                view === 'row' ? undefined : styles.columnWrapar
               }
               renderItem={({item}) => (
                 <ListCard

@@ -1,4 +1,3 @@
-/* eslint-disable no-dupe-keys */
 export default {
   english: 'english',
   home: 'Home',
@@ -8,6 +7,7 @@ export default {
   currentOrders: 'Current Orders',
   previousOrders: 'Previous Orders',
   signup: 'Signup',
+  SignupAs: 'Signup as',
   email: 'Your Email',
   password: 'Password',
   forgetPass: 'Forget Your Password',

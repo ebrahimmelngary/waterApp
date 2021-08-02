@@ -44,6 +44,9 @@ const styles = StyleSheet.create({
     marginVertical: calcWidth(20),
     padding: calcFont(5),
   },
+  columnWrapar: {
+    justifyContent: 'space-around',
+  },
   contentWrapper: {
     flex: 1,
     backgroundColor: COLORS.background,

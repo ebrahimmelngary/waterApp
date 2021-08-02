@@ -13,7 +13,7 @@ import {useDispatch} from 'react-redux';
 import {UserLogin} from '../../../redux/actions/User';
 import {useMutation} from '@apollo/client';
 import {loginRequest} from '../../../service';
-
+import Toast from 'react-native-toast-message';
 const Login = () => {
   const defaultValues = {
     email: 'mg@gmail.com',
@@ -33,7 +33,9 @@ const Login = () => {
   const [requestFunc, {data, loading, error}] = useMutation(loginRequest);
   const passwordRef = React.useRef<TextInput | null>(null);
 
-  React.useEffect(() => dispatch(UserLogin(data?.login)), [data]);
+  React.useEffect(() => {
+    dispatch(UserLogin(data?.login));
+  }, [data, error]);
 
   const onSubmit = (values: {email: string; password: string}) => {
     requestFunc({
@@ -41,12 +43,25 @@ const Login = () => {
         email: values.email,
         password: values.password,
       },
-    });
+    })
+      .then(() =>
+        Toast.show({
+          type: 'success',
+          text1: 'Login success',
+          text2: 'welcome to Water App',
+          position: 'bottom',
+        }),
+      )
+      .catch(err =>
+        Toast.show({
+          type: 'error',
+          text1: 'Some thing Wrong',
+          text2: err.toString(),
+          position: 'bottom',
+        }),
+      );
     Keyboard.dismiss();
   };
-  console.log('data', data);
-  console.log('loading', loading);
-  console.log('error', error?.message);
 
   return (
     <KeyboardAwareScrollView
