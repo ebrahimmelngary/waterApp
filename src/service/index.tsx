@@ -22,16 +22,9 @@ const GraphProvider = ({children}: any) => {
   return <ApolloProvider client={client}>{children}</ApolloProvider>;
 };
 export default GraphProvider;
-//getProfile
-export const getProfile = gql`
-  {
-    me {
-      email
-      name
-    }
-  }
-`;
-//Register
+
+//==>=>=>===>=>=>=>==>=>=>=>>==>=>=>=> Mutations ==>=>=>=>==>=>=>=>==>=>=>=>==>=>=>=>
+//==>=>=>=>==>=>=>=>Register==>=>=>=>==>=>=>=>
 
 export const registerRequest = gql`
   mutation register(
@@ -54,28 +47,15 @@ export const registerRequest = gql`
     }
   }
 `;
-//Define Login mutation
+//==>=>=>=>==>=>=>=>Define Login mutation==>=>=>=>==>=>=>=>
 
 export const loginRequest = gql`
   mutation login($email: String!, $password: String!) {
     login(loginInput: {email: $email, password: $password})
   }
 `;
-// Home Get Companies
 
-export const getCompanies = gql`
-  {
-    companies(filter: {role: "driver"}) {
-      id
-      name
-      role
-      isFavorite
-      image: profilePicture
-    }
-  }
-`;
-
-//==>=>=>=>CREATE ADDRESS==>=>=>=>
+//==>=>=>=>==>=>=>=>CREATE ADDRESS==>=>=>=>==>=>=>=>
 export const CREATE_ADDRESS = gql`
   mutation {
     createAddress(
@@ -93,26 +73,7 @@ export const CREATE_ADDRESS = gql`
     }
   }
 `;
-
-//==>=>=>=>Oreder Methods==>=>=>=>
-
-//==>=>=>=>Get orders==>=>=>=>
-
-export const GET_ORDERS = gql`
-  {
-    orders(pagination: {page: 1, perPage: 20}) {
-      id
-      status
-      waterAmount
-      shippingCost
-      total
-      paymentMethod
-      estimatedDeliveryDate
-    }
-  }
-`;
-
-//>>>>>>>>>>>>Create Order==>=>=>=>==>=>=>=>
+//==>=>=>=>==>=>=>=>Create Order==>=>=>=>==>=>=>=>
 
 export const CREATE_ORDER = gql`
   mutation createOrder(
@@ -134,21 +95,6 @@ export const CREATE_ORDER = gql`
   }
 `;
 
-//==>=>=>=>==>=>=>=>Get Order Status==>=>=>=>==>=>=>=>
-
-export const GET_ORDER_STATUS = gql`
-  {
-    order(id: "61096d00c994600015e2de6d") {
-      status
-      waterAmount
-      shippingCost
-      total
-      paymentMethod
-      estimatedDeliveryDate
-    }
-  }
-`;
-
 //==>=>=>=>==>=>=>=> Create Favorite ==>=>=>=>==>=>=>=>
 
 export const ADD_TO_FAVORITE = gql`
@@ -165,16 +111,50 @@ export const ADD_TO_FAVORITE = gql`
     }
   }
 `;
-//==>=>=>=>==>=>=>=> Get Favorite Request ==>=>=>=>==>=>=>=>
 
-export const GET_FAVORITE = gql`
+//==>=>=>=>==>=>=>=> remove from Favorite ==>=>=>=>==>=>=>=>
+export const REMOVE_FAV = gql`
+  mutation remove($companyId: String!) {
+    removeFavorite(id: $companyId)
+  }
+`;
+
+//==>=>=>=>==>=>==>=>=>=>==>=>=>=>=>=> Queries ==>=>=>=>==>=>=>=>==>=>=>=>==>=>=>=>==>=>=>=>==>=>=>=>
+//==>=>=>=>==>=>=>=> getProfile==>=>=>=>==>=>=>=>
+export const getProfile = gql`
   {
-    favorites {
-      id
+    me {
       email
       name
+    }
+  }
+`;
+
+//==>=>=>=>==>=>=>=>Home Get Companies==>=>=>=>==>=>=>=>
+
+export const GET_COMPANIES = gql`
+  {
+    companies {
+      id
+      name
       role
+      isFavorite
       profilePicture
+      rating
+    }
+  }
+`;
+
+//==>=>=>=>==>=>=>=> Get Company ByID ==>=>=>=>==>=>=>=>
+export const GET_COMPANY = gql`
+  query Company($id: String!) {
+    company(id: $id) {
+      id
+      name
+      role
+      isFavorite
+      profilePicture
+      rating
     }
   }
 `;
@@ -186,9 +166,49 @@ export const GET_ISFAVORITE = gql`
     isFavorite(id: $companyId)
   }
 `;
-//==>=>=>=>==>=>=>=> remove from Favorite ==>=>=>=>==>=>=>=>
-export const REMOVE_FAV = gql`
-  mutation remove($companyId: String!) {
-    removeFavorite(id: $companyId)
+//==>=>=>=>==>=>=>=> Get Favorite Request ==>=>=>=>==>=>=>=>
+
+export const GET_FAVORITE = gql`
+  {
+    favorites {
+      id
+      email
+      name
+      role
+      profilePicture
+      rating
+    }
+  }
+`;
+//==>=>=>=>==>=>=>=>Get Order Status==>=>=>=>==>=>=>=>
+
+export const GET_ORDER_STATUS = gql`
+  {
+    order(id: "61096d00c994600015e2de6d") {
+      status
+      waterAmount
+      shippingCost
+      total
+      paymentMethod
+      estimatedDeliveryDate
+    }
+  }
+`;
+//=>=>==>=>=>=>==>=>=>=>Get orders==>=>=>=>==>=>=>
+export const GET_ORDERS = gql`
+  {
+    orders(pagination: {page: 1, perPage: 20}) {
+      id
+      status
+      company {
+        name
+        id
+        profilePicture
+      }
+
+      total
+
+      estimatedDeliveryDate
+    }
   }
 `;

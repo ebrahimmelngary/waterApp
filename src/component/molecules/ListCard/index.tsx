@@ -8,6 +8,7 @@ import COLORS from '../../../common/colors';
 import AppText from '../../atoms/AppText';
 import {calcFont} from '../../../common/styles';
 import Touchable from '../../atoms/Touchable';
+import RatingStars from '../RatingStars';
 export type ListItem = {
   id?: any;
   name?: string;
@@ -16,6 +17,7 @@ export type ListItem = {
   review?: any;
   image?: string;
   isFavorite?: boolean;
+  rating: number;
 };
 interface ListCardProps {
   componentStyle?: string;
@@ -26,6 +28,8 @@ interface ListCardProps {
   isFavorite?: boolean;
   loading: boolean;
   vlaue?: ListItem;
+  onFinishRating: (vlaue: number) => void;
+  ratingDisabled: boolean;
 }
 
 const ListCard: React.FC<ListCardProps> = ({
@@ -37,6 +41,8 @@ const ListCard: React.FC<ListCardProps> = ({
   isFavorite,
   loading,
   vlaue,
+  ratingDisabled,
+  onFinishRating,
 }) => {
   interface IconTextProps {
     iconName?: string;
@@ -90,8 +96,11 @@ const ListCard: React.FC<ListCardProps> = ({
             <View style={styles.textIconWrapparVirtcalStyle}>
               <IconText title={item.shipping} iconName={ICONS.shipped} />
             </View>
-
-            <AppIcon name={ICONS.star} color={COLORS.gold} />
+            <RatingStars
+              defaultRating={item.rating}
+              isDisabled={ratingDisabled}
+              onFinishRating={value => onFinishRating(value)}
+            />
           </View>
         </View>
       </Touchable>
@@ -112,7 +121,11 @@ const ListCard: React.FC<ListCardProps> = ({
             {item.name}
           </AppText>
           <IconText title={item.location} iconName={ICONS.location} />
-          <AppIcon name={ICONS.star} color={COLORS.gold} size={calcFont(18)} />
+          <RatingStars
+            defaultRating={item.rating}
+            isDisabled={ratingDisabled}
+            onFinishRating={value => onFinishRating(value)}
+          />
         </View>
         <View style={styles.iconWrappar}>
           {loading && isItem ? (

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, FlatList, ActivityIndicator} from 'react-native';
+import {View, FlatList} from 'react-native';
 import AppText from '../../component/atoms/AppText';
 import ListCard, {ListItem} from '../../component/molecules/ListCard';
 import AppIcon from '../../component/atoms/AppIcon';
@@ -10,8 +10,18 @@ import {calcFont, calcWidth} from '../../common/styles';
 import {useNavigation} from '@react-navigation/native';
 import {keyExtractor} from '../../utilities/key';
 import {useMutation, useQuery} from '@apollo/client';
-import {ADD_TO_FAVORITE, getCompanies, REMOVE_FAV} from '../../service';
-
+import {ADD_TO_FAVORITE, GET_COMPANIES, REMOVE_FAV} from '../../service';
+import {Trans} from '../../i18n';
+import EmptyScreen from '../../component/template/EmptyScreen';
+import Toast from 'react-native-toast-message';
+import ReloadingScreen from '../../component/template/ReloadingScreen';
+interface HomeData {
+  companies: ListItem[];
+}
+export interface AddToFavorite {
+  customer: ListItem;
+  company: ListItem;
+}
 const Home = () => {
   const viewStyle = {
     row: 'row',
@@ -19,19 +29,34 @@ const Home = () => {
   };
 
   //make getRequest in GraphQl
-  const {data, loading, error, refetch} = useQuery(getCompanies);
-  const [remove] = useMutation(REMOVE_FAV);
-  const [addToFav] = useMutation(ADD_TO_FAVORITE);
+  const {data, loading, error, refetch} = useQuery<HomeData>(GET_COMPANIES);
+
+  const [remove] = useMutation<{removeFavorite: boolean}, {companyId: number}>(
+    REMOVE_FAV,
+  );
+  const [addToFav] = useMutation<
+    {createFavorite: AddToFavorite},
+    {companyId: number}
+  >(ADD_TO_FAVORITE);
   const [favLoading, setFavLoading] = React.useState<boolean>(false);
   const [favID, setFavID] = React.useState<ListItem>();
   const navigation = useNavigation();
   const [view, setViewStyle] = React.useState(viewStyle.row);
-  const checkAction = async (item: any) => {
+
+  const checkAction = async (item: ListItem) => {
     setFavLoading(true);
 
     if (item?.isFavorite) {
       await remove({variables: {companyId: item?.id}});
       refetch();
+      Toast.show({
+        type: 'success',
+        text1: 'Alert',
+        text2: `${item.name} removed from Favorite List`,
+        autoHide: true,
+        visibilityTime: 1000,
+        position: 'bottom',
+      });
       setFavLoading(false);
     } else {
       await addToFav({
@@ -40,13 +65,21 @@ const Home = () => {
         },
       });
       refetch();
+      Toast.show({
+        type: 'success',
+        text1: 'Alert',
+        text2: `${item.name} is add to Favorite List`,
+        autoHide: true,
+        visibilityTime: 1000,
+        position: 'bottom',
+      });
       setFavLoading(false);
     }
   };
 
   React.useEffect(() => {
-    const refetchData = navigation.addListener('focus', () => {
-      refetch();
+    const refetchData = navigation.addListener('focus', async () => {
+      await refetch();
     });
 
     return refetchData;
@@ -55,7 +88,7 @@ const Home = () => {
     return (
       <View style={styles.headerWrappar}>
         <View>
-          <AppText style={styles.headrText}>Water Company</AppText>
+          <AppText style={styles.headrText}>{Trans('watterCompanies')}</AppText>
         </View>
         <View style={styles.iconWrappar}>
           <View
@@ -90,7 +123,6 @@ const Home = () => {
       </View>
     );
   };
-
   return (
     <View style={styles.contentWrapper}>
       {!loading ? (
@@ -99,35 +131,67 @@ const Home = () => {
         ) : (
           <>
             <HeaderSection />
-            <FlatList
-              data={data?.companies}
-              showsVerticalScrollIndicator={false}
-              key={'pearntList+' + Math.random()}
-              contentContainerStyle={styles.list}
-              numColumns={view === 'row' ? 0 : 2}
-              columnWrapperStyle={
-                view === 'row' ? undefined : styles.columnWrapar
-              }
-              renderItem={({item}) => (
-                <ListCard
-                  item={item}
-                  isFavorite={item?.isFavorite}
-                  vlaue={favID}
-                  loading={favLoading}
-                  onPress={i => navigation.navigate('DetailsScreen', {item: i})}
-                  onPressIcon={i => {
-                    checkAction(i);
-                    setFavID(i);
-                  }}
-                  componentStyle={view}
-                />
-              )}
-              keyExtractor={keyExtractor}
-            />
+            {view === viewStyle.row ? (
+              <FlatList
+                data={data?.companies}
+                showsVerticalScrollIndicator={false}
+                key={'PearntRowList'}
+                contentContainerStyle={styles.list}
+                ListEmptyComponent={<EmptyScreen disabled />}
+                renderItem={({item}) => (
+                  <ListCard
+                    key={item?.id}
+                    item={item}
+                    ratingDisabled
+                    isFavorite={item?.isFavorite}
+                    vlaue={favID}
+                    loading={favLoading}
+                    onPress={i =>
+                      navigation.navigate('DetailsScreen', {item: i})
+                    }
+                    onPressIcon={i => {
+                      checkAction(i);
+                      setFavID(i);
+                    }}
+                    componentStyle={view}
+                  />
+                )}
+                keyExtractor={keyExtractor}
+              />
+            ) : (
+              <FlatList
+                data={data?.companies}
+                showsVerticalScrollIndicator={false}
+                key={'pearntList'}
+                contentContainerStyle={styles.list}
+                ListEmptyComponent={<EmptyScreen disabled />}
+                numColumns={2}
+                columnWrapperStyle={styles.columnWrapar}
+                renderItem={({item}) => (
+                  <ListCard
+                    item={item}
+                    key={item.id + item.id}
+                    ratingDisabled
+                    isFavorite={item?.isFavorite}
+                    vlaue={favID}
+                    loading={favLoading}
+                    onPress={i =>
+                      navigation.navigate('DetailsScreen', {item: i})
+                    }
+                    onPressIcon={i => {
+                      checkAction(i);
+                      setFavID(i);
+                    }}
+                    componentStyle={view}
+                  />
+                )}
+                keyExtractor={keyExtractor}
+              />
+            )}
           </>
         )
       ) : (
-        <ActivityIndicator />
+        <ReloadingScreen />
       )}
     </View>
   );

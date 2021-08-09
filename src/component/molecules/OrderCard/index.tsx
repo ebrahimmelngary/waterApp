@@ -8,22 +8,18 @@ import AppIcon from '../../atoms/AppIcon';
 import ICONS from '../../../common/icons';
 import COLORS from '../../../common/colors';
 import Touchable from '../../atoms/Touchable';
-export type OrderCardItem = {
-  id: any;
-  name: string;
-  time?: string;
-  amount: number;
-  state?: string;
-  shipping?: string;
-};
+import {Order} from '../../../screens/Orders';
+
 interface OrderCardProps {
-  onPress: (item: OrderCardItem) => void;
-  item: OrderCardItem;
+  onPress: (item: Order) => void;
+  item: Order;
+  disabled: boolean;
 }
 
-const OrderCard: React.FC<OrderCardProps> = ({onPress, item}) => {
+const OrderCard: React.FC<OrderCardProps> = ({onPress, item, disabled}) => {
   return (
     <Touchable
+      disabled={disabled}
       style={styles.container}
       activeOpacity={0.8}
       onPress={() => onPress(item)}>
@@ -32,28 +28,28 @@ const OrderCard: React.FC<OrderCardProps> = ({onPress, item}) => {
       </View>
       <View style={styles.textWrappar}>
         <AppText style={styles.titleStyle} numberOfLines={1}>
-          {item.name}
+          {item.company.name}
         </AppText>
-        {item.state ? (
+        {item.status ? (
           <View
             style={{
               ...styles.textIconWrappar,
               alignItems: 'flex-end',
             }}>
             <AppIcon name={ICONS.shipped} color={COLORS.blackCat} disabled />
-            <AppText style={styles.loctationStyle}>{item.shipping}</AppText>
+            <AppText style={styles.loctationStyle}>{item.shippingCost}</AppText>
           </View>
         ) : (
           <AppText style={styles.timeStyle}>
-            {item.time || new Date().toDateString()}
+            {item.estimatedDeliveryDate || new Date().toDateString()}
           </AppText>
         )}
       </View>
       <View style={styles.amountWrappar}>
-        <AppText style={styles.amountText}>{item.amount}</AppText>
-        {item.state && (
+        <AppText style={styles.amountText}>{item.total}</AppText>
+        {item.status && (
           <View style={styles.stateTextView}>
-            <AppText style={styles.stateText}>{item.state}</AppText>
+            <AppText style={styles.stateText}>{item.status}</AppText>
           </View>
         )}
       </View>

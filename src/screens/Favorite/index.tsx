@@ -8,6 +8,7 @@ import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
 import {ActivityIndicator, FlatList, View} from 'react-native';
 import ListCard, {ListItem} from '../../component/molecules/ListCard';
+import EmptyScreen from '../../component/template/EmptyScreen';
 import {GET_FAVORITE, REMOVE_FAV} from '../../service';
 import {keyExtractor} from '../../utilities/key';
 import styles from './styles';
@@ -41,6 +42,7 @@ const Favorite = () => {
       <ActivityIndicator />
     </View>;
   }
+  console.log(data);
   return (
     <FlatList
       numColumns={2}
@@ -49,6 +51,7 @@ const Favorite = () => {
       showsVerticalScrollIndicator={false}
       columnWrapperStyle={styles.listColumnStyle}
       data={data?.favorites}
+      ListEmptyComponent={<EmptyScreen onPressIcon={() => refetch()} />}
       renderItem={({item}) => (
         <ListCard
           vlaue={isRemovedID}

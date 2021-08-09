@@ -1,6 +1,6 @@
 import {useNavigation, useRoute} from '@react-navigation/native';
 import * as React from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, ActivityIndicator} from 'react-native';
 import AppIcon from '../../component/atoms/AppIcon';
 import AppText from '../../component/atoms/AppText';
 import AppButton from '../../component/atoms/AppButton';
@@ -8,61 +8,127 @@ import ICONS from '../../common/icons';
 import styles from './styles';
 import COLORS from '../../common/colors';
 import CloudText from '../../component/atoms/CloudText';
-import ReviewList, {Reviewitem} from '../../component/template/ReviewList';
+import ReviewList from '../../component/template/ReviewList';
 import {Trans} from '../../i18n';
 import Counter from '../../component/molecules/Counter';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-
-interface DetaolsItem {
-  name: string;
-  id: number;
-  image: string;
-  review: Reviewitem;
+import {useMutation, useQuery} from '@apollo/client';
+import {
+  ADD_TO_FAVORITE,
+  GET_COMPANY,
+  GET_ISFAVORITE,
+  REMOVE_FAV,
+} from '../../service';
+import {AddToFavorite} from '../Home';
+import RatingStars from '../../component/molecules/RatingStars';
+import EmptyScreen from '../../component/template/EmptyScreen';
+import IMAGES from '../../common/images';
+import ReloadingScreen from '../../component/template/ReloadingScreen';
+interface Company {
+  id: String;
+  email: String;
+  name: String;
+  role: String;
+  profilePicture: String;
+  isFavorite: Boolean;
+  rating: number;
 }
 
 const DetailsScreen = () => {
+  const {item} = useRoute<any>().params;
+
   const {setOptions, navigate} = useNavigation();
   React.useLayoutEffect(() => {
+    refetchIsFavRequest();
     setOptions({
       title: item.name,
     });
   }, []);
-  const [amount, setAmount] = React.useState(1);
-  const [fav, setFav] = React.useState(false);
-  const {item} = useRoute<Array<DetaolsItem>>().params;
-
-  const increase = React.useCallback(
-    () => setAmount(prev => prev + 1),
-    [amount],
+  //Get Company details
+  const {data, loading, error, refetch} = useQuery<{company: Company}>(
+    GET_COMPANY,
+    {
+      variables: {id: item?.id},
+    },
   );
+  const [favLoading, setFavLoading] = React.useState<boolean>(false);
+  // Check if Company isFavorite
+  const {data: isFavorite, refetch: refetchIsFavRequest} = useQuery(
+    GET_ISFAVORITE,
+    {variables: {companyId: item.id}},
+  );
+  // Remove Company from Favorite list
+  const [remove] = useMutation<{removeFavorite: boolean}, {companyId: any}>(
+    REMOVE_FAV,
+  );
+  // Add Company to Favorite list
+  const [addToFav] = useMutation<
+    {createFavorite: AddToFavorite},
+    {companyId: any}
+  >(ADD_TO_FAVORITE);
+  // checkAction switch bettwen Remove and Add Request
+  const checkAction = async () => {
+    setFavLoading(true);
+
+    if (isFavorite?.isFavorite) {
+      await remove({variables: {companyId: data?.company?.id}});
+      refetchIsFavRequest();
+      setFavLoading(false);
+    } else {
+      await addToFav({
+        variables: {
+          companyId: item?.id,
+        },
+      });
+      refetchIsFavRequest();
+      setFavLoading(false);
+    }
+  };
+
+  const [amount, setAmount] = React.useState(1);
+  const increase = () => setAmount(prev => prev + 1);
+
   const decrease = () => {
     if (amount > 1) {
       setAmount(prev => prev - 1);
     }
   };
-
-  console.log(item.reviews);
   const TotalPrice = amount * 10;
+  if (loading) {
+    return <ReloadingScreen />;
+  }
+  if (error) {
+    <EmptyScreen onPressIcon={() => refetch()} message={error.message} />;
+  }
   return (
     <KeyboardAwareScrollView
       key={'detailsScreenPearnt'}
       showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
         <View style={styles.headerWrappar}>
-          <Image source={item.image} style={styles.imageStyle} />
-          <AppIcon name={ICONS.star} size={20} color={COLORS.gold} />
+          <Image
+            source={data?.company?.profilePicture || IMAGES.test}
+            style={styles.imageStyle}
+          />
+          <RatingStars defaultRating={data?.company.rating} isDisabled />
           <CloudText
             style={styles.cloudStyle}
             titleStyle={styles.cloudNameStyle}
-            tiltle={item.name}
+            tiltle={data?.company?.name}
           />
           <View style={styles.headerIconsWarppar}>
-            <AppIcon
-              name={ICONS.heart}
-              color={fav ? COLORS.watermelon : COLORS.Silver}
-              style={styles.headerIconsCard}
-              onPress={() => setFav(prev => !prev)}
-            />
+            {favLoading ? (
+              <ActivityIndicator style={styles.headerIconsCard} />
+            ) : (
+              <AppIcon
+                name={ICONS.heart}
+                color={
+                  isFavorite?.isFavorite ? COLORS.watermelon : COLORS.Silver
+                }
+                style={styles.headerIconsCard}
+                onPress={() => checkAction()}
+              />
+            )}
             <AppIcon
               name={ICONS.mail}
               color={COLORS.Silver}

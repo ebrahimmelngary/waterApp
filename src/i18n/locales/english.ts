@@ -30,4 +30,6 @@ export default {
   cancel: 'Cancel',
   checkOut: 'Check Out',
   change: 'Change',
+  watterCompanies: 'Watter Companies',
+  noThingAvalible: 'No Thing Avalible',
 };

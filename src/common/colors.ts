@@ -4,7 +4,7 @@ const COLORS = {
   blackCat: '#3E3E3E',
   blackRock: '#200E32',
   white: '#fff',
-  background: '#F2F6FC',
+  background: '#ebfaff',
   dodgerBlue: '#3FD0FD',
   blueGrey: '#9DA8C3',
   mediumGrey: '#818181',
