@@ -4,35 +4,10 @@ import FONTS from '../../common/fonts';
 import {calcFont, calcHeight, calcWidth} from '../../common/styles';
 
 const styles = StyleSheet.create({
-  headerWrappar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: calcWidth(17),
-    paddingVertical: calcHeight(10),
-    borderRadius: calcWidth(16),
-  },
-  iconWrappar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
   list: {
     backgroundColor: COLORS.background,
-    padding: calcHeight(15),
+    padding: calcWidth(12.5),
     marginBottom: calcHeight(10),
-  },
-  headrText: {
-    ...FONTS.TajawalExtraBold,
-    fontSize: calcFont(25),
-    color: COLORS.blackRock,
-  },
-  iconCard: {
-    width: calcWidth(45),
-    height: calcWidth(45),
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: calcWidth(12),
-    backgroundColor: COLORS.blueGrey,
   },
   error: {
     ...FONTS.TajawalExtraBold,
@@ -45,7 +20,10 @@ const styles = StyleSheet.create({
     padding: calcFont(5),
   },
   columnWrapar: {
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
+  },
+  listVirtcalCard: {
+    marginHorizontal: calcWidth(10),
   },
   contentWrapper: {
     flex: 1,

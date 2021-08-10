@@ -42,7 +42,6 @@ const Favorite = () => {
       <ActivityIndicator />
     </View>;
   }
-  console.log(data);
   return (
     <FlatList
       numColumns={2}
@@ -56,6 +55,7 @@ const Favorite = () => {
         <ListCard
           vlaue={isRemovedID}
           loading={isLoading}
+          style={styles.listVirtcalCard}
           item={item}
           componentStyle={'virtcal'}
           remove

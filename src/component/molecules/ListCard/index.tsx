@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Image, ActivityIndicator} from 'react-native';
+import {View, Image, ActivityIndicator, ViewStyle} from 'react-native';
 import IMAGES from '../../../common/images';
 import AppIcon from '../../atoms/AppIcon';
 import ICONS from '../../../common/icons';
@@ -20,6 +20,7 @@ export type ListItem = {
   rating: number;
 };
 interface ListCardProps {
+  style: ViewStyle;
   componentStyle?: string;
   onPress: (item: ListItem) => void;
   item: ListItem;
@@ -43,6 +44,7 @@ const ListCard: React.FC<ListCardProps> = ({
   vlaue,
   ratingDisabled,
   onFinishRating,
+  style,
 }) => {
   interface IconTextProps {
     iconName?: string;
@@ -66,7 +68,7 @@ const ListCard: React.FC<ListCardProps> = ({
   const VirtcalComponant = () => {
     return (
       <Touchable
-        style={componentStyle === 'virtcal' && styles.virtcalStyleWrappar}
+        style={[styles.virtcalStyleWrappar, style]}
         onPress={() => onPress(item)}>
         <View style={styles.virtcalView}>
           <View style={styles.virtcalImageWrappar}>

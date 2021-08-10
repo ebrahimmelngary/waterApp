@@ -13,14 +13,14 @@ import {REMOVEORDER} from '../../redux/actions/actionTypes';
 const OrderStatus = () => {
   const disptch = useDispatch();
   const {navigate} = useNavigation();
-  const {item} = useRoute().params;
-  const RowCard = ({item}) => {
+  const {item: itemData} = useRoute().params;
+  const RowCard = ({value}) => {
     return (
       <View style={styles.rowCardWrappar}>
-        <View style={{...styles.squareStyle, backgroundColor: item.color}} />
+        <View style={{...styles.squareStyle, backgroundColor: value.color}} />
         <View>
-          <AppText style={styles.rowTitleStyle}>{item.title}</AppText>
-          <AppText style={styles.rowLabelStyle}>{item.label}</AppText>
+          <AppText style={styles.rowTitleStyle}>{value.title}</AppText>
+          <AppText style={styles.rowLabelStyle}>{value.label}</AppText>
         </View>
       </View>
     );
@@ -36,9 +36,9 @@ const OrderStatus = () => {
     <View style={styles.container}>
       <CloudText style={styles.headerCardStyle}>
         <View style={styles.profileImageWrappar}>
-          <Image source={item.image} style={styles.imageStyle} />
+          <Image source={itemData.image} style={styles.imageStyle} />
           <View style={styles.cardTextWrappar}>
-            <AppText style={styles.profileTitleStyle}>{item.name}</AppText>
+            <AppText style={styles.profileTitleStyle}>{itemData.name}</AppText>
             <AppText style={styles.timeDileverStyle}>get it monday</AppText>
           </View>
         </View>
@@ -62,7 +62,7 @@ const OrderStatus = () => {
               <DotView />
             </View>
           )}
-          renderItem={({item}) => <RowCard item={item} />}
+          renderItem={({item}) => <RowCard value={item} />}
         />
       </CloudText>
     </View>

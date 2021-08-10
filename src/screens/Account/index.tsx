@@ -20,10 +20,8 @@ import {getProfile} from '../../service';
 const Account = () => {
   const {navigate} = useNavigation();
   const dispatch = useDispatch();
-  const {data, loading, error} = useQuery(getProfile);
+  const {data} = useQuery(getProfile);
 
-  console.log('loading', loading);
-  console.log('error', error);
   return (
     <View style={styles.container}>
       <View style={styles.TopSectionStyle}>

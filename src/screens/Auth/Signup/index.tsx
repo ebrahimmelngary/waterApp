@@ -30,10 +30,7 @@ const Signup = () => {
     {id: 0, label: 'Driver', value: 'driver'},
     {id: 1, label: 'Customer', value: 'customer'},
   ];
-  const [registerInput, {data, error, loading}] = useMutation(registerRequest);
-  console.debug('data', data);
-  console.log('error', error?.message);
-  console.log('loading', loading);
+  const [registerInput, {loading}] = useMutation(registerRequest);
   const [role, setRole] = React.useState(roles[1]);
   const emailRef = React.useRef<TextInput | null>(null);
   const passwordRef = React.useRef<TextInput | null>(null);

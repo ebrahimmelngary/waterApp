@@ -6,7 +6,6 @@ const INITIALSTATE = {
 };
 
 export default (state = INITIALSTATE, action: any) => {
-  console.log('action.valuesfromReducer', action.values);
   switch (action.type) {
     case USER_LOGIN:
       return {

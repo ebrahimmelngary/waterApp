@@ -1,6 +1,6 @@
 import {useQuery} from '@apollo/client';
 import * as React from 'react';
-import {FlatList, StyleSheet, Alert} from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
 import {Order} from '..';
 import COLORS from '../../../common/colors';
 import {calcHeight, calcWidth} from '../../../common/styles';
@@ -40,8 +40,9 @@ const PrevOrders = () => {
       style={styles.listStyle}
       showsVerticalScrollIndicator={false}
       keyExtractor={keyExtractor}
+      ListEmptyComponent={<EmptyScreen onPressIcon={() => refetch()} />}
       renderItem={({item}) => (
-        <OrderCard item={item} onPress={() => Alert.alert('redable')} />
+        <OrderCard item={item} onPress={v => console.log(v)} />
       )}
     />
   );

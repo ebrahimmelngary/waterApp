@@ -1,20 +1,15 @@
 import * as React from 'react';
 import {View, FlatList} from 'react-native';
-import AppText from '../../component/atoms/AppText';
 import ListCard, {ListItem} from '../../component/molecules/ListCard';
-import AppIcon from '../../component/atoms/AppIcon';
 import styles from './styles';
-import ICONS from '../../common/icons';
-import COLORS from '../../common/colors';
-import {calcFont, calcWidth} from '../../common/styles';
 import {useNavigation} from '@react-navigation/native';
 import {keyExtractor} from '../../utilities/key';
 import {useMutation, useQuery} from '@apollo/client';
 import {ADD_TO_FAVORITE, GET_COMPANIES, REMOVE_FAV} from '../../service';
-import {Trans} from '../../i18n';
 import EmptyScreen from '../../component/template/EmptyScreen';
 import Toast from 'react-native-toast-message';
 import ReloadingScreen from '../../component/template/ReloadingScreen';
+import HeaderSection from '../../component/template/HeaderSection';
 interface HomeData {
   companies: ListItem[];
 }
@@ -27,10 +22,7 @@ const Home = () => {
     row: 'row',
     virtcal: 'virtcal',
   };
-
-  //make getRequest in GraphQl
   const {data, loading, error, refetch} = useQuery<HomeData>(GET_COMPANIES);
-
   const [remove] = useMutation<{removeFavorite: boolean}, {companyId: number}>(
     REMOVE_FAV,
   );
@@ -42,7 +34,6 @@ const Home = () => {
   const [favID, setFavID] = React.useState<ListItem>();
   const navigation = useNavigation();
   const [view, setViewStyle] = React.useState(viewStyle.row);
-
   const checkAction = async (item: ListItem) => {
     setFavLoading(true);
 
@@ -84,53 +75,23 @@ const Home = () => {
 
     return refetchData;
   }, [navigation]);
-  const HeaderSection = () => {
-    return (
-      <View style={styles.headerWrappar}>
-        <View>
-          <AppText style={styles.headrText}>{Trans('watterCompanies')}</AppText>
-        </View>
-        <View style={styles.iconWrappar}>
-          <View
-            style={[
-              styles.iconCard,
-              {
-                backgroundColor: view === 'row' ? COLORS.dodgerBlue : undefined,
-              },
-            ]}>
-            <AppIcon
-              name={ICONS.row}
-              color={view === 'row' ? COLORS.white : COLORS.gray}
-              onPress={() => setViewStyle(viewStyle.row)}
-              size={calcWidth(15)}
-            />
-          </View>
-          <View
-            style={[
-              styles.iconCard,
-              {
-                backgroundColor: view === 'row' ? undefined : COLORS.dodgerBlue,
-              },
-            ]}>
-            <AppIcon
-              name={ICONS.virtcal}
-              color={view === 'row' ? COLORS.gray : COLORS.white}
-              onPress={() => setViewStyle(viewStyle.virtcal)}
-              size={view === 'row' ? calcFont(14) : calcFont(19)}
-            />
-          </View>
-        </View>
-      </View>
-    );
-  };
+
   return (
     <View style={styles.contentWrapper}>
       {!loading ? (
         error ? (
-          <AppText style={styles.error}>{error?.message}</AppText>
+          <EmptyScreen
+            message={'Your Network is disconnected'}
+            onPressIcon={() => refetch()}
+          />
         ) : (
           <>
-            <HeaderSection />
+            <HeaderSection
+              viewStatus={view}
+              viewStyle={viewStyle}
+              onPressRow={() => setViewStyle(viewStyle.row)}
+              onPressVirtcal={() => setViewStyle(viewStyle.virtcal)}
+            />
             {view === viewStyle.row ? (
               <FlatList
                 data={data?.companies}
@@ -175,6 +136,7 @@ const Home = () => {
                     isFavorite={item?.isFavorite}
                     vlaue={favID}
                     loading={favLoading}
+                    style={styles.listVirtcalCard}
                     onPress={i =>
                       navigation.navigate('DetailsScreen', {item: i})
                     }
