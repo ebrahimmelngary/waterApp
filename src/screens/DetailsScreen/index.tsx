@@ -16,6 +16,7 @@ import {useMutation, useQuery} from '@apollo/client';
 import {
   ADD_TO_FAVORITE,
   GET_COMPANY,
+  Get_CompanyReviews,
   GET_ISFAVORITE,
   REMOVE_FAV,
 } from '../../service';
@@ -24,15 +25,23 @@ import RatingStars from '../../component/molecules/RatingStars';
 import EmptyScreen from '../../component/template/EmptyScreen';
 import IMAGES from '../../common/images';
 import ReloadingScreen from '../../component/template/ReloadingScreen';
+import {User} from '../Orders';
 interface Company {
-  id: String;
-  email: String;
-  name: String;
-  role: String;
-  profilePicture: String;
+  id: string;
+  email: string;
+  name: string;
+  role: string;
+  profilePicture: string;
   isFavorite: Boolean;
   rating: number;
 }
+export type CompanyReview = {
+  id: string;
+  message: string;
+  rate: number;
+  customer: User;
+  company: Company;
+};
 
 const DetailsScreen = () => {
   const {item} = useRoute<any>().params;
@@ -45,12 +54,20 @@ const DetailsScreen = () => {
     });
   }, []);
   //Get Company details
-  const {data, loading, error, refetch} = useQuery<{company: Company}>(
-    GET_COMPANY,
-    {
-      variables: {id: item?.id},
-    },
-  );
+  const {data, loading, error, refetch} = useQuery<{
+    company: Company;
+  }>(GET_COMPANY, {
+    variables: {id: item?.id},
+  });
+  const {
+    data: reviews,
+    // loading: revLoading,
+    // error: revError,
+    // refetch: reCallReview,
+  } = useQuery<{companyReviews: CompanyReview[]}>(Get_CompanyReviews, {
+    variables: {id: item?.id},
+  });
+
   const [favLoading, setFavLoading] = React.useState<boolean>(false);
   // Check if Company isFavorite
   const {data: isFavorite, refetch: refetchIsFavRequest} = useQuery(
@@ -110,7 +127,7 @@ const DetailsScreen = () => {
             source={data?.company?.profilePicture || IMAGES.test}
             style={styles.imageStyle}
           />
-          <RatingStars defaultRating={data?.company.rating} isDisabled />
+          <RatingStars defaultRating={data?.company?.rating} isDisabled />
           <CloudText
             style={styles.cloudStyle}
             titleStyle={styles.cloudNameStyle}
@@ -169,14 +186,15 @@ const DetailsScreen = () => {
         <View style={styles.reviewWrapparStyle}>
           <View style={styles.reviewListHeader}>
             <AppText style={styles.commentsTitle}>
-              {Trans('comments') + ` ( ${item?.review?.length || 0} )`}
+              {Trans('comments') +
+                ` ( ${reviews?.companyReviews.length || 0} )`}
             </AppText>
             {item?.review?.length > 3 && (
               <AppText style={styles.seeAllText}>{Trans('seeAll')}</AppText>
             )}
           </View>
-          {item?.review?.length && (
-            <ReviewList data={item.review.slice(0, 3)} />
+          {reviews?.companyReviews && (
+            <ReviewList data={reviews?.companyReviews.slice(0, 3)} />
           )}
         </View>
         <View style={styles.quantityWrapparStyle}>

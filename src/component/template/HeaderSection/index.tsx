@@ -12,6 +12,7 @@ interface HeaderSectionProps {
   viewStatus: string;
   onPressRow: () => void;
   onPressVirtcal: () => void;
+  onPressFilter: () => void;
   viewStyle: {
     row?: string;
     virtcal?: string;
@@ -20,6 +21,7 @@ interface HeaderSectionProps {
 const HeaderSection = ({
   viewStatus,
   onPressRow,
+  onPressFilter,
   onPressVirtcal,
   viewStyle,
 }: HeaderSectionProps) => {
@@ -59,6 +61,12 @@ const HeaderSection = ({
             size={viewStatus === viewStyle.row ? calcFont(14) : calcFont(19)}
           />
         </View>
+        <AppIcon
+          name={ICONS.filter}
+          size={calcFont(19)}
+          color={COLORS.silverSand}
+          onPress={() => onPressFilter()}
+        />
       </View>
     </View>
   );

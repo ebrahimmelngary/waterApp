@@ -22,6 +22,7 @@ const COLORS = {
   whiteGray: '#F2F5FC',
   gray8D: '#8D8D8D',
   zircon: '#F8FAFF',
+  greenTeal: '#71D159',
 };
 
 export default COLORS;

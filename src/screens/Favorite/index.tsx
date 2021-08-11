@@ -1,21 +1,25 @@
 import {
   MutationFunctionOptions,
+  NetworkStatus,
   OperationVariables,
   useMutation,
   useQuery,
 } from '@apollo/client';
 import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
-import {ActivityIndicator, FlatList, View} from 'react-native';
+import {ActivityIndicator, FlatList} from 'react-native';
 import ListCard, {ListItem} from '../../component/molecules/ListCard';
 import EmptyScreen from '../../component/template/EmptyScreen';
+import ReloadingScreen from '../../component/template/ReloadingScreen';
 import {GET_FAVORITE, REMOVE_FAV} from '../../service';
 import {keyExtractor} from '../../utilities/key';
 import styles from './styles';
 
 const Favorite = () => {
   const {navigate, addListener} = useNavigation();
-  const {data, loading, refetch} = useQuery(GET_FAVORITE);
+  const {data, loading, refetch, networkStatus} = useQuery(GET_FAVORITE, {
+    notifyOnNetworkStatusChange: true,
+  });
   const [isLoading, setIsLoading] = React.useState(false);
   const [isRemovedID, setIsRmovedId] = React.useState<ListItem>();
   const [remove] = useMutation(REMOVE_FAV);
@@ -38,9 +42,7 @@ const Favorite = () => {
     refetch();
   }, [data]);
   if (loading) {
-    <View style={styles.listStyle}>
-      <ActivityIndicator />
-    </View>;
+    <ReloadingScreen />;
   }
   return (
     <FlatList
@@ -50,6 +52,9 @@ const Favorite = () => {
       showsVerticalScrollIndicator={false}
       columnWrapperStyle={styles.listColumnStyle}
       data={data?.favorites}
+      ListHeaderComponent={
+        networkStatus === NetworkStatus.refetch ? <ActivityIndicator /> : null
+      }
       ListEmptyComponent={<EmptyScreen onPressIcon={() => refetch()} />}
       renderItem={({item}) => (
         <ListCard

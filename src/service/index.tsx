@@ -212,3 +212,16 @@ export const GET_ORDERS = gql`
     }
   }
 `;
+//=>=>==>=>=>=>==>=>=>=>Get Company Reviews==>=>=>=>==>=>=>
+export const Get_CompanyReviews = gql`
+  query companyReviews($id: String!) {
+    companyReviews(id: $id, pagination: {perPage: 20, page: 1}) {
+      id
+      message
+      customer {
+        id
+        name
+      }
+    }
+  }
+`;

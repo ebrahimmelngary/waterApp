@@ -1,15 +1,16 @@
 import * as React from 'react';
-import {View, FlatList} from 'react-native';
+import {View, FlatList, ActivityIndicator} from 'react-native';
 import ListCard, {ListItem} from '../../component/molecules/ListCard';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {keyExtractor} from '../../utilities/key';
-import {useMutation, useQuery} from '@apollo/client';
+import {NetworkStatus, useMutation, useQuery} from '@apollo/client';
 import {ADD_TO_FAVORITE, GET_COMPANIES, REMOVE_FAV} from '../../service';
 import EmptyScreen from '../../component/template/EmptyScreen';
 import Toast from 'react-native-toast-message';
 import ReloadingScreen from '../../component/template/ReloadingScreen';
 import HeaderSection from '../../component/template/HeaderSection';
+import FilterModal, {filterItem} from '../../component/template/FilterModal';
 interface HomeData {
   companies: ListItem[];
 }
@@ -22,7 +23,12 @@ const Home = () => {
     row: 'row',
     virtcal: 'virtcal',
   };
-  const {data, loading, error, refetch} = useQuery<HomeData>(GET_COMPANIES);
+  const {data, loading, error, refetch, networkStatus} = useQuery<HomeData>(
+    GET_COMPANIES,
+    {
+      notifyOnNetworkStatusChange: true,
+    },
+  );
   const [remove] = useMutation<{removeFavorite: boolean}, {companyId: number}>(
     REMOVE_FAV,
   );
@@ -34,6 +40,8 @@ const Home = () => {
   const [favID, setFavID] = React.useState<ListItem>();
   const navigation = useNavigation();
   const [view, setViewStyle] = React.useState(viewStyle.row);
+  const [isVisible, setisVisible] = React.useState(false);
+  const [selected, setSelected] = React.useState<filterItem>();
   const checkAction = async (item: ListItem) => {
     setFavLoading(true);
 
@@ -91,6 +99,7 @@ const Home = () => {
               viewStyle={viewStyle}
               onPressRow={() => setViewStyle(viewStyle.row)}
               onPressVirtcal={() => setViewStyle(viewStyle.virtcal)}
+              onPressFilter={() => setisVisible(true)}
             />
             {view === viewStyle.row ? (
               <FlatList
@@ -98,6 +107,11 @@ const Home = () => {
                 showsVerticalScrollIndicator={false}
                 key={'PearntRowList'}
                 contentContainerStyle={styles.list}
+                ListHeaderComponent={
+                  networkStatus === NetworkStatus.refetch ? (
+                    <ActivityIndicator />
+                  ) : null
+                }
                 ListEmptyComponent={<EmptyScreen disabled />}
                 renderItem={({item}) => (
                   <ListCard
@@ -150,6 +164,18 @@ const Home = () => {
                 keyExtractor={keyExtractor}
               />
             )}
+            <FilterModal
+              onSelectCity={item => setSelected(item)}
+              isSelected={selected}
+              onPressDone={() => setisVisible(false)}
+              isFilterVisible={isVisible}
+              closeModal={() => setisVisible(false)}
+              data={[
+                {city: 'Maka', id: 1},
+                {city: 'Madina', id: 2},
+                {city: 'Reiyad', id: 3},
+              ]}
+            />
           </>
         )
       ) : (

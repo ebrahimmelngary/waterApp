@@ -1,30 +1,36 @@
-/* eslint-disable react/prop-types */
 import * as React from 'react';
 import {FlatList, View, Image} from 'react-native';
 import AppText from '../../atoms/AppText';
 import styles from './styles';
 import {KEY_EXTRACTOR} from '../../../common/styles';
+import {CompanyReview} from '../../../screens/DetailsScreen';
+import IMAGES from '../../../common/images';
 
-export type Reviewitem = {
-  name: string;
-  time: string;
-  comment: string;
-  image: string;
-};
 interface ReviewListProps {
-  data: Array<Reviewitem>;
+  data: CompanyReview[];
 }
 const ReviewList = ({data}: ReviewListProps) => {
-  const ReviewCard = ({item}) => {
+  const ReviewCard = (item: {item: CompanyReview}) => {
     return (
       <View style={styles.cardWrappar}>
         <View style={styles.rowViewStyle}>
-          <Image source={item.image} style={styles.imageStyle} />
-          <AppText style={styles.nameStyle}>{item.name}</AppText>
-          <AppText style={styles.timeStyle}>{item.time}</AppText>
+          <Image
+            source={
+              item?.item?.customer.profilePicture
+                ? {uri: item?.item?.customer?.profilePicture}
+                : IMAGES.test
+            }
+            style={styles.imageStyle}
+          />
+          <AppText style={styles.nameStyle}>
+            {item?.item?.customer?.name}
+          </AppText>
+          <AppText style={styles.timeStyle}>{item?.item?.rate}</AppText>
         </View>
         <View style={styles.commentWrapparStyle}>
-          <AppText style={styles.commentTextStyle}>{item.comment}</AppText>
+          <AppText style={styles.commentTextStyle}>
+            {item?.item?.message}
+          </AppText>
         </View>
       </View>
     );
