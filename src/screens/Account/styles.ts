@@ -50,6 +50,11 @@ const styles = StyleSheet.create({
     padding: calcWidth(14),
     marginTop: calcHeight(10),
   },
+  logoutButton: {
+    width: '50%',
+    alignSelf: 'center',
+    marginVertical: calcHeight(15),
+  },
 });
 
 export default styles;

@@ -8,12 +8,20 @@ import IMAGES from '../../common/images';
 import styles from './styles';
 import AppText from '../../component/atoms/AppText';
 import {calcFont} from '../../common/styles';
-import {data} from './data';
+import {staticData} from './data';
 import {keyExtractor} from '../../utilities/key';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import {Log_Out} from '../../redux/actions/User';
+import AppButton from '../../component/atoms/AppButton';
+import {useQuery} from '@apollo/client';
+import {getProfile} from '../../service';
 
 const Account = () => {
   const {navigate} = useNavigation();
+  const dispatch = useDispatch();
+  const {data} = useQuery(getProfile);
+
   return (
     <View style={styles.container}>
       <View style={styles.TopSectionStyle}>
@@ -25,25 +33,35 @@ const Account = () => {
           />
         </View>
         <View style={styles.titleWrapparStyle}>
-          <AppText style={styles.titleStyle}>Mostafa Mohamed</AppText>
+          <AppText style={styles.titleStyle}>{data?.me?.name}</AppText>
           <AppIcon
             name={ICONS.edit}
             color={COLORS.blackCat}
             size={calcFont(18)}
           />
         </View>
-        <AppText>@mail.com</AppText>
+        <AppText> {data?.me?.email}</AppText>
       </View>
       <FlatList
         scrollEnabled={false}
         style={styles.listStyle}
         keyExtractor={keyExtractor}
-        data={data}
+        ListFooterComponent={
+          <AppButton
+            title={'Logout'}
+            iconName={ICONS.cheveronLeft}
+            onPress={() => dispatch(Log_Out())}
+            buttonStyle={styles.logoutButton}
+          />
+        }
+        data={staticData}
         renderItem={({item}) => (
           <IconWithText
             style={styles.iconWithText}
             item={item}
-            onPress={() => item.screen && navigate(item.screen)}
+            onPress={() => {
+              item.screen && navigate(item.screen);
+            }}
           />
         )}
       />

@@ -1,4 +1,3 @@
-/* eslint-disable no-dupe-keys */
 export default {
   english: 'english',
   home: 'Home',
@@ -8,6 +7,7 @@ export default {
   currentOrders: 'Current Orders',
   previousOrders: 'Previous Orders',
   signup: 'Signup',
+  SignupAs: 'Signup as',
   email: 'Your Email',
   password: 'Password',
   forgetPass: 'Forget Your Password',
@@ -15,7 +15,7 @@ export default {
   signUpHere: 'Create New Account',
   login: 'Login',
   required: 'required',
-  minSixCharacter: 'your password must be more than 6 digits',
+  minSevenCharacter: 'your password must be more than 7 digits',
   invalidemail: 'invalid email',
   forgetPassword: 'Forget Password',
   newPassword: 'New Password',
@@ -30,4 +30,6 @@ export default {
   cancel: 'Cancel',
   checkOut: 'Check Out',
   change: 'Change',
+  watterCompanies: 'Watter Companies',
+  noThingAvalible: 'No Thing Avalible',
 };

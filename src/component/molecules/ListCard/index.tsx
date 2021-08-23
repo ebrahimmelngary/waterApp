@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, ActivityIndicator, ViewStyle} from 'react-native';
 import IMAGES from '../../../common/images';
 import AppIcon from '../../atoms/AppIcon';
 import ICONS from '../../../common/icons';
@@ -8,20 +8,29 @@ import COLORS from '../../../common/colors';
 import AppText from '../../atoms/AppText';
 import {calcFont} from '../../../common/styles';
 import Touchable from '../../atoms/Touchable';
-type item = {
+import RatingStars from '../RatingStars';
+export type ListItem = {
   id?: any;
   name?: string;
   location?: string;
   shipping?: string;
   review?: any;
   image?: string;
+  isFavorite?: boolean;
+  rating: number;
 };
 interface ListCardProps {
+  style: ViewStyle;
   componentStyle?: string;
-  onPress?: (item: item) => void;
-  item: item;
+  onPress: (item: ListItem) => void;
+  item: ListItem;
   remove?: boolean;
-  onPressIcon?: (item: item) => void;
+  onPressIcon: (item: ListItem) => void;
+  isFavorite?: boolean;
+  loading: boolean;
+  vlaue?: ListItem;
+  onFinishRating: (vlaue: number) => void;
+  ratingDisabled: boolean;
 }
 
 const ListCard: React.FC<ListCardProps> = ({
@@ -30,8 +39,18 @@ const ListCard: React.FC<ListCardProps> = ({
   item,
   remove,
   onPressIcon,
+  isFavorite,
+  loading,
+  vlaue,
+  ratingDisabled,
+  onFinishRating,
+  style,
 }) => {
-  const IconText = ({iconName, title}) => {
+  interface IconTextProps {
+    iconName?: string;
+    title?: string;
+  }
+  const IconText = ({iconName, title}: IconTextProps) => {
     return (
       <View style={styles.textIconWrappar}>
         <AppIcon
@@ -44,10 +63,12 @@ const ListCard: React.FC<ListCardProps> = ({
       </View>
     );
   };
+  const isItem = vlaue?.id === item?.id;
+  const isFavoriteColor = isFavorite ? COLORS.watermelon : COLORS.Silver;
   const VirtcalComponant = () => {
     return (
       <Touchable
-        style={componentStyle === 'virtcal' && styles.virtcalStyleWrappar}
+        style={[styles.virtcalStyleWrappar, style]}
         onPress={() => onPress(item)}>
         <View style={styles.virtcalView}>
           <View style={styles.virtcalImageWrappar}>
@@ -56,11 +77,18 @@ const ListCard: React.FC<ListCardProps> = ({
               style={styles.imageStyle}
               resizeMode={'contain'}
             />
-            <AppIcon
-              name={remove ? ICONS.bin : ICONS.heart}
-              color={COLORS.silverSand}
-              onPress={() => onPressIcon(item)}
-            />
+            {loading && isItem ? (
+              <ActivityIndicator
+                color={COLORS.dodgerBlue}
+                size={calcFont(20)}
+              />
+            ) : (
+              <AppIcon
+                name={remove ? ICONS.bin : ICONS.heart}
+                color={remove ? COLORS.silverSand : isFavoriteColor}
+                onPress={() => onPressIcon(item)}
+              />
+            )}
           </View>
           <View style={styles.textVirtcalWrappar}>
             <AppText style={styles.titleStyle} numberOfLines={2}>
@@ -70,8 +98,11 @@ const ListCard: React.FC<ListCardProps> = ({
             <View style={styles.textIconWrapparVirtcalStyle}>
               <IconText title={item.shipping} iconName={ICONS.shipped} />
             </View>
-
-            <AppIcon name={ICONS.star} color={COLORS.gold} />
+            <RatingStars
+              defaultRating={item.rating}
+              isDisabled={ratingDisabled}
+              onFinishRating={value => onFinishRating(value)}
+            />
           </View>
         </View>
       </Touchable>
@@ -92,14 +123,22 @@ const ListCard: React.FC<ListCardProps> = ({
             {item.name}
           </AppText>
           <IconText title={item.location} iconName={ICONS.location} />
-          <AppIcon name={ICONS.star} color={COLORS.gold} size={calcFont(18)} />
+          <RatingStars
+            defaultRating={item.rating}
+            isDisabled={ratingDisabled}
+            onFinishRating={value => onFinishRating(value)}
+          />
         </View>
         <View style={styles.iconWrappar}>
-          <AppIcon
-            name={ICONS.heart}
-            color={COLORS.silverSand}
-            onPress={() => onPressIcon(item)}
-          />
+          {loading && isItem ? (
+            <ActivityIndicator color={COLORS.dodgerBlue} size={calcFont(20)} />
+          ) : (
+            <AppIcon
+              name={ICONS.heart}
+              color={isFavoriteColor}
+              onPress={() => onPressIcon(item)}
+            />
+          )}
           <IconText title={item.shipping} iconName={ICONS.shipped} />
         </View>
       </Touchable>

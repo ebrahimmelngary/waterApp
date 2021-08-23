@@ -4,11 +4,14 @@ import {calcWidth} from '../../common/styles';
 
 const styles = StyleSheet.create({
   listStyle: {
-    padding: calcWidth(10),
+    padding: calcWidth(12.5),
     backgroundColor: COLORS.background,
   },
   listColumnStyle: {
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
+  },
+  listVirtcalCard: {
+    marginHorizontal: calcWidth(10),
   },
 });
 

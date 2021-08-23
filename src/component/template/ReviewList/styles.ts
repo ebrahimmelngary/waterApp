@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   cardWrappar: {
     width: calcWidth(300),
-    height: calcHeight(117),
+    height: calcHeight(100),
     backgroundColor: COLORS.white,
     marginHorizontal: calcWidth(10),
     padding: calcWidth(20),
@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imageStyle: {
-    width: calcWidth(50),
-    height: calcHeight(50),
+    width: calcWidth(35),
+    height: calcHeight(35),
     borderRadius: calcHeight(50),
   },
   nameStyle: {

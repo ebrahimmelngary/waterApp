@@ -1,6 +1,6 @@
 import ICONS from '../../common/icons';
 
-export const data = [
+export const staticData = [
   {
     id: 0,
     title: 'Notification',

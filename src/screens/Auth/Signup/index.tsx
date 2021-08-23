@@ -1,4 +1,4 @@
-import {useNavigation} from '@react-navigation/native';
+// import {useNavigation} from '@react-navigation/native';
 import * as React from 'react';
 import {View, Keyboard, TextInput} from 'react-native';
 import AppButton from '../../../component/atoms/AppButton';
@@ -8,16 +8,30 @@ import {Trans} from '../../../i18n';
 import * as Yup from 'yup';
 import {Formik} from 'formik';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-
 import styles from './styles';
-
+import {registerRequest} from '../../../service';
+import {useMutation} from '@apollo/client';
+import RadioButton from '../../../component/molecules/RadioButton';
+import {useNavigation} from '@react-navigation/native';
+import Toast from 'react-native-toast-message';
+type defaultValues = {
+  name: string;
+  email: string;
+  password: string;
+};
 const defaultValues = {
   name: '',
   email: '',
   password: '',
 };
 const Signup = () => {
-  const navigation = useNavigation();
+  const {navigate} = useNavigation();
+  const roles = [
+    {id: 0, label: 'Driver', value: 'driver'},
+    {id: 1, label: 'Customer', value: 'customer'},
+  ];
+  const [registerInput, {loading}] = useMutation(registerRequest);
+  const [role, setRole] = React.useState(roles[1]);
   const emailRef = React.useRef<TextInput | null>(null);
   const passwordRef = React.useRef<TextInput | null>(null);
   const validationSchema = Yup.object({
@@ -27,14 +41,35 @@ const Signup = () => {
       .required(Trans('required')),
     password: Yup.string()
       .required(Trans('required'))
-      .min(6, Trans('minSixCharacter')),
+      .min(7, Trans('minSevenCharacter')),
   });
-  const onSubmit = async (values: any) => {
+  const onSubmit = async (values: defaultValues) => {
+    registerInput({
+      variables: {
+        email: values.email,
+        password: values.password,
+        name: values.name,
+        role: role.value,
+      },
+    })
+      .then(() => {
+        navigate('Login');
+        Toast.show({
+          type: 'success',
+          text1: 'Signup success',
+          text2: 'you can login now',
+          position: 'bottom',
+        });
+      })
+      .catch(Error =>
+        Toast.show({
+          type: 'error',
+          text1: 'Some thing Wrong',
+          text2: Error.toString(),
+          position: 'bottom',
+        }),
+      );
     Keyboard.dismiss();
-    navigation.navigate({
-      name: 'CodeVerification',
-      params: {values, fromRegister: true},
-    });
   };
   return (
     <KeyboardAwareScrollView
@@ -84,7 +119,23 @@ const Signup = () => {
                 />
               </View>
               <View style={styles.buttonWrapper}>
-                <AppButton title={Trans('signup')} onPress={handleSubmit} />
+                <AppText style={styles.SignupAsTitleStyle}>
+                  {Trans('SignupAs')}
+                </AppText>
+                {roles.map(item => (
+                  <RadioButton
+                    isSelected={role.id === item.id}
+                    item={item}
+                    key={item.id}
+                    onPress={i => setRole(i)}
+                  />
+                ))}
+
+                <AppButton
+                  title={Trans('signup')}
+                  onPress={handleSubmit}
+                  loading={loading}
+                />
               </View>
             </>
           );

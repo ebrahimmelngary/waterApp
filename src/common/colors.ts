@@ -4,7 +4,7 @@ const COLORS = {
   blackCat: '#3E3E3E',
   blackRock: '#200E32',
   white: '#fff',
-  background: '#F2F6FC',
+  background: '#ebfaff',
   dodgerBlue: '#3FD0FD',
   blueGrey: '#9DA8C3',
   mediumGrey: '#818181',
@@ -22,6 +22,7 @@ const COLORS = {
   whiteGray: '#F2F5FC',
   gray8D: '#8D8D8D',
   zircon: '#F8FAFF',
+  greenTeal: '#71D159',
 };
 
 export default COLORS;

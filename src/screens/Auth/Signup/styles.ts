@@ -26,6 +26,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginVertical: calcHeight(20),
   },
+  SignupAsTitleStyle: {
+    ...FONTS.TajawalMedium,
+    fontSize: calcFont(16),
+    color: COLORS.steel,
+  },
 });
 
 export default styles;

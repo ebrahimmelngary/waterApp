@@ -18,7 +18,8 @@ function MainStack() {
     <Stack.Navigator
       screenOptions={{
         headerBackTitleVisible: false,
-      }}>
+      }}
+      initialRouteName={'Taps'}>
       <Stack.Screen
         name={'Tabs'}
         component={Tabs}

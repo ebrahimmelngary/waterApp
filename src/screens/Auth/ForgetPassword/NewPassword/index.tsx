@@ -29,14 +29,13 @@ const NewPassword = () => {
   });
   const passwordRef = React.useRef<TextInput | null>(null);
   const confirmPasswordRef = React.useRef<TextInput | null>(null);
-  const onSubmit = value => {
+  const onSubmit = (value: {oldPassword: string; confirmPassword: string}) => {
     if (
       defaultValues.oldPassword === value.oldPassword &&
       defaultValues.password === value.confirmPassword
     ) {
       Alert.alert('it is Valid');
     } else {
-      console.log(value);
       Alert.alert('it is inValid');
     }
   };
