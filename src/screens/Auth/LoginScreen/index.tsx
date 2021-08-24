@@ -14,7 +14,7 @@ import {UserLogin} from '../../../redux/actions/User';
 import {useMutation} from '@apollo/client';
 import {loginRequest} from '../../../service';
 import Toast from 'react-native-toast-message';
-const Login = () => {
+const LoginScreen = () => {
   const defaultValues = {
     email: 'mg@gmail.com',
     password: '369852147',
@@ -120,4 +120,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginScreen;
