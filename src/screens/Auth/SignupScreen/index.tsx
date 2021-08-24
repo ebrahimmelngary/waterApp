@@ -24,7 +24,7 @@ const defaultValues = {
   email: '',
   password: '',
 };
-const Signup = () => {
+const SignupScreen = () => {
   const {navigate} = useNavigation();
   const roles = [
     {id: 0, label: 'Driver', value: 'driver'},
@@ -145,4 +145,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignupScreen;

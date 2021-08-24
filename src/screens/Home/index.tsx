@@ -11,6 +11,10 @@ import Toast from 'react-native-toast-message';
 import ReloadingScreen from '../../component/template/ReloadingScreen';
 import HeaderSection from '../../component/template/HeaderSection';
 import FilterModal, {filterItem} from '../../component/template/FilterModal';
+import * as Animatable from 'react-native-animatable';
+const {createAnimatableComponent} = Animatable;
+
+const AnimatableView = createAnimatableComponent(View);
 interface HomeData {
   companies: ListItem[];
 }
@@ -113,23 +117,25 @@ const Home = () => {
                   ) : null
                 }
                 ListEmptyComponent={<EmptyScreen disabled />}
-                renderItem={({item}) => (
-                  <ListCard
-                    key={item?.id}
-                    item={item}
-                    ratingDisabled
-                    isFavorite={item?.isFavorite}
-                    vlaue={favID}
-                    loading={favLoading}
-                    onPress={i =>
-                      navigation.navigate('DetailsScreen', {item: i})
-                    }
-                    onPressIcon={i => {
-                      checkAction(i);
-                      setFavID(i);
-                    }}
-                    componentStyle={view}
-                  />
+                renderItem={({item, index}) => (
+                  <AnimatableView animation={'zoomIn'} delay={100 * index}>
+                    <ListCard
+                      key={item?.id}
+                      item={item}
+                      ratingDisabled
+                      isFavorite={item?.isFavorite}
+                      vlaue={favID}
+                      loading={favLoading}
+                      onPress={i =>
+                        navigation.navigate('DetailsScreen', {item: i})
+                      }
+                      onPressIcon={i => {
+                        checkAction(i);
+                        setFavID(i);
+                      }}
+                      componentStyle={view}
+                    />
+                  </AnimatableView>
                 )}
                 keyExtractor={keyExtractor}
               />
@@ -142,24 +148,26 @@ const Home = () => {
                 ListEmptyComponent={<EmptyScreen disabled />}
                 numColumns={2}
                 columnWrapperStyle={styles.columnWrapar}
-                renderItem={({item}) => (
-                  <ListCard
-                    item={item}
-                    key={item.id + item.id}
-                    ratingDisabled
-                    isFavorite={item?.isFavorite}
-                    vlaue={favID}
-                    loading={favLoading}
-                    style={styles.listVirtcalCard}
-                    onPress={i =>
-                      navigation.navigate('DetailsScreen', {item: i})
-                    }
-                    onPressIcon={i => {
-                      checkAction(i);
-                      setFavID(i);
-                    }}
-                    componentStyle={view}
-                  />
+                renderItem={({item, index}) => (
+                  <AnimatableView animation={'fadeInUp'} delay={100 * index}>
+                    <ListCard
+                      item={item}
+                      key={item.id + item.id}
+                      ratingDisabled
+                      isFavorite={item?.isFavorite}
+                      vlaue={favID}
+                      loading={favLoading}
+                      style={styles.listVirtcalCard}
+                      onPress={i =>
+                        navigation.navigate('DetailsScreen', {item: i})
+                      }
+                      onPressIcon={i => {
+                        checkAction(i);
+                        setFavID(i);
+                      }}
+                      componentStyle={view}
+                    />
+                  </AnimatableView>
                 )}
                 keyExtractor={keyExtractor}
               />
