@@ -62,12 +62,16 @@ const styles = StyleSheet.create({
   },
   iconTextStyle: {
     fontSize: calcFont(13),
+    alignItems: 'center',
   },
   changeText: {
     ...FONTS.TajawalBold,
-    fontSize: calcFont(14),
+    fontSize: calcFont(16),
     alignSelf: 'flex-end',
     marginBottom: calcWidth(5),
+    position: 'absolute',
+    right: calcWidth(15),
+    bottom: calcWidth(6),
   },
   iconWithTextStyle: {
     marginVertical: calcHeight(10),
@@ -128,6 +132,12 @@ const styles = StyleSheet.create({
     marginBottom: calcHeight(20),
     width: '95%',
     alignSelf: 'center',
+  },
+  addAddressStyle: {
+    ...FONTS.TajawalBold,
+    fontSize: calcFont(16),
+    color: COLORS.gray8D,
+    marginTop: calcHeight(35),
   },
 });
 

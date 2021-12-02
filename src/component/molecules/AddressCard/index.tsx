@@ -7,10 +7,10 @@ import IconWithText from '../IconWithText';
 import styles from './styles';
 interface AddressCardProps {
   iconColor?: string;
-  onPress?: (item) => void;
+  onPress: (item) => void;
   item?: {
     id: number;
-    title: string;
+    street: string;
   };
   selected: any;
 }
@@ -18,8 +18,9 @@ interface AddressCardProps {
 const AddressCard = ({onPress, item, selected}: AddressCardProps) => {
   return (
     <IconWithText
-      item={{title: item?.title, iconName: ICONS.location}}
+      item={{title: item?.street, iconName: ICONS.location}}
       style={styles.container}
+      textStyle={styles.titleStyle}
       iconSize={calcFont(30)}
       onPress={() => onPress(item)}
       otherIcon={

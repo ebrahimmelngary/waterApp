@@ -41,7 +41,9 @@ const IconWithText = ({
         size={iconSize}
         disabled
       />
-      <AppText style={[styles.titleStyle, textStyle]}>{item.title}</AppText>
+      <AppText style={[styles.titleStyle, textStyle]} numberOfLines={2}>
+        {item.title}
+      </AppText>
       {otherIcon && <View style={styles.otherIconWrappar}>{otherIcon}</View>}
     </Touchable>
   );

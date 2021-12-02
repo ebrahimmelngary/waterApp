@@ -67,7 +67,6 @@ const Home = () => {
           companyId: item?.id,
         },
       });
-      refetch();
       Toast.show({
         type: 'success',
         text1: 'Alert',

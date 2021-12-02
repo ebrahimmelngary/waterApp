@@ -12,6 +12,7 @@ export default (state = INITIALSTATE, action: any) => {
         ...state,
         token: action?.values,
       };
+
     case LOG_OUT:
       return {...state, token: null};
     default:

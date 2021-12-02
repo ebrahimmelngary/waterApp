@@ -6,12 +6,8 @@ import AppText from '../../component/atoms/AppText';
 import styles from './styles';
 import AppButton from '../../component/atoms/AppButton';
 import {boxData} from './boxData';
-import {useDispatch} from 'react-redux';
-import {order} from '../../redux/actions/Order';
-import {REMOVEORDER} from '../../redux/actions/actionTypes';
 
 const OrderStatus = () => {
-  const disptch = useDispatch();
   const {navigate} = useNavigation();
   const {item: itemData} = useRoute().params;
   const RowCard = ({value}) => {
@@ -26,7 +22,6 @@ const OrderStatus = () => {
     );
   };
   const onCancelOrder = () => {
-    disptch(order({type: REMOVEORDER, data: null}));
     navigate('Home');
   };
   const DotView = () => {
