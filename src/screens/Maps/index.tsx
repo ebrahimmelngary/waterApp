@@ -26,7 +26,13 @@ const Maps = () => {
   // const CurrentLocation = location?.latitude + ' , ' + location?.longitude;
 
   const onDone = () => {
-    if ((cuurentAddress, roleInput, homeInput, buildingInput, phoneInput)) {
+    if (
+      cuurentAddress &&
+      roleInput &&
+      homeInput &&
+      buildingInput &&
+      phoneInput
+    ) {
       createAddress({
         variables: {
           apartNumber: homeInput,
