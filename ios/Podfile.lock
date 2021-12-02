@@ -330,6 +330,8 @@ PODS:
     - React-jsi (= 0.64.2)
     - React-perflogger (= 0.64.2)
   - React-jsinspector (0.64.2)
+  - react-native-geocoder (1.0.0-alpha.7):
+    - React
   - react-native-geolocation (2.0.2):
     - React
   - react-native-google-maps (0.28.0):
@@ -506,6 +508,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - "react-native-geocoder (from `../node_modules/@timwangdev/react-native-geocoder`)"
   - "react-native-geolocation (from `../node_modules/@react-native-community/geolocation`)"
   - react-native-google-maps (from `../node_modules/react-native-maps`)
   - react-native-maps (from `../node_modules/react-native-maps`)
@@ -599,6 +602,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-geocoder:
+    :path: "../node_modules/@timwangdev/react-native-geocoder"
   react-native-geolocation:
     :path: "../node_modules/@react-native-community/geolocation"
   react-native-google-maps:
@@ -702,6 +707,7 @@ SPEC CHECKSUMS:
   React-jsi: 67747b9722f6dab2ffe15b011bcf6b3f2c3f1427
   React-jsiexecutor: 80c46bd381fd06e418e0d4f53672dc1d1945c4c3
   React-jsinspector: cc614ec18a9ca96fd275100c16d74d62ee11f0ae
+  react-native-geocoder: 225895386f04bf37515eaa09c419dea9b923f40b
   react-native-geolocation: c956aeb136625c23e0dce0467664af2c437888c9
   react-native-google-maps: 46dea4aa4acb7300beff508f64d9f8c84e9fb106
   react-native-maps: 2d405b4e8cee0282e4c02bac434d81450dfea877
@@ -737,4 +743,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 26600f9410beff78ada9d2fbf3ad6cfa77887fde
 
-COCOAPODS: 1.11.0.beta.2
+COCOAPODS: 1.11.2

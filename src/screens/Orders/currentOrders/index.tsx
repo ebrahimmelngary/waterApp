@@ -29,6 +29,7 @@ const CurrentOrders = () => {
     return <ReloadingScreen />;
   }
   if (error) {
+    console.log('error', error);
     return (
       <EmptyScreen message={error.message} onPressIcon={() => refetch()} />
     );

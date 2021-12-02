@@ -14,9 +14,6 @@ export const LOG_OUT = 'LOG_OUT';
 export const START_LOADING = 'START_LOADING';
 export const STOP_LOADING = 'STOP_LOADING';
 export const SAVE_FACM_TOKEN = 'SAVE_FACM_TOKEN';
-// export const SOCIAL_LOGIN = 'SOCIAL_LOGIN';
-// export const START_LOADING_SOCIAL = 'START_LOADING_SOCIAL';
-// export const STOP_LOADING_SOCIAL = 'STOP_LOADING_SOCIAL';
-// Order
-export const ORDERD = 'ORDERD';
-export const REMOVEORDER = 'REMOVEORDER';
+
+// Address
+export const ADD_ADDRESS = 'ADD_ADDRESS';

@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import COLORS from '../../common/colors';
-import {calcHeight, calcWidth} from '../../common/styles';
+import {calcFont, calcHeight, calcWidth} from '../../common/styles';
 const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.background,
@@ -9,6 +9,11 @@ const styles = StyleSheet.create({
   footerStyle: {
     alignSelf: 'flex-start',
     marginVertical: calcHeight(30),
+  },
+  addNewAddressStyle: {
+    fontSize: calcFont(16),
+    color: COLORS.blackCat,
+    alignSelf: 'center',
   },
   addIcon: {
     borderRadius: calcWidth(50),

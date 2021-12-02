@@ -33,6 +33,7 @@
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.5",
     "@reduxjs/toolkit": "^1.6.0",
+    "@timwangdev/react-native-geocoder": "^1.0.0-alpha.7",
     "formik": "^2.2.9",
     "graphql": "^15.5.1",
     "react": "17.0.1",

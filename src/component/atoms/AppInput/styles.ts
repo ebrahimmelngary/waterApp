@@ -25,7 +25,7 @@ export default StyleSheet.create({
     borderRadius: calcWidth(16),
     borderWidth: 0.2,
     borderColor: COLORS.steel,
-    paddingHorizontal: calcWidth(25),
+    paddingHorizontal: calcWidth(10),
     paddingVertical: calcHeight(9),
   },
   textInputWarppar: {

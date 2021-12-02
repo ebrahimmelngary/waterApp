@@ -1,6 +1,7 @@
 import COLORS from '../../common/colors';
-import {calcHeight, calcWidth} from '../../common/styles';
+import {calcFont, calcHeight, calcWidth} from '../../common/styles';
 import {StyleSheet} from 'react-native';
+import FONTS from '../../common/fonts';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -34,6 +35,11 @@ const styles = StyleSheet.create({
     marginVertical: calcHeight(40),
     width: '50%',
     alignSelf: 'center',
+  },
+  textInput: {
+    ...FONTS.TajawalMedium,
+    textAlign: 'center',
+    fontSize: calcFont(13),
   },
 });
 

@@ -10,6 +10,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: calcWidth(15),
     marginBottom: calcHeight(15),
   },
+  titleStyle: {
+    width: '70%',
+  },
 });
 
 export default styles;

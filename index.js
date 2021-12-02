@@ -10,14 +10,14 @@ import {name as appName} from './app.json';
 import {Provider} from 'react-redux';
 import Store from './src/redux/store';
 messaging().setBackgroundMessageHandler(async remoteMessage => {
-    console.log('Message handled in the background!', remoteMessage);
-  });
+  console.log('Message handled in the background!', remoteMessage);
+});
 
-  const inApp =()=>{
-    return(
-<Provider store={Store.store}>
-<App />
-  </Provider>
-    )
-  }
+const inApp = () => {
+  return (
+    <Provider store={Store.store}>
+      <App />
+    </Provider>
+  );
+};
 AppRegistry.registerComponent(appName, () => inApp);

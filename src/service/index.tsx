@@ -57,16 +57,24 @@ export const loginRequest = gql`
 
 //==>=>=>=>==>=>=>=>CREATE ADDRESS==>=>=>=>==>=>=>=>
 export const CREATE_ADDRESS = gql`
-  mutation {
+  mutation createAddress(
+    $apartNumber: String!
+    $building: String!
+    $floor: Int!
+    $street: String!
+    $city: String!
+    $mobile: String!
+    $country: String!
+  ) {
     createAddress(
       createAddressInput: {
-        apartNumber: "27"
-        floor: 2
-        building: "33"
-        street: "Elmokhles shapana"
-        city: "Test"
-        country: "Big Country"
-        mobile: "+201000000203"
+        apartNumber: $apartNumber
+        floor: $floor
+        building: $building
+        street: $street
+        city: $city
+        country: $country
+        mobile: $mobile
       }
     ) {
       id
@@ -107,6 +115,7 @@ export const ADD_TO_FAVORITE = gql`
         id
         email
         name
+        isFavorite
       }
     }
   }
@@ -134,7 +143,7 @@ export const getProfile = gql`
 
 export const GET_COMPANIES = gql`
   {
-    companies {
+    companies(pagination: {perPage: 10, page: 1}) {
       id
       name
       role
@@ -222,6 +231,21 @@ export const Get_CompanyReviews = gql`
         id
         name
       }
+    }
+  }
+`;
+//=>=>==>=>=>=>==>=>=>=>Get Addresses==>=>=>=>==>=>=>
+export const Get_Addresses = gql`
+  {
+    addresses(pagination: {perPage: 10, page: 1}) {
+      id
+      apartNumber
+      floor
+      building
+      street
+      city
+      country
+      mobile
     }
   }
 `;

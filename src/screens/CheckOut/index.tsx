@@ -9,16 +9,15 @@ import AppButton from '../../component/atoms/AppButton';
 import {Trans} from '../../i18n';
 import styles from './styles';
 import COLORS from '../../common/colors';
-import {useDispatch} from 'react-redux';
-import {order} from '../../redux/actions/Order';
-import {ORDERD} from '../../redux/actions/actionTypes';
+import {useSelector} from 'react-redux';
+
 interface CheackOutProps {}
 
 const CheackOut = () => {
   const {item, amount, TotalPrice} = useRoute().params;
   const [paymentStatus, setPaymentStatus] = React.useState('cash');
   const {navigate} = useNavigation();
-  const disptch = useDispatch();
+  const current_address = useSelector(state => state.address);
   const TextCard = ({title, value}) => {
     return (
       <View style={styles.rowCardWrappar}>
@@ -27,21 +26,10 @@ const CheackOut = () => {
       </View>
     );
   };
+  console.log('current_address', current_address);
   const shippingFee = 10;
   const total = shippingFee + TotalPrice;
   const onOrderHandeler = () => {
-    disptch(
-      order({
-        type: ORDERD,
-        data: {
-          quntity: amount,
-          totalPrice: TotalPrice,
-          price: TotalPrice / amount,
-          shipping: shippingFee,
-          total: total,
-        },
-      }),
-    );
     navigate('OrderStatus', {item: item});
   };
   return (
@@ -72,14 +60,14 @@ const CheackOut = () => {
               textStyle={styles.iconTextStyle}
               item={{
                 iconName: ICONS.location,
-                title: 'محافظة المنوفية و مركز بركة السبع ',
+                title: current_address?.street,
               }}
               style={styles.iconWithTextStyle}
             />
             <IconWithText
               disabled
               textStyle={styles.iconTextStyle}
-              item={{iconName: ICONS.telephone, title: '01153166402'}}
+              item={{iconName: ICONS.telephone, title: current_address?.mobile}}
             />
           </View>
           <AppText
