@@ -32,4 +32,6 @@ export default {
   change: 'Change',
   watterCompanies: 'Watter Companies',
   noThingAvalible: 'No Thing Avalible',
+  add_address: 'Add Your Location',
+  add: 'Add',
 };

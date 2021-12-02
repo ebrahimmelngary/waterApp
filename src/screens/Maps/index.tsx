@@ -23,7 +23,6 @@ const Maps = () => {
   const [isLoading, setIsloading] = React.useState(false);
   const [createAddress] = useMutation(CREATE_ADDRESS);
   const {goBack} = useNavigation();
-  // const CurrentLocation = location?.latitude + ' , ' + location?.longitude;
 
   const onDone = () => {
     if (
@@ -85,7 +84,6 @@ const Maps = () => {
   React.useEffect(() => {
     CurrentLocation();
   }, [location]);
-  console.log('CurrentLocation', cuurentAddress);
   return (
     <View style={styles.container}>
       {error && <AppText>Error</AppText>}

@@ -55,32 +55,43 @@ const CheackOut = () => {
         <CloudText style={styles.detailsCloudStyle}>
           <View>
             <AppText style={styles.addressStyle}>Dilver To :</AppText>
-            <IconWithText
-              disabled
-              textStyle={styles.iconTextStyle}
-              item={{
-                iconName: ICONS.location,
-                title: current_address?.street,
-              }}
-              style={styles.iconWithTextStyle}
-            />
-            <IconWithText
-              disabled
-              textStyle={styles.iconTextStyle}
-              item={{iconName: ICONS.telephone, title: current_address?.mobile}}
-            />
+            {current_address?.street ? (
+              <>
+                <IconWithText
+                  disabled
+                  textStyle={styles.iconTextStyle}
+                  item={{
+                    iconName: ICONS.location,
+                    title: current_address?.street,
+                  }}
+                  style={styles.iconWithTextStyle}
+                />
+                <IconWithText
+                  disabled
+                  textStyle={styles.iconTextStyle}
+                  item={{
+                    iconName: ICONS.telephone,
+                    title: current_address?.mobile,
+                  }}
+                />
+              </>
+            ) : (
+              <AppText style={styles.addAddressStyle}>
+                {Trans('add_address')}
+              </AppText>
+            )}
           </View>
           <AppText
             style={styles.changeText}
             onPress={() => navigate('Address')}>
-            {Trans('change')}
+            {current_address?.street ? Trans('change') : Trans('add')}
           </AppText>
         </CloudText>
       </View>
       <View style={styles.selectPaymentWrappar}>
         <CloudText
           style={styles.cloudTitleStyle}
-          tiltle={'Address'}
+          tiltle={'Payment'}
           titleStyle={styles.cloudtextStyles}
         />
         <IconWithText
